@@ -1,1 +1,19 @@
 
+
+
+# see config/theme.vim for speedup config/init.vim
+- repo: kraxli/vim-code-dark
+- repo: kraxli/papercolor-theme
+- repo: w0ng/vim-hybrid
+- repo: sjl/badwolf
+
+- { repo: tpope/vim-repeat, on_map: . }
+- { repo: qpkorr/vim-renamer, on_cmd: Renamer }
+
+- repo: dbakker/vim-projectroot
+  hook_add: |
+    let g:rootmarkers = ['.git', 'dub.json', 'dub.sdl', 'index.md',
+    \ 'index.wiki', '.projectroot', '.svn']
+
+  
+ 
