@@ -6,7 +6,7 @@
 # -------
 - repo: Shougo/dein.vim
 - repo: rafi/awesome-vim-colorschemes
-- repo: christoomey/vim-tmux-navigator
+- { repo: christoomey/vim-tmux-navigator, if: has('unix') }
 - repo: itchyny/vim-gitbranch
 - repo: itchyny/vim-parenmatch
 - repo: thinca/vim-localrc
@@ -478,6 +478,7 @@
     let g:delimitMate_excluded_ft = 'html'
 
 - repo: wellle/tmux-complete.vim
+  if: has('unix')
   on_event: InsertEnter
   hook_add: let g:tmuxcomplete#trigger = ''
 

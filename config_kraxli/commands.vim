@@ -2,6 +2,7 @@
 command! Cd :cd %:p:h
 command! Lcd :lcd %:p:h
 command! Ec :lcd %:p:h | :E
+command! E :Explore
 
 " Split windows vertically and open empty buffer
 command! Vspl :vsp l

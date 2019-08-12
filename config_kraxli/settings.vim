@@ -5,9 +5,8 @@ set nu
 set breakindent
 " let &showbreak=' '
 
-set nowrap
+set wrap " nowrap
 set colorcolumn=
-
 
 " Hide the mouse pointer while typing
 set mousehide

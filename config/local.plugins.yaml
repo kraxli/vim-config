@@ -7,10 +7,19 @@
 - repo: w0ng/vim-hybrid
 - repo: sjl/badwolf
 
-- { repo: tpope/vim-repeat, on_map: . }
-- { repo: qpkorr/vim-renamer, on_cmd: Renamer }
 
 # --- Lazily loading plugins ---
+- { repo: tpope/vim-repeat, on_map: . }
+
+- repo: qpkorr/vim-renamer
+  on_cmd: Renamer
+  hook_add: |
+    if has('dos16')||has('dos32')||has('win16')||has('win32')||has('win64')||has('win32unix')||has('win95')
+      let g:RenamerShowHidden=0
+    else
+      let g:RenamerShowHidden=1
+    endif
+
 - repo: dbakker/vim-projectroot
   hook_add: |
     let g:rootmarkers = ['.git', 'dub.json', 'dub.sdl', 'index.md',
