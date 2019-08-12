@@ -21,3 +21,5 @@
   on_map:  <F6>
   hook_add: let g:shell_verify_urls = 1
 
+- repo: xolox/vim-misc
+  on_source: vim-shell
