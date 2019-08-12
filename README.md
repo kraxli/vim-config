@@ -98,6 +98,8 @@ pip install --user pycodestyle pyflakes flake8 vim-vint proselint yamllint
 - Universal ctags: [ctags.io](https://ctags.io/)
 - Fuzzy file finders: [fzf](https://github.com/junegunn/fzf), [fzy](https://github.com/jhawthorn/fzy), or [peco](https://github.com/peco/peco)
 - Tern: `npm -g install tern`
+- Nerd-fonts: [ryanoasis/nerd-fonts](https://github.com/ryanoasis/nerd-fonts)
+  e.g. MesloLGSDZ nerd Font Regular,  size 13
 
 ## Upgrade
 
