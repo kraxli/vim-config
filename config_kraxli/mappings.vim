@@ -5,8 +5,7 @@ nnoremap < <<$
 
 " --- copy & pasting ---
 inoremap <c-v> <MiddleMouse>
-nnoremap <c-v> "+p
-" xnoremap <c-v> "+p
+
 "" Make shift-insert work like in Xterm
 cnoremap <c-v> <MiddleMouse>
 cnoremap <S-Insert> <MiddleMouse>
