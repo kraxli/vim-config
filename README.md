@@ -724,6 +724,7 @@ Key   | Mode | Action
 `<leader>`+`gu` | Normal | Open undo-tree
 `<leader>`+`W` | Normal | VimWiki
 `<leader>`+`K` | Normal | Thesaurus
+`gx` | Normal/Visula | Open Url under cursor/selection
 
 ## Credits & Contribution
 
