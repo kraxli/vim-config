@@ -11,6 +11,13 @@ if has('unix')
 else
 endif
 
+" set globla variables
+if has('unix')
+	let g:environment='home'
+else
+	let g:environment='work'
+end
+
 let g:path_sep = ((has('win16') || has('win32') || has('win64'))?'\':'/')
 let g:nvim_dir = fnamemodify(expand('<sfile>'), ':p:h:gs?\\?'.path_sep.'?')  " see :h filename-modifiers
 

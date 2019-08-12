@@ -338,7 +338,7 @@
     let g:vimwiki_hl_headers = 1
     let g:vimwiki_hl_cb_checked = 1
     let g:vimwiki_autowriteall = 0
-  hook_source: 
+  hook_source: execute 'source. 'g:nvim_dir.g:path_sep.'config_kraxli'.g:path_sep.'plugins'.g:path_sep.'vimwiki.vim'
 
   # hook_source: |
   #   let g:vimwiki_list = [

@@ -1,6 +1,6 @@
 
 
-if has('unix')
+if g:environment=='home'
   let g:vimwiki_list = [
   \   { 'diary_header': 'Diary',
   \     'diary_link_fmt': '%Y-%m/%d',
@@ -12,7 +12,7 @@ if has('unix')
   \     'syntax': 'markdown',
   \     'ext': '.md' }
   \ ]
-else
+elseif g:environment=='work'
   let g:vimwiki_list = [
   \   { 'diary_header': 'Diary',
   \     'diary_link_fmt': '%Y-%m/%d',
