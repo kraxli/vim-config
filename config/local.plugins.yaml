@@ -1,24 +1,32 @@
-
-
-
-# see config/theme.vim for speedup config/init.vim
-- repo: kraxli/vim-code-dark
-- repo: kraxli/papercolor-theme
-- repo: w0ng/vim-hybrid
-- repo: sjl/badwolf
+---
+# PLUGINS local to kraxli/vim-config
+# ==========================================
 
 
 # --- Lazily loading plugins ---
-- { repo: tpope/vim-repeat, on_map: . }
 
-- repo: qpkorr/vim-renamer
+# -- ColorSchemes --
+# see config/theme.vim for speedup config/init.vim
+- {repo: kraxli/vim-code-dark, on_cmd: colorscheme codedark}
+- {repo: kraxli/papercolor-theme, on_cmd: colorscheme PaperColor}
+- {repo: sjl/badwolf, on_cmd: colorscheme badwolf}
+# - repo: w0ng/vim-hybrid
+
+- {repo: tpope/vim-repeat, on_map: .}
+
+# qpkorr/vim-renamer
+- repo: kraxli/vim-renamer
   on_cmd: Renamer
   hook_add: |
-    if has('dos16')||has('dos32')||has('win16')||has('win32')||has('win64')||has('win32unix')||has('win95')
+    if has('dos16')||has('dos32')||has('win16')||has('win32')||has('win64')
+    \ ||has('win32unix')||has('win95')
       let g:RenamerShowHidden=0
     else
       let g:RenamerShowHidden=1
     endif
+    augroup user_project_root
+      autocmd!
+      autocmd! BufEnter,BufRead * ProjectRootLCD
 
 - repo: dbakker/vim-projectroot
   hook_add: |
@@ -27,7 +35,7 @@
 
 - repo: xolox/vim-shell
   on_cmd: Open
-  on_map:  <F6>
+  on_map: <F6>
   hook_add: let g:shell_verify_urls = 1
 
 - repo: xolox/vim-misc
