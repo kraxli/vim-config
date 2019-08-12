@@ -10,10 +10,14 @@
 - { repo: tpope/vim-repeat, on_map: . }
 - { repo: qpkorr/vim-renamer, on_cmd: Renamer }
 
+# --- Lazily loading plugins ---
 - repo: dbakker/vim-projectroot
   hook_add: |
     let g:rootmarkers = ['.git', 'dub.json', 'dub.sdl', 'index.md',
     \ 'index.wiki', '.projectroot', '.svn']
 
-  
- 
+- repo: xolox/vim-shell
+  on_cmd: Open
+  on_map:  <F6>
+  hook_add: let g:shell_verify_urls = 1
+

@@ -3,9 +3,15 @@ imap jj <esc>
 nnoremap > >>^
 nnoremap < <<$
 
+" --- copy & pasting ---
+inoremap <c-v> <MiddleMouse>
+nnoremap <c-v> "+p
+" xnoremap <c-v> "+p
 "" Make shift-insert work like in Xterm
-map <S-Insert> <MiddleMouse>
-map! <S-Insert> <MiddleMouse>
+cnoremap <c-v> <MiddleMouse>
+cnoremap <S-Insert> <MiddleMouse>
+noremap <S-Insert> <MiddleMouse>
+noremap! <S-Insert> <MiddleMouse>
 
 " {{{ --- windows / splits ---
 		" resize window / split
