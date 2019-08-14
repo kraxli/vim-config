@@ -16,9 +16,9 @@ let g:local_source_dir='~/Dropbox/ActiveHome/config/nvim/'
 " environment related variables
 " vimwiki directory
 if has('unix')
-	g:wiki_dir = '~/Dropbox/PKD/vimwiki/'
+	let g:wiki_dir = '~/Dropbox/PKD/vimwiki/'
 else
-	g:wiki_dir = '~/vimwiki/'
+	let g:wiki_dir = '~/vimwiki/'
 end
 
 
