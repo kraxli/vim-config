@@ -120,6 +120,15 @@ If you want to disable some of the plugins I use, you can overwrite them, e.g.:
 - { repo: benekastah/neomake, if: 0 }
 ```
 
+You will need to run `:call dein#clear_state()` and `:call dein#recache_runtimepath()` probably for certain plugins that dein merges.
+
+## Updating Plugins with Dein
+
+- Don't use `:UpdateRemotePlugins`, it ignores lazy-loaded plugins (via dein), so you better run: `:call dein#remote_plugins()` which will take into account the lazy ones.
+- Reading the YAML files happens only once after they change. If you want to delete this cached state, run: `:call dein#clear_state()` and after the next you start n/vim, the state will rebuild.
+- If you make a lot of modifications to your `local.plugins.yaml`, you'll eventually need to run `:call dein#recache_runtimepath()` for dein to re-merge all the plugin essentials. Run it with a fresh state.
+
+
 ## Structure
 
 - [config/](./config) - Configuration
