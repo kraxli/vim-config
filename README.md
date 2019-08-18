@@ -114,6 +114,12 @@ and add your personal settings there. This file is ignored by `.gitignore`.
 If you'd like to install plugins by yourself, create a
 `config/local.plugins.yaml` file and manage your own plugin collection.
 
+If you want to disable some of the plugins I use, you can overwrite them, e.g.:
+
+```yaml
+- { repo: benekastah/neomake, if: 0 }
+```
+
 ## Structure
 
 - [config/](./config) - Configuration
@@ -504,7 +510,7 @@ Arrows | Normal | Resize splits (* Enable `g:elite_mode` in `.vault.vim`)
 `gp` | Normal | Select last paste
 `Q` | Normal | Start/stop macro recording
 `gQ` | Normal | Play macro 'q'
-`mj`/`mk` | Normal/Visual | Move lines down/up
+`<Leader>`+`j`/`k` | Normal/Visual | Move lines down/up
 `<leader>`+`cp` | Normal | Duplicate paragraph
 `<leader>`+`cn`/`cN` | Normal/Visual | Change current word in a repeatable manner
 `sg` | Visual | Replace within selected area
@@ -697,7 +703,7 @@ Key   | Mode | Action
 
 Key   | Mode | Action
 ----- |:----:| ------------------
-`]`+`g` | Normal | Jump to next hunk
+`[`+`g` | Normal | Jump to next hunk
 `]`+`g` | Normal | Jump to previous hunk
 `g`+`S` | Normal | Stage hunk
 `<leader>`+`gr` | Normal | Revert hunk
