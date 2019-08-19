@@ -342,11 +342,11 @@
     \   { 'diary_header': 'Diary',
     \     'diary_link_fmt': '%Y-%m/%d',
     \     'auto_toc': 1,
-    \     'path': exists(g:wiki_dir) ? g:wiki_dir : '~/docs/wiki/',
+    \     'path': exists('g:wiki_dir') ? g:wiki_dir : '~/docs/wiki/',
     \     'syntax': 'markdown',
     \     'ext': '.md' },
     \   {
-    \     'path': exists(g:blog_dir) ? g:blog_dir : '~/docs/blog/',
+    \     'path': exists('g:blog_dir') ? g:blog_dir : '~/docs/blog/',
     \     'syntax': 'markdown',
     \     'ext': '.md' }
     \ ]
