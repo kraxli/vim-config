@@ -3,6 +3,9 @@ imap jj <esc>
 " nnoremap > >>^
 " nnoremap < <<$
 
+noremap [d [sz=
+noremap ]d [sz=
+
 " --- copy & pasting ---
 inoremap <c-v> <MiddleMouse>
 
