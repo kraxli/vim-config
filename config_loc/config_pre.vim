@@ -8,6 +8,8 @@ if has('unix')
 
 	"" To disable Python 2 support:
 	" let g:loaded_python_provider = 1
+else
+	let g:python3_host_prog = 'C:/ProgramData/Anaconda3-5.2.0/python.exe'
 endif
 
 " your directory with your local .vim-files to load
