@@ -4,7 +4,7 @@ imap jj <esc>
 " nnoremap < <<$
 
 noremap [d [sz=
-noremap ]d [sz=
+noremap ]d ]sz=
 
 " --- copy & pasting ---
 inoremap <c-v> <MiddleMouse>
@@ -14,6 +14,17 @@ cnoremap <c-v> <MiddleMouse>
 cnoremap <S-Insert> <MiddleMouse>
 noremap <S-Insert> <MiddleMouse>
 noremap! <S-Insert> <MiddleMouse>
+
+" Include Time Stamps
+nnoremap <silent> <F4> "=strftime("%Y-%m-%d")<CR>P
+inoremap <silent> <F4> <C-R>=strftime("%Y-%m-%d")<CR>
+
+" jump around
+nnoremap g. `.			" jump to excact last modified position
+nnoremap g: '.			" jump to last modified line
+nnoremap gf	<c-i>		" move forward in jump list
+nnoremap gb	<c-o>		" move backward in jump list
+
 
 " {{{ --- windows / splits ---
 		" resize window / split
@@ -61,4 +72,4 @@ noremap! <S-Insert> <MiddleMouse>
 		nnoremap zs :setlocal foldexpr=(getline(v:lnum)=~@/)?0:(getline(v:lnum-1)=~@/)\\|\\|(getline(v:lnum+1)=~@/)?1:2 foldmethod=expr foldlevel=0 foldcolumn=2<CR>
 " }}} folding
 
-" vim:set foldmethod=manual
+" vim:set foldmethod=marker
