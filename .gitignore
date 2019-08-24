@@ -3,13 +3,11 @@
 /spell/
 /.vault.vim
 /.local.vimrc
-<<<<<<< HEAD
 *~
-=======
->>>>>>> a548e27b567f4ae3dd07beaf96a1f4c5f8c1d4e8
 /.stignore
 /.stfolder
 /.stversions
 /.netrwhist
 /undodir
+/local*
 

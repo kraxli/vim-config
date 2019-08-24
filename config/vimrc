@@ -106,13 +106,14 @@ call etc#util#source_file('config/mappings.vim')
 " Initialize user favorite colorscheme
 call theme#init()
 
+" Load kraxli custom settings
+if filereadable(g:etc#vim_path.'/config_kraxli/init.vim')
+	call etc#util#source_file('config_kraxli/init.vim')
+endif
+
 " Load user custom local settings
 if filereadable(g:etc#vim_path.'/config/local.vim')
 	call etc#util#source_file('config/local.vim')
-endif
-
-if filereadable(g:etc#vim_path.'/config_local/config_post.vim')
-	call etc#util#source_file('config_local/config_post.vim')
 endif
 
 " Trigger colorscheme events when vimrc is reloaded within vim
