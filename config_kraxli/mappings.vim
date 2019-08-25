@@ -20,10 +20,10 @@ nnoremap <silent> <F4> "=strftime("%Y-%m-%d")<CR>P
 inoremap <silent> <F4> <C-R>=strftime("%Y-%m-%d")<CR>
 
 " jump around
-nnoremap g. `.			" jump to excact last modified position
-nnoremap g: '.			" jump to last modified line
-nnoremap gf	<c-i>		" move forward in jump list
-nnoremap gb	<c-o>		" move backward in jump list
+nnoremap g. `.	       " jump to excact last modified position
+nnoremap g: '.	       " jump to last modified line
+nnoremap gf <c-I>      " move forward in jump list
+nnoremap gb <c-O>      " move backward in jump list
 
 
 " {{{ --- windows / splits ---
