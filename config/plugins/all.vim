@@ -52,7 +52,7 @@ if dein#tap('defx.nvim')
 	nnoremap <silent> <LocalLeader>e
 		\ :<C-u>Defx -resume -toggle -buffer-name=tab`tabpagenr()`<CR>
 	nnoremap <silent> <LocalLeader>a
-		\ :<C-u>Defx -resume -buffer-name=tab`tabpagenr()` -search=`expand('%:p')`<CR>
+		\ :<C-u>Defx -resume -toggle -buffer-name=tab`tabpagenr()` `expand('%:p:h')` -search=`expand('%:p')`<CR>
 endif
 
 if dein#tap('vim-denite-z')
