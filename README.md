@@ -157,7 +157,8 @@ pip install --user pycodestyle pyflakes flake8 vim-vint proselint yamllint
 ### Recommended Tools
 
 - ag (The Silver Searcher): [ggreer/the_silver_searcher](https://github.com/ggreer/the_silver_searcher)
-- z (jump around): [rupa/z](https://github.com/rupa/z)
+- z (jump around): [rupa/z](https://github.com/rupa/z) or
+  [rupa/j2](https://github.com/rupa/j2) for the older python version
 - Universal ctags: [ctags.io](https://ctags.io/)
 - Fuzzy file finders: [fzf](https://github.com/junegunn/fzf), [fzy](https://github.com/jhawthorn/fzy), or [peco](https://github.com/peco/peco)
 - Tern: `npm -g install tern`
