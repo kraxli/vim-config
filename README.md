@@ -1,4 +1,6 @@
-# Rafael Bodill's Neo/vim Config
+# Kraxli's Neo/vim Config 
+
+All credit goes to [Rafael Bodill](https://github.com/rafi/vim-config)
 
 Lean mean Neo/vim machine, 30-45ms startup time.
 
