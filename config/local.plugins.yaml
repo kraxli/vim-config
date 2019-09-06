@@ -40,3 +40,13 @@
 
 - repo: xolox/vim-misc
   on_source: vim-shell
+
+- repo: kraxli/vimwiki-task
+  on_ft: [vimwiki, markdown, wiki, md]
+  hook_add: let g:vimwiki_folding = 'custom'
+  hook_source: |
+    setlocal spell spelllang=en,de
+    nnoremap <leader>li "='* [ ] '<cr>Pa
+
+# hook_post_source: source $VIMPATH/config_dw_after/plugins/vimwiki.vim
+

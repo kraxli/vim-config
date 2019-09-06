@@ -178,6 +178,8 @@ function! s:get_selection(cmdtype) "{{{
 endfunction "}}}
 
 " Location/quickfix list movement
+nmap ]l :lnext<CR>
+nmap [l :lprev<CR>
 nmap ]c :lnext<CR>
 nmap [c :lprev<CR>
 nmap ]q :cnext<CR>
