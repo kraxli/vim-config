@@ -90,10 +90,14 @@ Best with Neovim or Vim8 with +python3 extensions enabled.
   ```
 ## Difference to [Rafael Bodill's vim-config](https://github.com/rafi/vim-config)
 
-- init.vim: define additional global variables
-- config/local.vim: Plugins different from plugins used by Rafi
-- config_kraxli: additional setups
-- config_local: additional put your additional setting with priority in `local_exante_load.vim` (do not over rule already defined settings) and `local_expost_load.vim` (overrule defined settings).
+- [config/](./config) - Configuration
+- [init.vim](./init.vim): define additional global variables
+- [config/local.vim](./config/local.vim): Plugins different from plugins used by Rafi
+- [config_kraxli](./config_kraxli): additional setups
+- [config_local](./config_local): additional put your additional setting with
+  priority in [local_exante_load.vim](./config_local/local_exante_load.vim) (do
+  not over rule already defined settings) and
+  [local_expost_load.vim](./config_local/local_expost_load.vim) (overrule defined settings).
 
 ## Install
 
