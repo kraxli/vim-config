@@ -27,7 +27,6 @@ if filereadable($VIM_PATH.'/config_local/local_exante_load.vim')
 	call s:source_file('config_local/local_exante_load.vim')
 endif
 
-" or simply use $VIM_PATH
 let g:config_plugins_dir = $VIM_PATH.path_sep.'config_kraxli'.path_sep.'plugins'
 
 for file in split(globpath(g:config_plugins_dir, '*.vim'), '\n')
