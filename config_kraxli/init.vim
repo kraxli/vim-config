@@ -1,7 +1,30 @@
 
+" dublicate from config/vimrc (after autoload/etc/util has been deleted)
+function! s:source_file(path, ...)
+	" Source user configuration files with set/global sensitivity
+	let use_global = get(a:000, 0, ! has('vim_starting'))
+	let abspath = resolve($VIM_PATH . '/' . a:path)
+	if ! use_global
+		execute 'source' fnameescape(abspath)
+		return
+	endif
 
-if filereadable(g:etc#vim_path.'/config_local/local_exante_load.vim')
-	call etc#util#source_file('config_local/local_exante_load.vim')
+	let tempfile = tempname()
+	let content = map(readfile(abspath),
+		\ "substitute(v:val, '^\\W*\\zsset\\ze\\W', 'setglobal', '')")
+	try
+		call writefile(content, tempfile)
+		execute printf('source %s', fnameescape(tempfile))
+	finally
+		if filereadable(tempfile)
+			call delete(tempfile)
+		endif
+	endtry
+endfunction
+
+
+if filereadable($VIM_PATH.'/config_local/local_exante_load.vim')
+	call s:source_file('config_local/local_exante_load.vim')
 endif
 
 " or simply use $VIM_PATH
@@ -12,10 +35,10 @@ for file in split(globpath(g:config_plugins_dir, '*.vim'), '\n')
 endfor
 
 
-call etc#util#source_file('config_kraxli/settings.vim')
-call etc#util#source_file('config_kraxli/mappings.vim')
-call etc#util#source_file('config_kraxli/commands.vim')
-call etc#util#source_file('config_kraxli/git.vim')
+call s:source_file('config_kraxli/settings.vim')
+call s:source_file('config_kraxli/mappings.vim')
+call s:source_file('config_kraxli/commands.vim')
+call s:source_file('config_kraxli/git.vim')
 
 " load local config / setting files
 if exists('g:local_source_dir') && isdirectory(g:local_source_dir)
@@ -24,6 +47,6 @@ if exists('g:local_source_dir') && isdirectory(g:local_source_dir)
    endfor
 endif
 
-if filereadable(g:etc#vim_path.'/config_local/local_expost_load.vim')
-	call etc#util#source_file('config_local/local_expost_load.vim')
+if filereadable($VIM_PATH.'/config_local/local_expost_load.vim')
+	call s:source_file('config_local/local_expost_load.vim')
 endif
