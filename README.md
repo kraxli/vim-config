@@ -18,7 +18,7 @@ Best with Neovim or Vim8 with +python3 extensions enabled.
 * [Screenshot](#screenshot)
 * [Pre-requisites](#pre-requisites)
 * [Difference to Rafael Bodill's
-  vim-config](#difference-to-rafael-bodills-vimconfig)
+  vim-config](#difference-to-rafael-bodills-vim-config)
 * [Install](#install)
   * [Recommended Fonts](#recommended-fonts)
   * [Recommended Linters](#recommended-linters)
