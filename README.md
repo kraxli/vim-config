@@ -569,7 +569,7 @@ _Note_ that 95% of the plugins are **[lazy-loaded]**.
 Note that,
 
 * Leader key is set as <kbd>Space</kbd>
-* Local-leader is set as <kbd>;</kbd> and used for navigation and search mostly
+* Local-leader is set as <kbd>,</kbd> and used for navigation and search mostly
   (Denite and Defx)
 
 ### General
