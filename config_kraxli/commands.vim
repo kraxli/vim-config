@@ -16,3 +16,5 @@ cnoreabbrev <silent> ww w!
 cnoreabbrev <silent> xx x!
 cnoreabbrev <silent> qq q!
 
+" Open vim-config ReadMe
+command! ReadMeVimConf :execute('e ' . $VIM_PATH . g:path_sep . 'README.md')
