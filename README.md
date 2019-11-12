@@ -4,7 +4,12 @@ All credit goes to [Rafael Bodill](https://github.com/rafi/vim-config)
 
 Lean mean Neo/vim machine, 30-45ms startup time.
 
-Best with Neovim or Vim8 with +python3 extensions enabled.
+Best with Neovim or Vim8 with +python3 extension enabled.
+
+I encourage you to fork this repo and create your own experience. Learn how to
+tweak and change Neo/vim to the way _you_ like it. This is my cultivation of
+years of tweaking, use it as a git remote and stay in-touch with upstream for
+reference or cherry-picking.
 
 <details>
   <summary>
@@ -59,28 +64,30 @@ Best with Neovim or Vim8 with +python3 extensions enabled.
 
 ## Features
 
-- Fast startup time
-- Robust, yet light-weight
-- Lazy-load 95% of plugins with [Shougo/dein.vim]
-- Custom side-menu (try it out! <kbd>Leader</kbd>+<kbd>l</kbd>)
-- Custom context-menu (try it! <kbd>;</kbd>+<kbd>c</kbd>)
-- Modular configuration (see [structure](#structure))
-- Denite centric work-flow (lists)
-- Extensive Deoplete setup (auto-completion)
-- Light-weight but informative status/tabline
-- Easy customizable theme
-- Premium color-schemes
-- Central location for tags and sessions
+* Fast startup time
+* Robust, yet light-weight
+* Lazy-load 95% of plugins with [Shougo/dein.vim]
+* Custom side-menu (try it out! <kbd>Leader</kbd>+<kbd>l</kbd>)
+* Custom context-menu (try it! <kbd>;</kbd>+<kbd>c</kbd>)
+* Modular configuration (see [structure](#structure))
+* [Shougo/denite.nvim] centric work-flow (lists)
+* Extensive [Shougo/deoplete.nvim] setup (auto-completion)
+* Structure view with [liuchengxu/vista.vim]
+* Open SCM detailed URL in OS browser
+* Light-weight but informative status/tabline
+* Easy customizable theme
+* Premium color-schemes
+* Central location for tags and sessions
 
 ## Screenshot
 
 ![Vim screenshot](http://rafi.io/static/img/project/vim-config/features.png)
 
-## Pre-requisites
+## Prerequisites
 
 * Python 3 (`brew install python`)
 * Neovim or Vim (`brew install neovim` or `brew install vim`)
-* Virtualenv tool for Python 3:
+* Virtualenv tool for Python 3 (not required from Python 3.6 on - I think):
   ```bash
   pip3 install virtualenv
   ```
@@ -88,6 +95,8 @@ Best with Neovim or Vim8 with +python3 extensions enabled.
   ```bash
   apt-get install -y python3-venv
   ```
+* Neovim or Vim (`brew install neovim` and/or `brew install vim`)
+
 ## Difference to [Rafael Bodill's vim-config](https://github.com/rafi/vim-config)
 
 - [config/](./config) - Configuration
@@ -107,28 +116,24 @@ we'll also symlink it for Vim:
 ```bash
 mkdir ~/.config
 git clone git://github.com/kraxli/vim-config.git ~/.config/nvim
+cd ~/.config/nvim
 ln -s ~/.config/nvim ~/.vim
 
 rm -rf ~/.cache/vim   
-nvim
 ```
 
-- _Note:_ If your system sets `$XDG_CONFIG_HOME`,
-  use that instead of `~/.config` in the code above.
-  Neovim follows the XDG base-directories convention.
+* _**Note**:_ If you set a custom `$XDG_CONFIG_HOME`,
+  use that instead of `~/.config` in the commands above.
+  Neovim follows the XDG base-directories convention, Vim doesn't.
 
-**_2._** If you are a _first-time **Neovim** user_, you need the `pynvim`
-package. Don't worry, run the script provided:
+**_2._** Install the Python 3 `pynvim` library. This is also needed for Vim 8
+if you want to use Denite and Defx.
 
-```sh
-cd ~/.config/nvim
-./venv.sh
-```
+> Neovim: `./venvs.sh` or `pip3 install --user pynvim`
 
-Otherwise, or additionally, if you use Vim, you can run
-`pip3 install --user pynvim`
+> Vim8: `pip3 install --user pynvim`
 
-**_3._** Run `make test` to test your nvim/vim version and compatibility.
+**_3._** Run `make test` to test your nvim/vim version and capabilities.
 
 **_4._** Run `make` to install all plugins.
 
@@ -138,8 +143,8 @@ Enjoy!
 
 ### Recommended Fonts
 
-- [Pragmata Pro] (€19 – €1,990): My preferred font
-- Any of the [Nerd Fonts]
+* [Pragmata Pro] (€19 – €1,990): My preferred font
+* Any of the [Nerd Fonts]
 
 On macOS with Homebrew, choose one of the [Nerd Fonts],
 for example, to install the [Hack](https://sourcefoundry.org/hack/) font:
@@ -155,38 +160,49 @@ brew cask install font-hack-nerd-font
 
 ### Recommended Linters
 
-- Node.js based linters:
+* Node.js based linters:
 
 ```sh
 npm -g install jshint jsxhint jsonlint stylelint sass-lint
 npm -g install raml-cop markdownlint-cli write-good
 ```
 
-- Python based linters:
+* Python based linters:
 
 ```sh
 pip install --user pycodestyle pyflakes flake8 vim-vint proselint yamllint
 ```
 
-- Shell lint: [shellcheck.net](https://www.shellcheck.net/)
-- HTML Tidy: [html-tidy.org](http://www.html-tidy.org/)
+* Shell lint: [shellcheck.net](https://www.shellcheck.net/)
+* HTML Tidy: [html-tidy.org](http://www.html-tidy.org/)
 
 ### Recommended Tools
 
-- ag (The Silver Searcher): [ggreer/the_silver_searcher](https://github.com/ggreer/the_silver_searcher)
-- z (jump around): [rupa/z](https://github.com/rupa/z) or
-  [rupa/j2](https://github.com/rupa/j2) for the older python version
-  - and/or ripgrep: [BurntSushi/ripgrep](https://github.com/BurntSushi/ripgrep)
-- Universal ctags: [ctags.io](https://ctags.io/)
-- Fuzzy file finders: [fzf](https://github.com/junegunn/fzf), [fzy](https://github.com/jhawthorn/fzy), or [peco](https://github.com/peco/peco)
-- Tern: `npm -g install tern`
-- Nerd-fonts (e.g. for more beautiful Defx icons): [ryanoasis/nerd-fonts](https://github.com/ryanoasis/nerd-fonts)
+* **ag** [ggreer/the_silver_searcher](https://github.com/ggreer/the_silver_searcher)
+  (macOS: `brew install the_silver_searcher`)
+  * and/or **ripgrep**: [BurntSushi/ripgrep](https://github.com/BurntSushi/ripgrep)
+* Jump around with **z**: [rupa/z](https://github.com/rupa/z) (macOS: `brew install z`)
+  or [rupa/j2](https://github.com/rupa/j2) for the older python version
+* **[Universal ctags](https://ctags.io/)** for syntax tokenization
+* Fuzzy file finders:
+  **[fzf](https://github.com/junegunn/fzf)**,
+  **[fzy](https://github.com/jhawthorn/fzy)**, or
+  **[peco](https://github.com/peco/peco)**
+  (macOS: `brew install fzf`)
+* **Tern** for Javascript completion (`npm -g install tern`)
+* Nerd-fonts (e.g. for more beautiful Defx icons): [ryanoasis/nerd-fonts](https://github.com/ryanoasis/nerd-fonts)
   e.g. MesloLGSDZ nerd Font Regular,  size 13. See also [Issue #109](https://github.com/rafi/vim-config/issues/109)
-- YAML parser: supported are [Ruby](https://www.ruby-lang.org/en/) (see also [RubyInstaller for Ms Windows](https://rubyinstaller.org/downloads/)), [yp](https://github.com/mikefarah/yq), and PyYaml(?)
+* YAML parser: supported are [Ruby](https://www.ruby-lang.org/en/) (see also [RubyInstaller for Ms Windows](https://rubyinstaller.org/downloads/)), [yp](https://github.com/mikefarah/yq), and PyYaml(?)
 
 ## Upgrade
 
-Run `make update`
+```bash
+cd <your installation path>
+make update
+```
+
+This will run `git pull -ff --ff-only` and update all plugins using
+[Shougo/dein.vim] package-manager.
 
 ## User Custom Config
 
@@ -212,37 +228,40 @@ You will need to run `:call dein#clear_state()` and `:call dein#recache_runtimep
 
 ## Structure
 
-- [config/](./config) - Configuration
-  - [plugins/](./config/plugins) - Plugin configurations
-    - [all.vim](./config/plugins/all.vim) - Plugin mappings
-    - […](./config/plugins)
-  - [filetype.vim](./config/filetype.vim) - Language behavior
-  - [general.vim](./config/general.vim) - General configuration
-  - local.plugins.yaml - Custom user plugins
-  - local.vim - Custom user settings
-  - [mappings.vim](./config/mappings.vim) - Key-mappings
-  - [plugins.yaml](./config/plugins.yaml) - _**Plugins!**_
-  - [terminal.vim](./config/terminal.vim) - Terminal configuration
-  - [vimrc](./config/vimrc) - Initialization
-- [ftplugin/](./ftplugin) - Language specific custom settings
-- [plugin/](./plugin) - Customized small plugins
-- [snippets/](./snippets) - Personal code snippets
-- [themes/](./themes) - Colorscheme overrides
-- [filetype.vim](./filetype.vim) - Custom filetype detection
+* [config/](./config) - Configuration
+  * [plugins/](./config/plugins) - Plugin configurations
+    * [all.vim](./config/plugins/all.vim) - Plugin mappings
+    * […](./config/plugins)
+  * [filetype.vim](./config/filetype.vim) - Language behavior
+  * [general.vim](./config/general.vim) - General configuration
+  * **local.plugins.yaml** - Custom user plugins
+  * **local.vim** - Custom user settings
+  * [mappings.vim](./config/mappings.vim) - Key-mappings
+  * [plugins.yaml](./config/plugins.yaml) - My favorite _**Plugins!**_
+  * [terminal.vim](./config/terminal.vim) - Terminal configuration
+  * [vimrc](./config/vimrc) - Initialization
+* [ftplugin/](./ftplugin) - Language specific custom settings
+* [plugin/](./plugin) - Customized small plugins
+* [snippets/](./snippets) - Personal code snippets
+* [themes/](./themes) - Colorscheme overrides
+* [filetype.vim](./filetype.vim) - Custom filetype detection
 
 ## Plugin Highlights
 
-- Package management with caching enabled and lazy loading
-- Project-aware tabs and label
-- Defx as file-manager + Git status icons
-- Go completion via vim-go and gocode
-- Javascript completion via Tern
-- Python Jedi completion, PEP8 convention
-- Languages: PHP, Ansible, css3, csv, json, less, markdown, mustache, and more
+* Package management with caching enabled and lazy loading
+* Project-aware tabs and label
+* Defx as file-manager + Git status icons
+* Go completion via vim-go and gocode
+* Javascript completion via Tern
+* Python Jedi completion, PEP8 convention
+* Languages: PHP, Ansible, css3, csv, json, less, markdown, mustache, and more
 
 _Note_ that 95% of the plugins are **[lazy-loaded]**.
 
 ## Plugins Included
+
+<details open>
+  <summary><strong>List</strong> <small><i>(🔎 Click to expand)</i></small></summary>
 
 ### Non Lazy-Loaded Plugins
 
@@ -274,7 +293,6 @@ _Note_ that 95% of the plugins are **[lazy-loaded]**.
 | [hail2u/vim-css3-syntax] | CSS3 syntax support to vim's built-in `syntax/css.vim`
 | [othree/csscomplete.vim] | Updated built-in CSS complete with latest standards
 | [cakebaker/scss-syntax.vim] | Syntax file for scss (Sassy CSS)
-| [ap/vim-css-color] | Preview colors in source-code while editing
 | [plasticboy/vim-markdown] | Markdown syntax highlighting
 | [rhysd/vim-gfm-syntax] | GitHub Flavored Markdown syntax highlight extension
 | [pangloss/vim-javascript] | Enhanced Javascript syntax
@@ -333,9 +351,6 @@ _Note_ that 95% of the plugins are **[lazy-loaded]**.
 | [cocopon/colorswatch.vim] | Generate a beautiful color swatch for the current buffer
 | [kana/vim-altr] | Switch to the alternate file without interaction
 | [lambdalisue/suda.vim] | An alternative sudo.vim for Vim and Neovim
-| [tyru/open-browser.vim] | Open URI with your favorite browser
-| [tyru/open-browser-unicode.vim] | Open info page about character on current cursor
-| [tyru/open-browser-github.vim] | Open GitHub URL of current file
 | [tyru/caw.vim] | Robust comment plugin with operator support
 | [Shougo/vinarise.vim] | Hex editor
 | [mzlogin/vim-markdown-toc] | Generate table of contents for Markdown files
@@ -353,6 +368,7 @@ _Note_ that 95% of the plugins are **[lazy-loaded]**.
 | [t9md/vim-quickhl] | Quickly highlight words
 | [rafi/vim-sidemenu] | Small side-menu useful for terminal users
 | [airblade/vim-gitgutter] | Show git changes at Vim gutter and un/stages hunks
+| [norcalli/nvim-colorizer.lua] | The fastest Neovim colorizer
 | [nathanaelkane/vim-indent-guides] | Visually display indent levels in code
 | [kshenoy/vim-signature] | Display and toggle marks
 | [hotwatermorning/auto-git-diff] | Display Git diff for interactive rebase
@@ -372,7 +388,6 @@ _Note_ that 95% of the plugins are **[lazy-loaded]**.
 | [ludovicchabant/vim-gutentags] | Manages your tag files
 | [mattn/emmet-vim] | Provides support for expanding abbreviations alá emmet
 | [Shougo/echodoc.vim] | Print objects' documentation in echo area
-| [ncm2/float-preview.nvim] | Pretty completion preview with neovim's floating win
 | [Raimondi/delimitMate] | Auto-completion for quotes, parens, brackets
 | [Shougo/neosnippet-snippets] | Standard snippets repository for neosnippet
 | [Shougo/context_filetype.vim] | Context filetype library for Vim script
@@ -439,7 +454,6 @@ _Note_ that 95% of the plugins are **[lazy-loaded]**.
 [hail2u/vim-css3-syntax]: https://github.com/hail2u/vim-css3-syntax
 [othree/csscomplete.vim]: https://github.com/othree/csscomplete.vim
 [cakebaker/scss-syntax.vim]: https://github.com/cakebaker/scss-syntax.vim
-[ap/vim-css-color]: https://github.com/ap/vim-css-color
 [plasticboy/vim-markdown]: https://github.com/plasticboy/vim-markdown
 [rhysd/vim-gfm-syntax]: https://github.com/rhysd/vim-gfm-syntax
 [pangloss/vim-javascript]: https://github.com/pangloss/vim-javascript
@@ -494,9 +508,6 @@ _Note_ that 95% of the plugins are **[lazy-loaded]**.
 [cocopon/colorswatch.vim]: https://github.com/cocopon/colorswatch.vim
 [kana/vim-altr]: https://github.com/kana/vim-altr
 [lambdalisue/suda.vim]: https://github.com/lambdalisue/suda.vim
-[tyru/open-browser.vim]: https://github.com/tyru/open-browser.vim
-[tyru/open-browser-unicode.vim]: https://github.com/tyru/open-browser-unicode.vim
-[tyru/open-browser-github.vim]: https://github.com/tyru/open-browser-github.vim
 [tyru/caw.vim]: https://github.com/tyru/caw.vim
 [Shougo/vinarise.vim]: https://github.com/Shougo/vinarise.vim
 [mzlogin/vim-markdown-toc]: https://github.com/mzlogin/vim-markdown-toc
@@ -510,6 +521,7 @@ _Note_ that 95% of the plugins are **[lazy-loaded]**.
 [t9md/vim-quickhl]: https://github.com/t9md/vim-quickhl
 [rafi/vim-sidemenu]: https://github.com/rafi/vim-sidemenu
 [airblade/vim-gitgutter]: https://github.com/airblade/vim-gitgutter
+[norcalli/nvim-colorizer.lua]: https://github.com/norcalli/nvim-colorizer.lua
 [nathanaelkane/vim-indent-guides]: https://github.com/nathanaelkane/vim-indent-guides
 [kshenoy/vim-signature]: https://github.com/kshenoy/vim-signature
 [hotwatermorning/auto-git-diff]: https://github.com/hotwatermorning/auto-git-diff
@@ -525,7 +537,6 @@ _Note_ that 95% of the plugins are **[lazy-loaded]**.
 [ludovicchabant/vim-gutentags]: https://github.com/ludovicchabant/vim-gutentags
 [mattn/emmet-vim]: https://github.com/mattn/emmet-vim
 [Shougo/echodoc.vim]: https://github.com/Shougo/echodoc.vim
-[ncm2/float-preview.nvim]: https://github.com/ncm2/float-preview.nvim
 [Raimondi/delimitMate]: https://github.com/Raimondi/delimitMate
 [Shougo/neosnippet-snippets]: https://github.com/Shougo/neosnippet-snippets
 [Shougo/context_filetype.vim]: https://github.com/Shougo/context_filetype.vim
@@ -564,6 +575,8 @@ _Note_ that 95% of the plugins are **[lazy-loaded]**.
 [osyo-manga/vim-textobj-multiblock]: https://github.com/osyo-manga/vim-textobj-multiblock
 [kana/vim-textobj-function]: https://github.com/kana/vim-textobj-function
 
+</details>
+
 ## Custom Key-mappings
 
 Note that,
@@ -571,6 +584,12 @@ Note that,
 * Leader key is set as <kbd>Space</kbd>
 * Local-leader is set as <kbd>,</kbd> and used for navigation and search mostly
   (Denite and Defx)
+
+<details open>
+  <summary>
+    <strong>Key-mappings</strong>
+    <small><i>(🔎 Click to expand)</i></small>
+  </summary>
 
 ### General
 
@@ -584,7 +603,7 @@ Note that,
 | `gK` | Normal | Open Zeal or Dash on some file-types
 | `Y` | Normal | Yank to the end of line (y$)
 | `<Return>` | Normal | Toggle fold (za)
-| `S`+`<Return>` | Normal | Focus the current fold by closing all others (zMza)
+| `S`+`<Return>` | Normal | Focus the current fold by closing all others (zMzvzt)
 | `S`+`<Return>` | Insert | Start new line from any cursor position (<C-o>o)
 | `hjkl` | Normal | Smart cursor movements (g/hjkl)
 | `Ctrl`+`f` | Normal | Smart page forward (C-f/C-d)
@@ -624,7 +643,8 @@ Note that,
 | ----- |:----:| ------------------
 | `<leader>`+`cd` | Normal | Switch to the directory of opened buffer (:lcd %:p:h)
 | `<leader>`+`w` | Normal/Visual | Write (:w)
-| `<leader>`+`y` / `<leader>`+`Y` | Normal | Copy (relative / absolute) file-path to clipboard
+| `<leader>`+`y` | Normal | Copy relative file-path to clipboard
+| `<leader>`+`Y` | Normal | Copy absolute file-path to clipboard
 | `Ctrl`+`s` | _All_ | Write (:w)
 
 ### Editor UI
@@ -815,20 +835,24 @@ Note that,
 
 ### Misc Plugins
 
-Key   | Mode | Action
------ |:----:| ------------------
-`v` / `V` | Visual/select | Expand/reduce selection (expand-region)
-`m`+`g` | Normal | Open Magit
-`m`+`t` | Normal/Visual | Toggle highlighted word (quickhl)
-`-` | Normal | Choose a window to edit (choosewin)
-`<leader>`+`-` | Normal | Switch editing window with selected (choosewin)
-`<leader>`+`l` | Normal | Open sidemenu
-`<leader>`+`o` | Normal | Open tag-bar (:Vista)
-`<leader>`+`G` | Normal | Toggle distraction-free writing (goyo)
-`<leader>`+`gu` | Normal | Open undo-tree
-`<leader>`+`W` | Normal | VimWiki
-`<leader>`+`K` | Normal | Thesaurus
-`gx` | Normal/Visula | Open Url under cursor/selection
+| Key   | Mode | Action
+| ----- |:----:| ------------------
+| `v` / `V` | Visual/select | Expand/reduce selection (expand-region)
+| `m`+`g` | Normal | Open Magit
+| `m`+`t` | Normal/Visual | Toggle highlighted word (quickhl)
+| `-` | Normal | Choose a window to edit (choosewin)
+| `<leader>`+`-` | Normal | Switch editing window with selected (choosewin)
+| `<leader>`+`l` | Normal | Open sidemenu
+| `<leader>`+`o` | Normal/Visual | Open SCM detailed URL in browser (:OpenSCM)
+| `<leader>`+`t` | Normal | Open structure window (:Vista)
+| `<leader>`+`a` | Normal | Show nearby tag in structure window (:Vista show)
+| `<leader>`+`G` | Normal | Toggle distraction-free writing (goyo)
+| `<leader>`+`gu` | Normal | Open undo-tree
+| `<leader>`+`W` | Normal | VimWiki
+| `<leader>`+`K` | Normal | Thesaurus
+| `gx`           | Normal/Visula | Open Url under cursor/selection
+
+</details>
 
 ## Credits & Contribution
 
