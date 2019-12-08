@@ -67,3 +67,4 @@ function! s:show_documentation()
 		let l:found = CocAction('doHover')
 	endif
 endfunction
+

@@ -27,6 +27,9 @@ augroup filetypedetect "{{{
 	autocmd BufNewFile,BufRead Jenkinsfile          setfiletype groovy
 	autocmd BufNewFile,BufRead Tmuxfile,tmux/config setfiletype tmux
 	autocmd BufNewFile,BufRead Brewfile             setfiletype ruby
+	autocmd BufNewFile,BufRead,BufEnter *.julia,*.jl  setfiletype julia
+	autocmd BufNewFile,BufRead,BufEnter *.diet,*.dt  setfiletype diet
+	autocmd BufNewFile,BufRead,BufEnter *.md,*.markdown,*.wiki,*.vimwiki  setfiletype markdown " setfiletype markdown,vimwiki
 
 augroup END
 " }}}

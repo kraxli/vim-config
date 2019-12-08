@@ -1,11 +1,14 @@
 
 set nu
-" au BufNewFile,BufRead,BufNew,BufEnter,BufWinEnter * set number
 
+set wrap
+set linebreak
+" set breakat
+set textwidth=0
+set wrapmargin=0
 set breakindent
 " let &showbreak=' '
 
-set wrap " nowrap
 set colorcolumn=
 
 " Hide the mouse pointer while typing

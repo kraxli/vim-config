@@ -6,3 +6,4 @@ let g:nvim_dir = fnamemodify(expand('<sfile>'), ':p:h:gs?\\?'.path_sep.'?')  " s
 
 " === Rafi ===:
 execute 'source' fnamemodify(expand('<sfile>'), ':h').'/config/vimrc'
+

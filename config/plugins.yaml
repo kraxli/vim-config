@@ -55,8 +55,8 @@
     let g:vim_markdown_folding_level = 1
     let g:vim_markdown_folding_style_pythonic = 1
     let g:vim_markdown_frontmatter = 1
-    let g:vim_markdown_auto_insert_bullets = 1
     let g:vim_markdown_new_list_item_indent = 0
+    let g:vim_markdown_auto_insert_bullets = 1
     let g:vim_markdown_conceal_code_blocks = 0
     let g:vim_markdown_conceal = 0
     let g:vim_markdown_strikethrough = 1
@@ -72,8 +72,12 @@
       \ 'tsx=typescriptreact',
       \ 'docker=Dockerfile',
       \ 'makefile=make',
-      \ 'py=python'
+      \ 'py=python',
+      \ 'd=dlang'
       \ ]
+    let g:vim_markdown_no_extensions_in_markdown = 1
+    let g:vim_markdown_math = 1
+    let g:vim_markdown_follow_anchor = 1
 
 - repo: rhysd/vim-gfm-syntax
   depends: vim-markdown
@@ -355,6 +359,7 @@
   on_map: { n: <Plug> }
   on_cmd: [ VimwikiIndex, VimwikiUISelect ]
   hook_add: |
+    let g:vimwiki_folding = 'custom'
     let g:vimwiki_use_calendar = 1
     let g:vimwiki_hl_headers = 1
     let g:vimwiki_hl_cb_checked = 1
@@ -362,7 +367,7 @@
   hook_source: |
     let g:vimwiki_list = [
     \   { 'diary_header': 'Diary',
-    \     'diary_link_fmt': '%Y-%m/%d',
+    \     'diary_link_fmt': '%Y-%m-%d',
     \     'auto_toc': 1,
     \     'path': exists('g:wiki_dir') ? g:wiki_dir : '~/docs/wiki/',
     \     'syntax': 'markdown',
@@ -372,6 +377,8 @@
     \     'syntax': 'markdown',
     \     'ext': '.md' }
     \ ]
+    autocmd! FileType,BufRead,BufEnter markdown,vimwiki setfiletype=markdown
+
 
 # hook_source: execute 'source '.g:nvim_dir.g:path_sep.'config_kraxli'.g:path_sep.'plugins'.g:path_sep.'vimwiki.vim'
 
@@ -379,10 +386,11 @@
 # Completion
 # ----------
 
-#- repo: neoclide/coc.nvim
-#  merge: 0
-#  rev: release
-#  hook_source: source $VIM_PATH/config/plugins/coc.vim
+- repo: neoclide/coc.nvim
+  on_ft: [julia]
+  merge: 0
+  rev: release
+  hook_source: source $VIM_PATH/config/plugins/coc.vim
 
 - repo: Shougo/deoplete.nvim
   depends: context_filetype.vim
