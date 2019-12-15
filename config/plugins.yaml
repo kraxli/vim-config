@@ -377,8 +377,6 @@
     \     'syntax': 'markdown',
     \     'ext': '.md' }
     \ ]
-    autocmd! FileType,BufRead,BufEnter markdown,vimwiki setfiletype=markdown
-
 
 # hook_source: execute 'source '.g:nvim_dir.g:path_sep.'config_kraxli'.g:path_sep.'plugins'.g:path_sep.'vimwiki.vim'
 

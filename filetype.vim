@@ -29,7 +29,7 @@ augroup filetypedetect "{{{
 	autocmd BufNewFile,BufRead Brewfile             setfiletype ruby
 	autocmd BufNewFile,BufRead,BufEnter *.julia,*.jl  setfiletype julia
 	autocmd BufNewFile,BufRead,BufEnter *.diet,*.dt  setfiletype diet
-	autocmd BufNewFile,BufRead,BufEnter *.md,*.markdown,*.wiki,*.vimwiki  setfiletype markdown " setfiletype markdown,vimwiki
+	autocmd BufNewFile,BufRead,BufEnter *.md,*.markdown,*.wiki,*.vimwiki  setfiletype vimwiki
 
 augroup END
 " }}}

@@ -4,7 +4,8 @@
 # ==========================================
 
 # --- Disable plugins from Rafi ---
-- {repo: vimwiki/vimwiki, if: 0}
+- {repo: plasticboy/vim-markdown, if: 0}
+# - {repo: vimwiki/vimwiki, if: 0}
 
 # --- Lazily loading plugins ---
 
