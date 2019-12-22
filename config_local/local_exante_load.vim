@@ -1,1 +1,0 @@
-/home/dave/Dropbox/ActiveHome/.config/nvim/local_exante_load.vim

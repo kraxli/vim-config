@@ -46,7 +46,7 @@
   on_source: vim-shell
 
 - repo: kraxli/vimwiki-task
-  on_ft: [vimwiki]
+  on_ft: [imwiki]
   hook_add: let g:vimwiki_folding = 'custom'
   hook_source: |
     setlocal spell spelllang=en,de

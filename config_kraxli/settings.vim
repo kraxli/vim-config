@@ -21,4 +21,8 @@ set undodir=~/.config/nvim/undodir
 set undofile
 " set noreadonly
 
+set conceallevel=2
+set concealcursor=nc
+" set concealcursor-=nciv " display all conceal text
+
 

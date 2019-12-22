@@ -12,3 +12,5 @@ set formatoptions-=t
 " If you want Vim to adjust textwidth automatically most of the time but you have a few long lines that you don't want to change, use:
 set formatoptions+=l
 
+set spell spelllang=en,de
+

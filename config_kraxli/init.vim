@@ -33,7 +33,6 @@ for file in split(globpath(g:config_plugins_dir, '*.vim'), '\n')
    execute 'source' file
 endfor
 
-
 call s:source_file('config_kraxli/settings.vim')
 call s:source_file('config_kraxli/mappings.vim')
 call s:source_file('config_kraxli/commands.vim')

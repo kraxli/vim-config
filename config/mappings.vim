@@ -246,8 +246,8 @@ endfunction "}}}
 " }}}
 " Windows and buffers {{{
 
-nnoremap <silent> [Window]v  :<C-u>split<CR>
-nnoremap <silent> [Window]g  :<C-u>vsplit<CR>
+nnoremap <silent> [Window]h  :<C-u>split<CR>
+nnoremap <silent> [Window]v  :<C-u>vsplit<CR>
 nnoremap <silent> [Window]t  :tabnew<CR>
 nnoremap <silent> [Window]o  :<C-u>only<CR>
 nnoremap <silent> [Window]b  :b#<CR>
@@ -255,11 +255,11 @@ nnoremap <silent> [Window]c  :close<CR>
 nnoremap <silent> [Window]x  :<C-u>call <SID>window_empty_buffer()<CR>
 
 " Split current buffer, go to previous window and previous buffer
-nnoremap <silent> [Window]sv :split<CR>:wincmd p<CR>:e#<CR>
-nnoremap <silent> [Window]sg :vsplit<CR>:wincmd p<CR>:e#<CR>
+nnoremap <silent> [Window]sh :split<CR>:wincmd p<CR>:e#<CR>
+nnoremap <silent> [Window]sv :vsplit<CR>:wincmd p<CR>:e#<CR>
 
 " Background dark/light toggle and contrasts
-nmap <silent> [Window]h :<C-u>call <SID>toggle_background()<CR>
+nmap <silent> [Window]a :<C-u>call <SID>toggle_background()<CR>  "  or [Window]g
 nmap <silent> [Window]- :<c-u>call <SID>toggle_contrast(-v:count1)<cr>
 nmap <silent> [Window]= :<c-u>call <SID>toggle_contrast(+v:count1)<cr>
 
