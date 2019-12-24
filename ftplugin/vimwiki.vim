@@ -1,5 +1,6 @@
 
-source(fnamemodify(expand('<sfile>'), ':p:h:?\\?'.path_sep.'?').path_sep.'vimwiki.vim')
+let s:dir_filetype = fnamemodify(expand('<sfile>'), ':p:h:gs?\\?')
+" source(s:dir_filetype.g:path_sep.'markdown.vim')
 
 let s:vimwiki_fold_blank_lines = 0  " set to 1 to fold blank lines
 let s:vimwiki_header_type = '#'     " set to '=' for wiki syntax

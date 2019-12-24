@@ -1,7 +1,7 @@
 
 " === Kraxli ===:
 let g:path_sep = ((has('win16') || has('win32') || has('win64'))?'\':'/')
-let g:nvim_dir = fnamemodify(expand('<sfile>'), ':p:h:gs?\\?'.path_sep.'?')  " see :h filename-modifiers  /  use $VIM_PATH
+let g:nvim_dir = fnamemodify(expand('<sfile>'), ':p:h:gs?\\?'.g:path_sep.'?')  " see :h filename-modifiers  /  use $VIM_PATH
 
 " === your local settings ===
 if has('unix')

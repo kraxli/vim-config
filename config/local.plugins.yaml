@@ -57,9 +57,13 @@
 
 - repo: soywod/kronos.vim
   on_cmd: [Kronos]
+  hook_add: |
+    command! TimeTracker Kronos
 
 # - repo: unfog-io/unfog-vim
 # on_cmd: [Unfog]
+#  hook_add: |
+#    command! TimeTracker Unfog<cr>
 
 
 # -- programming language support --
