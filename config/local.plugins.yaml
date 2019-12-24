@@ -45,6 +45,8 @@
 - repo: xolox/vim-misc
   on_source: vim-shell
 
+# -- Management / Tasks / ... ---
+
 - repo: kraxli/vimwiki-task
   on_ft: [imwiki]
   hook_add: let g:vimwiki_folding = 'custom'
@@ -53,8 +55,15 @@
 
 # hook_post_source: source $VIMPATH/config_dw_after/plugins/vimwiki.vim
 
+# previously: soywod/kronos.vim
+- repo: unfog-io/unfog-vim
+  on_cmd: [Unfog]
+
 
 # -- programming language support --
+
+- repo: JesseKPhillips/d.vim
+  on_ft: [d, dlang]
 
 
 # -------------------------------------------------------

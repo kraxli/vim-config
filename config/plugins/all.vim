@@ -374,4 +374,16 @@ if dein#tap('vim-textobj-function')
 	xmap <silent> if <Plug>(textobj-function-i)
 endif
 
+if dein#tap('unfog-io/unfog-vim')
+	nmap <cr>   <plug>(unfog-toggle)
+	nmap K      <plug>(unfog-info)
+	nmap gc     <plug>(unfog-context)
+	nmap gw     <plug>(unfog-worktime)
+	nmap <c-n>  <plug>(unfog-next-cell)
+	nmap <c-p>  <plug>(unfog-prev-cell)
+	nmap dic    <plug>(unfog-delete-in-cell)
+	nmap cic    <plug>(unfog-change-in-cell)
+	nmap vic    <plug>(unfog-visual-in-cell)
+endif
+
 " vim: set ts=2 sw=2 tw=80 noet :
