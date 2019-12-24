@@ -299,6 +299,7 @@
 
 - repo: kshenoy/vim-signature
   depends: vim-gitgutter
+  if: "! (has('win32') || has('win64'))"
   on_path: .*
   hook_add: |
     let g:SignatureForceRemoveGlobal = 0
