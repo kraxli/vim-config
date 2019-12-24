@@ -55,9 +55,11 @@
 
 # hook_post_source: source $VIMPATH/config_dw_after/plugins/vimwiki.vim
 
-# previously: soywod/kronos.vim
-- repo: unfog-io/unfog-vim
-  on_cmd: [Unfog]
+- repo: soywod/kronos.vim
+  on_cmd: [Kronos]
+
+# - repo: unfog-io/unfog-vim
+# on_cmd: [Unfog]
 
 
 # -- programming language support --

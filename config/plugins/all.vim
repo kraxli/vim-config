@@ -386,4 +386,20 @@ if dein#tap('unfog-io/unfog-vim')
 	nmap vic    <plug>(unfog-visual-in-cell)
 endif
 
+
+if dein#tap('soywod/kronos.vim')
+	nmap <cr>   <plug>(kronos-toggle)
+	nmap K      <plug>(kronos-info)
+	nmap gc     <plug>(kronos-context)
+	nmap gs     <plug>(kronos-sort-asc)
+	nmap gS     <plug>(kronos-sort-desc)
+	nmap gh     <plug>(kronos-hide-done)
+	nmap gw     <plug>(kronos-worktime)
+	nmap <c-n>  <plug>(kronos-next-cell)
+	nmap <c-p>  <plug>(kronos-prev-cell)
+	nmap dic    <plug>(kronos-delete-in-cell)
+	nmap cic    <plug>(kronos-change-in-cell)
+	nmap vic    <plug>(kronos-visual-in-cell)
+endif
+
 " vim: set ts=2 sw=2 tw=80 noet :
