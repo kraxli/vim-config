@@ -1,0 +1,4 @@
+
+set syntax=markdown
+
+

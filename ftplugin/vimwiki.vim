@@ -9,6 +9,7 @@ setlocal foldenable
 setlocal foldmethod=expr
 setlocal foldexpr=Fold(v:lnum)
 
+
 function! Fold(lnum)
   let fold_level = strlen(matchstr(getline(a:lnum), '^' . s:vimwiki_header_type . '\+'))
   if (fold_level)
@@ -21,3 +22,4 @@ function! Fold(lnum)
   endif
   return '=' " return previous fold level
 endfunction
+
