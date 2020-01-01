@@ -259,7 +259,7 @@ nnoremap <silent> [Window]sh :split<CR>:wincmd p<CR>:e#<CR>
 nnoremap <silent> [Window]sv :vsplit<CR>:wincmd p<CR>:e#<CR>
 
 " Background dark/light toggle and contrasts
-nmap <silent> [Window]tb :<C-u>call <SID>toggle_background()<CR>  "  or [Window]g
+nmap <silent> [Window]bg :<C-u>call <SID>toggle_background()<CR>  "  or [Window]g
 nmap <silent> [Window]- :<c-u>call <SID>toggle_contrast(-v:count1)<cr>
 nmap <silent> [Window]= :<c-u>call <SID>toggle_contrast(+v:count1)<cr>
 

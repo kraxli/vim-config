@@ -679,7 +679,7 @@ Note that,
 | `#` | Visual | Search selection backwards
 | `]`+`c`/`q` | Normal | Next on location/quickfix list
 | `]`+`c`/`q` | Normal | Previous on location/quickfix list
-| `s`+`h` | Normal | Toggle colorscheme background dark/light
+| `s`+`bg` | Normal | Toggle colorscheme background dark/light
 | `s`+`-` | Normal | Lower colorscheme contrast (Support solarized8)
 | `s`+`=` | Normal | Raise colorscheme contrast (Support solarized8)
 
@@ -762,8 +762,8 @@ Note that,
 | `&` / `\` | Normal | Move to project root
 | `~` | Normal | Move to user home directory
 | `st` | Normal | Open file in new tab
-| `sv` | Normal | Open file in a horizontal split
-| `sg` | Normal | Open file in a vertical split
+| `sh` | Normal | Open file in a horizontal split
+| `sv` | Normal | Open file in a vertical split
 | `N` | Normal | Create new directories and/or files
 | `K` | Normal | Create new directory
 | `c`/`m`/`p` | Normal | Copy, move, and paste
