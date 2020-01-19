@@ -635,11 +635,11 @@ Note that,
 | `<Leader>`+`j`/`k` | Normal/Visual | Move lines down/up
 | `<leader>`+`cp` | Normal | Duplicate paragraph
 | `<leader>`+`cn`/`cN` | Normal/Visual | Change current word in a repeatable manner
-| `sg` | Visual | Replace within selected area
+| `sg` | Visual | Replace / rename (local refactoring) within selected area
 | `Ctrl`+`a` | Command | Navigation in command line
 | `Ctrl`+`b` | Command | Move cursor backward in command line
 | `Ctrl`+`f` | Command | Move cursor forward in command line
-| `Ctrl`+`r` | Visual | Replace selection with step-by-step confirmation
+| `Ctrl`+`r` | Visual | Replace / rename (local refactoring) selection with step-by-step confirmation
 | `<leader>`+`cw` | Normal | Remove all spaces at EOL
 | `<leader>`+`<leader>` | Normal | Enter visual line-mode
 | `<leader>`+`os` | Normal | Load workspace session
