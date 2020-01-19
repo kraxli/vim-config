@@ -397,7 +397,7 @@
 # ----------
 
 - repo: neoclide/coc.nvim
-  on_ft: [julia]
+  on_ft: [julia, markdown, vimwiki]
   merge: 0
   rev: release
   hook_source: source $VIM_PATH/config/plugins/coc.vim
