@@ -62,7 +62,11 @@ endif
 
 if dein#tap('vista.vim')
 	nnoremap <silent> <Leader>t :<C-u>Vista!!<CR>
+	au FileType vista nnoremap <silent> <buffer> <leader>t Vista!!<CR>
+	au FileType markdown,vimwiki noremap <silent> <buffer> <leader>t :<C-u>Vista toc<CR>
+
 	nnoremap <silent> <Leader>a :<C-u>Vista show<CR>
+	au FileType vista nmap <silent> <buffer> <leader>a q
 endif
 
 if dein#tap('neosnippet.vim')

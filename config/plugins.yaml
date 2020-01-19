@@ -247,7 +247,7 @@
   merge: 0
   on_cmd: FZF
 
-- { repo: junegunn/fzf.vim, depends: fzf, merge: 0, on_source: vista.vim }
+- { repo: junegunn/fzf.vim, if: executable('fzf'), merge: 0, on_source: vista.vim }
 
 - repo: Ron89/thesaurus_query.vim
   on_cmd:

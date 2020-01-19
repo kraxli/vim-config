@@ -8,7 +8,15 @@
 - {repo: rhysd/vim-gfm-syntax, if: 0}
 - {repo: neoclide/coc.nvim, if: 0}
 
+
 # --- Lazily loading plugins ---
+
+# - repo: /home/dave/.fzf/bin/
+#   if: isdirectory('/home/dave/.fzf/bin/')
+#   on_cmd: FZF
+
+- repo: junegunn/fzf.vim
+  on_cmd: FZF
 
 # -- ColorSchemes --
 # see config/theme.vim for speedup config/init.vim
