@@ -55,6 +55,7 @@
   hook_add: |
     let g:vim_markdown_folding_level = 1
     let g:vim_markdown_folding_style_pythonic = 1
+    let g:vim_markdown_folding_disabled = 1
     let g:vim_markdown_frontmatter = 1
     let g:vim_markdown_new_list_item_indent = 0
     let g:vim_markdown_auto_insert_bullets = 1
@@ -64,7 +65,7 @@
     let g:vim_markdown_edit_url_in = 'vsplit'
     let g:vim_markdown_fenced_languages = [
       \ 'c++=cpp',
-      \ 'viml=vim',
+      \ 'vim',
       \ 'bash=sh',
       \ 'ini=dosini',
       \ 'js=javascript',
@@ -364,18 +365,19 @@
     let g:calendar_google_task = 1
 
 - repo: vimwiki/vimwiki
-  on_map: { n: <Plug> }
   on_ft: [vimwiki, markdown]
+  on_map: { n: <Plug> }
   on_cmd: [ VimwikiIndex, VimwikiUISelect ]
   hook_add: |
+    let g:vimwiki_listsyms = '✗○◐●✓'
     let g:vimwiki_folding = 'custom'
-    let g:vimwiki_conceallevel = 2
+    let g:vimwiki_conceallevel = 1
     let g:vimwiki_use_calendar = 1
     let g:vimwiki_hl_headers = 1
     let g:vimwiki_hl_cb_checked = 1
     let g:vimwiki_autowriteall = 0
-    let g:vimwiki_global_ext = 0
-    let g:vimwiki_ext2syntax = {'.wiki': 'markdown'}
+    let g:vimwiki_global_ext = 1
+    let g:vimwiki_ext2syntax = {'.wiki': 'markdown', '.md': 'markdown'}
     let g:vimwiki_list = [
     \   { 'diary_header': 'Diary',
     \     'diary_link_fmt': '%Y-%m-%d',
@@ -386,7 +388,7 @@
     \   {
     \     'path': exists('g:blog_dir') ? g:blog_dir : '~/docs/blog/',
     \     'syntax': 'markdown',
-    \     'ext': '.md' }
+    \     'ext': '.md' },
     \ ]
 
 # hook_source: execute 'source '.g:nvim_dir.g:path_sep.'config_kraxli'.g:path_sep.'plugins'.g:path_sep.'vimwiki.vim'
@@ -397,8 +399,7 @@
 # ----------
 
 - repo: neoclide/coc.nvim
-  on_ft: [julia, markdown, vimwiki]
-  if: 0
+  on_ft: [python, julia, markdown, vimwiki]
   merge: 0
   rev: release
   hook_source: source $VIM_PATH/config/plugins/coc.vim

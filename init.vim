@@ -22,6 +22,7 @@ let g:local_source_dir='~/Dropbox/ActiveHome/config/nvim/'
 " vimwiki directory
 if has('unix')
 	let g:wiki_dir = '~/Dropbox/PKD/vimwiki/'
+	let g:blog_dir =  '~/Dropbox/PKD/blog_posts/'
 else
 	let g:wiki_dir = '~/vimwiki/'
 end

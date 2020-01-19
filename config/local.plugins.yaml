@@ -5,7 +5,8 @@
 
 # --- Disable plugins from Rafi ---
 - {repo: plasticboy/vim-markdown, if: 0}
-# - {repo: vimwiki/vimwiki, if: 0}
+- {repo: rhysd/vim-gfm-syntax, if: 0}
+- {repo: neoclide/coc.nvim, if: 0}
 
 # --- Lazily loading plugins ---
 
@@ -48,7 +49,7 @@
 # -- Management / Tasks / ... ---
 
 - repo: kraxli/vimwiki-task
-  on_ft: [imwiki]
+  on_ft: [vimwiki, markdown]
   hook_add: let g:vimwiki_folding = 'custom'
   hook_source: |
     setlocal spell spelllang=en,de

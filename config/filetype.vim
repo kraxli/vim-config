@@ -70,9 +70,20 @@ augroup user_plugin_filetype " {{{
 
 	autocmd FileType html setlocal path+=./;/
 
-	autocmd FileType markdown
+	autocmd FileType markdown,vimwiki
 		\ setlocal expandtab spell conceallevel=0
 		\ | setlocal autoindent formatoptions=tcroqn2 comments=n:>
+		\ |  let g:markdown_fenced_languages = [
+      \ 'c++=cpp', 'cpp',
+      \ 'vim',
+      \ 'bash=sh', 'sh',
+      \ 'ini=dosini',
+      \ 'js=javascript',
+      \ 'json=javascript',
+      \ 'makefile=make', 'make',
+      \ 'py=python', 'python',
+		  \ 'html',
+      \ ]
 
 	autocmd FileType apache setlocal path+=./;/
 
