@@ -869,7 +869,7 @@ Note that,
 | `<leader>`+`-` | Normal | Switch editing window with selected (choosewin)
 | `<leader>`+`l` | Normal | Open sidemenu
 | `<leader>`+`o` | Normal/Visual | Open SCM detailed URL in browser (:OpenSCM)
-| `<leader>`+`t` | Normal | Open structure window (:Vista)
+| `<leader>`+`t` | Normal | Toggle structure window (:Vista)
 | `<leader>`+`a` | Normal | Show nearby tag in structure window (:Vista show)
 | `<leader>`+`G` | Normal | Toggle distraction-free writing (goyo)
 | `<leader>`+`gu` | Normal | Open undo-tree
