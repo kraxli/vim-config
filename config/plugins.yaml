@@ -369,7 +369,7 @@
   on_map: { n: <Plug> }
   on_cmd: [ VimwikiIndex, VimwikiUISelect ]
   hook_add: |
-    let g:vimwiki_listsyms = '✗○◐●✓'
+    let g:vimwiki_listsyms = ' ○◐●✓' 
     let g:vimwiki_folding = 'custom'
     let g:vimwiki_conceallevel = 1
     let g:vimwiki_use_calendar = 1
@@ -393,6 +393,7 @@
 
 # hook_source: execute 'source '.g:nvim_dir.g:path_sep.'config_kraxli'.g:path_sep.'plugins'.g:path_sep.'vimwiki.vim'
 # \     'path': '~/Dropbox/PKD/vimwiki/',
+# ✗
 
 # ========================================
 # Completion
