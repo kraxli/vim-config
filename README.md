@@ -158,6 +158,13 @@ brew cask install font-hack-nerd-font
 [Pragmata Pro]: https://www.fsd.it/shop/fonts/pragmatapro/
 [Nerd Fonts]: https://www.nerdfonts.com
 
+```sh
+mkdir -p ~/.fonts
+git clone https://github.com/ryanoasis/nerd-fonts.git ~/.fonts
+cd ~/.fonts
+./install.sh Meslo 
+```
+
 ### Recommended Linters
 
 * Node.js based linters:
@@ -185,7 +192,7 @@ pip install --user pycodestyle pyflakes flake8 vim-vint proselint yamllint
   or [rupa/j2](https://github.com/rupa/j2) for the older python version
 * **[Universal ctags](https://ctags.io/)** for syntax tokenization
 * Fuzzy file finders:
-  **[fzf](https://github.com/junegunn/fzf)**,
+  **[fzf](https://github.com/junegunn/fzf)**, (as of Feb. 10, 2020 install it in `/usr/local/opt/fzf`)
   **[fzy](https://github.com/jhawthorn/fzy)**, or
   **[peco](https://github.com/peco/peco)**
   (macOS: `brew install fzf`)
