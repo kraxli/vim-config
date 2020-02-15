@@ -392,8 +392,10 @@ endif
 
 
 if dein#tap('soywod/kronos.vim')
+	nmap <leader>      :Kronos<cr>
 	nmap <cr>   <plug>(kronos-toggle)
-	nmap K      <plug>(kronos-info)
+	" nmap K      <plug>(kronos-info)
+	nmap ki      <plug>(kronos-info)
 	nmap gc     <plug>(kronos-context)
 	nmap gs     <plug>(kronos-sort-asc)
 	nmap gS     <plug>(kronos-sort-desc)

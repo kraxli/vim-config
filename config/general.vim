@@ -19,6 +19,8 @@ set formatoptions-=t         " Don't auto-wrap text
 if has('patch-7.3.541')
 	set formatoptions+=j       " Remove comment leader when joining lines
 endif
+set readonly! noreadonly
+set modifiable
 
 if has('vim_starting')
 	set encoding=utf-8

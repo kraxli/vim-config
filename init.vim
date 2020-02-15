@@ -19,14 +19,13 @@ endif
 let g:local_source_dir='~/Dropbox/ActiveHome/config/nvim/'
 
 " environment related variables
-" vimwiki directory
+" wiki directory
 if has('unix')
 	let g:wiki_dir = '~/Dropbox/PKD/vimwiki/'
 	let g:blog_dir =  '~/Dropbox/PKD/blog_posts/'
 else
 	let g:wiki_dir = '~/vimwiki/'
 end
-
 
 
 " === Rafi ===:

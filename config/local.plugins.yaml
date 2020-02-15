@@ -4,12 +4,20 @@
 # ==========================================
 
 # --- Disable plugins from Rafi ---
-- {repo: plasticboy/vim-markdown, if: 0}
+# - {repo: plasticboy/vim-markdown, if: 0}
 - {repo: rhysd/vim-gfm-syntax, if: 0}
 - {repo: neoclide/coc.nvim, if: 0}
+- {repo: vimwiki/vimwiki, if: 0}
 
 
-# --- Lazily loading plugins ---
+# --------------------------------------------------
+# Base plugins
+# --------------------------------------------------
+- repo: pbrisbin/vim-mkdir
+
+# --------------------------------------------------
+# Lazily loading plugins
+# --------------------------------------------------
 
 # - repo: /home/dave/.fzf/bin/
 #   if: isdirectory('/home/dave/.fzf/bin/')
@@ -20,10 +28,9 @@
 
 # -- ColorSchemes --
 # see config/theme.vim for speedup config/init.vim
-- {repo: kraxli/vim-code-dark, on_cmd: colorscheme codedark}
-- {repo: kraxli/papercolor-theme, on_cmd: colorscheme PaperColor}
+- {repo: tomasiser/vim-code-dark, on_cmd: colorscheme codedark}
+- {repo: NLKNguyen/papercolor-theme, on_cmd: colorscheme PaperColor}
 - {repo: sjl/badwolf, on_cmd: colorscheme badwolf}
-# - repo: w0ng/vim-hybrid
 
 - {repo: tpope/vim-repeat, on_map: .}
 
@@ -54,15 +61,23 @@
 - repo: xolox/vim-misc
   on_source: vim-shell
 
+
 # -- Management / Tasks / ... ---
 
-- repo: kraxli/vimwiki-task
-  on_ft: [vimwiki, markdown]
-  hook_add: let g:vimwiki_folding = 'custom'
-  hook_source: |
-    setlocal spell spelllang=en,de
+# - repo: kraxli/vimwiki-task
+#   if: 0
+#   on_ft: [vimwiki, markdown]
+#   hook_add: let g:vimwiki_folding = 'custom'
+#   hook_source: |
+#     setlocal spell spelllang=en,de
 
-# hook_post_source: source $VIMPATH/config_dw_after/plugins/vimwiki.vim
+- repo: kraxli/markdown-misc
+  on_ft: [vimwiki, markdown]
+  hook_add: |
+    let g:markdown_enable_folding = 0
+    let g:markdown_mapping_switch_status = '<c-space>'
+    let g:markdown_wiki_index_key = '<leader>W'
+    let g:markdown_blog_index_key = '<leader>B'
 
 - repo: soywod/kronos.vim
   on_cmd: [Kronos]
@@ -74,8 +89,31 @@
 #  hook_add: |
 #    command! TimeTracker Unfog<cr>
 
+# --------------------------------------------------
+# Writing
+# --------------------------------------------------
 
-# -- programming language support --
+# - repo: masukomi/vim-markdown-folding
+#   if: 0
+#   on_ft: [vimwiki, markdown]
+#   hook_add: |
+#     let g:markdown_fold_style = 'nested'
+
+- repo: lervag/vimtex
+  on_ft: [tex]
+  hook_add: |
+    let g:tex_flavor='latex'
+    let g:vimtex_view_method='zathura'
+    let g:vimtex_quickfix_mode=0
+    set conceallevel=1
+    let g:tex_conceal='abdmg'
+
+# - repo: reedes/vim-pencil
+#   on_ft: [tex, markdown, vimwiki]
+
+# --------------------------------------------------
+# Programming language support
+# --------------------------------------------------
 
 - repo: JesseKPhillips/d.vim
   on_ft: [d, dlang]
@@ -86,4 +124,8 @@
 # -------------------------------------------------------
 
 
+
+# -------------------------------------------------------
+# Watch
+# -------------------------------------------------------
 

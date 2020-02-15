@@ -381,7 +381,6 @@ _Note_ that 95% of the plugins are **[lazy-loaded]**.
 | [junegunn/goyo] | Distraction-free writing
 | [junegunn/limelight] | Hyperfocus-writing
 | [itchyny/calendar.vim] | Calendar application
-| [vimwiki/vimwiki] | Personal Wiki for Vim
 
 #### Completion
 
@@ -539,7 +538,6 @@ _Note_ that 95% of the plugins are **[lazy-loaded]**.
 [junegunn/goyo]: https://github.com/junegunn/goyo.vim
 [junegunn/limelight]: https://github.com/junegunn/limelight.vim
 [itchyny/calendar.vim]: https://github.com/itchyny/calendar.vim
-[vimwiki/vimwiki]: https://github.com/vimwiki/vimwiki
 
 [Shougo/deoplete.nvim]: https://github.com/Shougo/deoplete.nvim
 [Shougo/neosnippet.vim]: https://github.com/Shougo/neosnippet.vim
@@ -873,7 +871,7 @@ Note that,
 | `<leader>`+`a` | Normal | Show nearby tag in structure window (:Vista show)
 | `<leader>`+`G` | Normal | Toggle distraction-free writing (goyo)
 | `<leader>`+`gu` | Normal | Open undo-tree
-| `<leader>`+`W` | Normal | VimWiki
+| `<leader>`+`W` | Normal | Wiki
 | `<leader>`+`K` | Normal | Thesaurus
 | `gx`           | Normal/Visula | Open Url under cursor/selection
 

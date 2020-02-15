@@ -50,15 +50,11 @@
     let g:html5_aria_attributes_complete = 0
 
 # Markdown related
-- repo: plasticboy/vim-markdown
+- repo: kraxli/vim-markdown
   on_ft: markdown
   hook_add: |
-    let g:vim_markdown_folding_level = 1
-    let g:vim_markdown_folding_style_pythonic = 1
-    let g:vim_markdown_folding_disabled = 1
     let g:vim_markdown_frontmatter = 1
     let g:vim_markdown_new_list_item_indent = 0
-    let g:vim_markdown_auto_insert_bullets = 1
     let g:vim_markdown_conceal_code_blocks = 0
     let g:vim_markdown_conceal = 0
     let g:vim_markdown_strikethrough = 1
@@ -80,6 +76,7 @@
     let g:vim_markdown_no_extensions_in_markdown = 1
     let g:vim_markdown_math = 1
     let g:vim_markdown_follow_anchor = 1
+    let g:vim_markdown_auto_insert_bullets = 0
 
 - repo: rhysd/vim-gfm-syntax
   depends: vim-markdown
@@ -323,7 +320,7 @@
     let g:indent_guides_default_mapping = 0
     let g:indent_guides_guide_size = 1
     let g:indent_guides_indent_levels = 25
-    let g:indent_exclude = [ 'help', 'denite', 'codi' ]
+    let g:indent_exclude = [ 'help', 'denite', 'codi', 'defx' ]
     augroup user_plugin_indentguides
       autocmd!
       autocmd BufEnter *
@@ -369,7 +366,7 @@
   on_map: { n: <Plug> }
   on_cmd: [ VimwikiIndex, VimwikiUISelect ]
   hook_add: |
-    let g:vimwiki_listsyms = '✗○◐●✓'
+    let g:vimwiki_listsyms = '\s○◐●x'
     let g:vimwiki_folding = 'custom'
     let g:vimwiki_conceallevel = 1
     let g:vimwiki_use_calendar = 1
@@ -391,8 +388,8 @@
     \     'ext': '.md' },
     \ ]
 
-# hook_source: execute 'source '.g:nvim_dir.g:path_sep.'config_kraxli'.g:path_sep.'plugins'.g:path_sep.'vimwiki.vim'
-# \     'path': '~/Dropbox/PKD/vimwiki/',
+# let g:vimwiki_listsyms = '\s○◐●✓'
+# hook_source: execute 'source '.g:nvim_dir.g:path_sep.'config_kraxli'.g:path_sep.'plugins'.g:path_sep.'vimwiki.vim' 'path': '~/Dropbox/PKD/vimwiki/',
 
 # ========================================
 # Completion
