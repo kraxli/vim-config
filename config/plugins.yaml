@@ -388,7 +388,7 @@
     \     'ext': '.md' },
     \ ]
 
-# let g:vimwiki_listsyms = '\s○◐●✓'
+# let g:vimwiki_listsyms = '✗○◐●✓'
 # hook_source: execute 'source '.g:nvim_dir.g:path_sep.'config_kraxli'.g:path_sep.'plugins'.g:path_sep.'vimwiki.vim' 'path': '~/Dropbox/PKD/vimwiki/',
 
 # ========================================
