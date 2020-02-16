@@ -82,7 +82,6 @@ augroup user_plugin_filetype " {{{
 	\ | setl wrapmargin=0 " only used when textwidth=0
 	\ | setl spell spelllang=en,de
 	\ | setlocal nolisp
-
 	" set breakat
 
 
@@ -92,6 +91,9 @@ augroup user_plugin_filetype " {{{
 
     " autocmd FileType go highlight default link goErr WarningMsg |
     " 	\ match goErr /\<err\>/
+
+    " autocmd! FileType defx,nofile IndentGuidesDisable
+    " autocmd! BufEnter,WinEnter defx,nofile IndentGuidesDisable
 
 augroup END " }}}
 
