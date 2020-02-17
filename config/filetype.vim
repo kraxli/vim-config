@@ -2,98 +2,92 @@
 " ===
 
 augroup user_plugin_filetype " {{{
-    autocmd!
+	autocmd!
 
-    " Reload vim config automatically
-    autocmd BufWritePost $VIM_PATH/{*.vim,*.yaml,vimrc} nested
-	\ source $MYVIMRC | redraw
+	" Reload vim config automatically
+	autocmd BufWritePost $VIM_PATH/{*.vim,*.yaml,vimrc} nested
+		\ source $MYVIMRC | redraw
 
-    " Highlight current line only on focused window
-    autocmd WinEnter,InsertLeave * if &ft !~# 'denite' | set cursorline | endif
-    autocmd WinLeave,InsertEnter * if &ft !~# 'denite' | set nocursorline | endif
+	" Highlight current line only on focused window
+	autocmd WinEnter,InsertLeave * if &ft !~# 'denite' | set cursorline | endif
+	autocmd WinLeave,InsertEnter * if &ft !~# 'denite' | set nocursorline | endif
 
-    " Automatically set read-only for files being edited elsewhere
-    autocmd SwapExists * nested let v:swapchoice = 'o'
+	" Automatically set read-only for files being edited elsewhere
+	autocmd SwapExists * nested let v:swapchoice = 'o'
 
-    " Equalize window dimensions when resizing vim window
-    autocmd VimResized * tabdo wincmd =
+	" Equalize window dimensions when resizing vim window
+	autocmd VimResized * tabdo wincmd =
 
-    " Force write shada on leaving nvim
-    autocmd VimLeave * if has('nvim') | wshada! | else | wviminfo! | endif
+	" Force write shada on leaving nvim
+	autocmd VimLeave * if has('nvim') | wshada! | else | wviminfo! | endif
 
-    " Check if file changed when its window is focus, more eager than 'autoread'
-    autocmd FocusGained * checktime
+	" Check if file changed when its window is focus, more eager than 'autoread'
+	autocmd FocusGained * checktime
 
-    autocmd Syntax * if line('$') > 5000 | syntax sync minlines=200 | endif
+	autocmd Syntax * if line('$') > 5000 | syntax sync minlines=200 | endif
 
-    " Update filetype on save if empty
-    autocmd BufWritePost * nested
-	\ if &l:filetype ==# '' || exists('b:ftdetect')
-	\ |   unlet! b:ftdetect
-	\ |   filetype detect
-	\ | endif
+	" Update filetype on save if empty
+	autocmd BufWritePost * nested
+		\ if &l:filetype ==# '' || exists('b:ftdetect')
+		\ |   unlet! b:ftdetect
+		\ |   filetype detect
+		\ | endif
 
-    " Reload Vim script automatically if setlocal autoread
-    autocmd BufWritePost,FileWritePost *.vim nested
-	\ if &l:autoread > 0 | source <afile> |
-	\   echo 'source ' . bufname('%') |
-	\ endif
+	" Reload Vim script automatically if setlocal autoread
+	autocmd BufWritePost,FileWritePost *.vim nested
+		\ if &l:autoread > 0 | source <afile> |
+		\   echo 'source ' . bufname('%') |
+		\ endif
 
-    " When editing a file, always jump to the last known cursor position.
-    " Don't do it when the position is invalid or when inside an event handler
-    autocmd BufReadPost *
-	\ if &ft !~# 'commit' && ! &diff &&
-	\      line("'\"") >= 1 && line("'\"") <= line("$")
-	\|   execute 'normal! g`"zvzz'
-	\| endif
+	" When editing a file, always jump to the last known cursor position.
+	" Don't do it when the position is invalid or when inside an event handler
+	autocmd BufReadPost *
+		\ if &ft !~# 'commit' && ! &diff &&
+		\      line("'\"") >= 1 && line("'\"") <= line("$")
+		\|   execute 'normal! g`"zvzz'
+		\| endif
 
-    autocmd FileType crontab setlocal nobackup nowritebackup
+	autocmd FileType crontab setlocal nobackup nowritebackup
 
-    autocmd FileType yaml.docker-compose setlocal expandtab
+	autocmd FileType yaml.docker-compose setlocal expandtab
 
-    autocmd FileType gitcommit setlocal spell
+	autocmd FileType gitcommit setlocal spell
 
-    autocmd FileType gitcommit,qfreplace setlocal nofoldenable
+	autocmd FileType gitcommit,qfreplace setlocal nofoldenable
 
-    " https://webpack.github.io/docs/webpack-dev-server.html#working-with-editors-ides-supporting-safe-write
-    autocmd FileType css,javascript,javascriptreact setlocal backupcopy=yes
+	" https://webpack.github.io/docs/webpack-dev-server.html#working-with-editors-ides-supporting-safe-write
+	autocmd FileType css,javascript,javascriptreact setlocal backupcopy=yes
 
-    autocmd FileType php
-	\ setlocal matchpairs-=<:> iskeyword+=\\ path+=/usr/local/share/pear
-    "		\ | setlocal formatoptions=qroct " Correct indent after opening a phpdocblock
+	autocmd FileType php
+		\ setlocal matchpairs-=<:> iskeyword+=\\ path+=/usr/local/share/pear
+	"		\ | setlocal formatoptions=qroct " Correct indent after opening a phpdocblock
 
-    autocmd FileType python
-	\ setlocal foldmethod=indent expandtab smarttab nosmartindent
-	\ | setlocal tabstop=4 softtabstop=4 shiftwidth=4 textwidth=80
+	autocmd FileType python
+		\ setlocal foldmethod=indent expandtab smarttab nosmartindent
+		\ | setlocal tabstop=4 softtabstop=4 shiftwidth=4 textwidth=80
 
-    autocmd FileType zsh setlocal foldenable foldmethod=marker
+	autocmd FileType zsh setlocal foldenable foldmethod=marker
 
-    autocmd FileType html setlocal path+=./;/
+	autocmd FileType html setlocal path+=./;/
 
-    autocmd FileType markdown,vimwiki
-	\ setlocal conceallevel=0
-	\ |setlocal ts=4 sw=4 expandtab smarttab
-	\ | setlocal autoindent
-	\ | setl formatoptions=tcroqn2
-	\ | setlocal comments=b:*,b:-,b:+,b:>,n:>,se:``` commentstring=>\ %s
-	\ | setl wrap linebreak nolist
-	\ | setl breakindent
-	\ | setl textwidth=0
-	\ | setl wrapmargin=0 " only used when textwidth=0
-	\ | setl spell spelllang=en,de
-	\ | setlocal nolisp
+	autocmd FileType markdown,vimwiki
+		\ setlocal ts=4 sw=4 expandtab smarttab
+		\ | setl spell spelllang=en,de
+
 	" set breakat
+	" \ setlocal conceallevel=0 " not complient with indentLine
 
+	autocmd FileType apache setlocal path+=./;/
 
-    autocmd FileType apache setlocal path+=./;/
+	autocmd FileType cam setlocal nonumber synmaxcol=10000
 
-    autocmd FileType cam setlocal nonumber synmaxcol=10000
+	" autocmd FileType go highlight default link goErr WarningMsg |
+	" 	\ match goErr /\<err\>/
 
-    " autocmd FileType go highlight default link goErr WarningMsg |
-    " 	\ match goErr /\<err\>/
+	" autocmd! FileType defx,nofile IndentGuidesDisable
+	" autocmd! BufEnter,WinEnter defx,nofile IndentGuidesDisable
 
-    " autocmd! FileType defx,nofile IndentGuidesDisable
-    " autocmd! BufEnter,WinEnter defx,nofile IndentGuidesDisable
+	au FileType yaml,toml setl nospell
 
 augroup END " }}}
 
@@ -133,10 +127,6 @@ let g:SimpleJsIndenter_CaseIndentLevel = -1
 " }}}
 " Ruby {{{
 let g:ruby_no_expensive = 1
-" }}}
-
-" {{{
-au! FileType yaml,toml setl nospell
 " }}}
 
 " Folding {{{

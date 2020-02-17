@@ -1,1 +1,0 @@
-/home/dave/Dropbox/ActiveHome/.config/nvim/nvim_linux_home/local_expost_load.vim

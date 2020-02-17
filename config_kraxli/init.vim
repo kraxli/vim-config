@@ -42,10 +42,10 @@ call s:source_file('config_kraxli/filetypesettings.vim')
 " load local config / setting files
 if exists('g:local_source_dir') && isdirectory(g:local_source_dir)
    for file in split(globpath(g:local_source_dir, '*.vim'), '\n')
+      if file == g:local_source_dir . 'init.vim'
+	 continue
+      endif
       execute 'source' file
    endfor
 endif
 
-if filereadable($VIM_PATH.'/config_local/local_expost_load.vim')
-	call s:source_file('config_local/local_expost_load.vim')
-endif

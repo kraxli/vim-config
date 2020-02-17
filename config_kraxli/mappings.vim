@@ -36,6 +36,8 @@ vnoremap ~ y:call setreg('', utils#TwiddleCase(@"), getregtype(''))<CR>gv""Pgv
 		" open and colose (new) tab
 		map <leader>nt :tabnew<cr>
 		map <leader>ct :tabclose<cr>
+		nnoremap <silent> [Window]n  :tabnext<CR>
+		nnoremap <silent> [Window]p  :tabprev<CR>
 
 		" move split windows right / left
 		noremap <s-m-Right> <esc><c-w>r
