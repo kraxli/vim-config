@@ -10,6 +10,9 @@
 - {repo: vimwiki/vimwiki, if: 0}
 - {repo: nathanaelkane/vim-indent-guides, if: 0}
 
+- {repo: Shougo/neosnippet.vim, if: 0}
+- {repo: Shougo/neosnippet-snippets, if: 0}
+
 
 # --------------------------------------------------
 # Base plugins
@@ -136,8 +139,16 @@
 # -------------------------------------------------------
 # Completion
 # -------------------------------------------------------
+# Track the engine.
+- repo: SirVer/ultisnips
+  hook_add: |
+    let g:UltiSnipsExpandTrigger="<c-x>"
+    let g:UltiSnipsJumpForwardTrigger="<c-b>"
+    let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
-
+# Snippets are separated from the engine. Add this if you want them:
+- repo: honza/vim-snippets
+  on_source: ultisnips
 
 # -------------------------------------------------------
 # Watch
