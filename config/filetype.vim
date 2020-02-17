@@ -70,8 +70,16 @@ augroup user_plugin_filetype " {{{
 
 	autocmd FileType html setlocal path+=./;/
 
-	autocmd FileType markdown,vimwiki
-		\ setlocal ts=4 sw=4 expandtab smarttab
+	autocmd FileType markdown,vimwiki,text
+		\ setlocal ts=3 sw=3 expandtab smarttab
+		\ | setlocal autoindent
+		\ | setl formatoptions=tcroqn2
+		\ | setlocal comments=b:*,b:-,b:+,b:>,n:>,se:``` commentstring=>\ %s
+		\ | setl wrap linebreak nolist
+		\ | setl breakindent
+		\ | setl textwidth=0
+		\ | setl wrapmargin=0 " only used when textwidth=0
+		\ | setlocal nolisp
 		\ | setl spell spelllang=en,de
 
 	" set breakat
