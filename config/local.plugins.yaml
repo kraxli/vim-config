@@ -17,12 +17,13 @@
 - repo: pbrisbin/vim-mkdir
 
 - repo: Yggdroot/indentLine
+  if: 0
   hook_add: |
-    let g:indentLine_char_list = ['¦', ':', '┊']
+    let g:indentLine_char_list = ['¦', '┊']
     let g:indentLine_concealcursor = 'inc'
     let g:indentLine_conceallevel = 2
 
-# let g:indentLine_char_list = ['|', '¦', '┆', '┊'] or ¦, ┆, │, ⎸, or ▏
+# let g:indentLine_char_list = ['|', '¦', '┆', '┊'] or ¦, ┆, │, ⎸, ▏, ':'
 # let g:indentLine_concealcursor = 'nc'
 
 # --------------------------------------------------
@@ -84,7 +85,7 @@
 - repo: kraxli/markdown-misc
   on_ft: [vimwiki, markdown]
   hook_add: |
-    let g:markdown_enable_folding = 0
+    let g:markdown_enable_folding = 1
     let g:markdown_mapping_switch_status = '<c-space>'
     let g:markdown_wiki_index_key = '<leader>W'
     let g:markdown_blog_index_key = '<leader>B'

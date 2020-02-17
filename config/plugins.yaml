@@ -50,6 +50,7 @@
     let g:html5_aria_attributes_complete = 0
 
 # Markdown related
+# forked from: plasticboy/vim-markdown
 - repo: kraxli/vim-markdown
   on_ft: markdown
   hook_add: |
@@ -71,7 +72,6 @@
       \ 'docker=Dockerfile',
       \ 'makefile=make',
       \ 'py=python',
-      \ 'd=dlang'
       \ ]
     let g:vim_markdown_no_extensions_in_markdown = 1
     let g:vim_markdown_math = 1
