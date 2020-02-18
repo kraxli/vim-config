@@ -103,7 +103,7 @@ reference or cherry-picking.
 - [init.vim](./init.vim): define additional global variables
 - [config/local.vim](./config/local.vim): Plugins different from plugins used by Rafi
 - [config_kraxli](./config_kraxli): additional setups
-- `g:local_source_dir`: define your local directory with your local `init.vim` in where you define variables like `g:python_host_prog`, `g:python3_host_prog` and other variables you may want to set at the beginning. You can also put other files in this folder, e.g. a local `settings.vim` file. Other files than the `init.vim` in this folder are sourced at the end (so you can override preset settings and commands)
+- `local`: define your local directory with your local `init.vim` in where you define variables like `g:python_host_prog`, `g:python3_host_prog` and other variables you may want to set at the beginning. You can also put other files in this folder, e.g. a local `settings.vim` file. Other files than the `init.vim` in this folder are sourced at the end (so you can override preset settings and commands)
 
 ## Install
 
