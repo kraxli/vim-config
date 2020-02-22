@@ -97,6 +97,8 @@ augroup user_plugin_filetype " {{{
 
 	au FileType yaml,toml setl nospell
 
+	au FileType matlab setl foldmethod=indent
+
 augroup END " }}}
 
 " Internal Plugin Settings  {{{
