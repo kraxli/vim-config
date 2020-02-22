@@ -12,6 +12,10 @@ if filereadable(g:local_source_dir . '/local/init.vim')
 endif
 
 " === your local settings ===
+if !exists('g:use_vim_devicons')
+		let g:use_vim_devicons = 0
+endif
+
 if !exists('g:python_host_prog')
 	let g:python_host_prog = '/usr/bin/python'
 endif

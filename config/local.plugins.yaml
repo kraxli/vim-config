@@ -27,6 +27,15 @@
 # Lazily loading plugins
 # --------------------------------------------------
 
+- repo: ryanoasis/vim-devicons
+  if: g:use_vim_devicons
+  hook_add:
+    set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Nerd\ Font\ Complete\ 12
+    set encoding=utf-8
+
+#   set guifont=Hack
+
+
 # - repo: /home/dave/.fzf/bin/
 #   if: isdirectory('/home/dave/.fzf/bin/')
 #   on_cmd: FZF
