@@ -81,8 +81,10 @@ augroup user_plugin_filetype " {{{
 		\ | setl wrapmargin=0 " only used when textwidth=0
 		\ | setlocal nolisp
 		\ | setl spell spelllang=en,de
+		"\ | setlocal formatlistpat=^\\s*\\d\\+\\.\\s\\+\\\\|^\\s*[+-\\*]\\s\\+
 
 	" set breakat
+	" \ | setl formatoptions=tcroqn2 / tron
 	" \ setlocal conceallevel=0 " not complient with indentLine
 
 	autocmd FileType apache setlocal path+=./;/
