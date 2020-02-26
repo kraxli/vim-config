@@ -71,7 +71,8 @@ augroup user_plugin_filetype " {{{
 	autocmd FileType html setlocal path+=./;/
 
 	autocmd FileType markdown,vimwiki,text
-		\ setlocal ts=3 sw=3 expandtab smarttab
+		\ setlocal expandtab smarttab
+		\ | setlocal tabstop=2 softtabstop=2 shiftwidth=2
 		\ | setlocal autoindent
 		\ | setl formatoptions=tcroqn2
 		\ | setlocal comments=b:*,b:-,b:+,b:>,n:>,se:``` commentstring=>\ %s
