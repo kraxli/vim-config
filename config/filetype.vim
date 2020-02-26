@@ -81,7 +81,7 @@ augroup user_plugin_filetype " {{{
 		\ | setl wrapmargin=0 " only used when textwidth=0
 		\ | setlocal nolisp
 		\ | setl spell spelllang=en,de
-		"\ | setlocal formatlistpat=^\\s*\\d\\+\\.\\s\\+\\\\|^\\s*[+-\\*]\\s\\+
+		\ | setlocal formatlistpat=^\\s*\\d\\+\\.\\s\\+\\\\|^\\s*[+-\\*]\\s\\+
 
 	" set breakat
 	" \ | setl formatoptions=tcroqn2 / tron
@@ -99,7 +99,7 @@ augroup user_plugin_filetype " {{{
 
 	au FileType yaml,toml setl nospell
 
-	au FileType matlab setl foldmethod=indent
+	au FileType matlab setl foldmethod=indent nospell
 
 augroup END " }}}
 
