@@ -230,7 +230,7 @@
   hook_add: let g:vmt_auto_update_on_save = 0
 
 - repo: chemzqm/vim-easygit
-  on_cmd: [Gadd, Gcd, Glcd, Gcommit, Gblame, Gdiff, GdiffThis, Gstatus]
+  on_cmd: [Gcd, Glcd, Gblame, GcommitCurrent, GdiffThis, Gcommit, Gedit, Gdiff, Gremove, Grename, Gmove, Gcheckout, Gpush, Gpull, Gfetch, Gadd, Gstatus, Ggrep, Gmerge]
   hook_add: let g:easygit_enable_command = 1
 
 - repo: liuchengxu/vista.vim
