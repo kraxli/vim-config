@@ -35,10 +35,13 @@
 
 #   set guifont=Hack
 
+- repo: fcpg/vim-waikiki
+  on_ft: [markdown, vimwiki, text]
+
 - repo: embear/vim-foldsearch
   on_cmd: [Fw, Fs, Fp, FS, Fl, Fc, Fi, Fd, Fe]
   hook_add: |
-    let g:foldsearch_highlight=1
+    let g:foldsearch_highlight=0
     let g:foldsearch_disable_mappings=1
     nmap  <Leader>fw :Fw<cr>
     nmap  <Leader>fs :Fs<cr>
@@ -107,6 +110,8 @@
     let g:markdown_mapping_switch_status = '<c-space>'
     let g:markdown_wiki_index_key = '<leader>W'
     let g:markdown_blog_index_key = '<leader>B'
+    nmap <silent> th :TasksOpenHi<cr>
+    nmap <silent> to :TasksOpen<cr>
 
 - repo: soywod/kronos.vim
   on_cmd: [Kronos]
