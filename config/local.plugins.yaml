@@ -101,7 +101,6 @@
 #     setlocal spell spelllang=en,de
 
 - repo: kraxli/markdown-misc
-  depends: embear/vim-foldsearch
   on_ft: [text, vimwiki, markdown]
   hook_add: |
     let g:markdown_enable_folding = 1
