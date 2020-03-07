@@ -299,7 +299,8 @@ _Note_ that 95% of the plugins are **[lazy-loaded]**.
 | [hail2u/vim-css3-syntax] | CSS3 syntax support to vim's built-in `syntax/css.vim`
 | [othree/csscomplete.vim] | Updated built-in CSS complete with latest standards
 | [cakebaker/scss-syntax.vim] | Syntax file for scss (Sassy CSS)
-| [plasticboy/vim-markdown] | Markdown syntax highlighting
+| [kraxli/vim-markdown] | Markdown syntax highlighting
+| [kraxli/markdown-misc] | Markdown syntax highlighting
 | [rhysd/vim-gfm-syntax] | GitHub Flavored Markdown syntax highlight extension
 | [pangloss/vim-javascript] | Enhanced Javascript syntax
 | [othree/jspc.vim] | JavaScript Parameter Complete
@@ -878,6 +879,8 @@ Note that,
 | `<leader>`+`W` | Normal | Wiki
 | `<leader>`+`K` | Normal | Thesaurus
 | `gx`           | Normal/Visula | Open Url under cursor/selection
+| `to`           | Normal/Visula | show / unfold open tasks (markdown-misc)
+| `th`           | Normal/Visula | highlight open tasks (markdown-misc)
 
 </details>
 
