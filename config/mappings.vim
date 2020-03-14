@@ -130,12 +130,13 @@ cnoremap <C-b> <Left>
 " Switch history search pairs, matching my bash shell
 " cnoremap <C-p>  <Up>
 " cnoremap <C-n>  <Down>
+cnoremap <expr> <Up>  pumvisible() ? "\<C-p>" : "\<Up>"
+cnoremap <expr> <Down>  pumvisible() ? "\<C-n>" : "\<Down>"
+
+" cnoremap <expr> <C-p>  pumvisible() ? "\<C-p>" : "\<Up>"
+" cnoremap <expr> <C-n>  pumvisible() ? "\<C-n>" : "\<Down>"
 " cnoremap <Up>   <C-p>
 " cnoremap <Down> <C-n>
-cnoremap <expr> <C-p>  pumvisible() ? "\<C-p>" : "\<Up>"
-cnoremap <expr> <C-n>  pumvisible() ? "\<C-n>" : "\<Down>"
-cnoremap <Up>   <C-p>
-cnoremap <Down> <C-n>
 
 " }}}
 " File operations {{{

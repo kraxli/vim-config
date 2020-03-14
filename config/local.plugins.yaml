@@ -128,7 +128,6 @@
 # --------------------------------------------------
 
 # - repo: masukomi/vim-markdown-folding
-#   if: 0
 #   on_ft: [vimwiki, markdown]
 #   hook_add: |
 #     let g:markdown_fold_style = 'nested'
