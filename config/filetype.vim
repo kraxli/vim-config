@@ -84,6 +84,8 @@ augroup user_plugin_filetype " {{{
 		\ | setl spell spelllang=en,de
 		\ | setlocal formatlistpat=^\\s*\\d\\+\\.\\s\\+\\\\|^\\s*[+-\\*]\\s\\+
 
+		"\ | au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
+
 	" set breakat
 	" \ | setl formatoptions=tcroqn2 / tron
 	" \ setlocal conceallevel=0 " not complient with indentLine

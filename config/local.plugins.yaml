@@ -8,6 +8,7 @@
 - {repo: neoclide/coc.nvim, if: 0}
 - {repo: vimwiki/vimwiki, if: 0}
 - {repo: nathanaelkane/vim-indent-guides, if: 0}
+# - {repo: kraxli/vim-markdown, if: 0}
 
 # --------------------------------------------------
 # Base plugins
@@ -27,16 +28,11 @@
 # Lazily loading plugins
 # --------------------------------------------------
 
-# - repo: ryanoasis/vim-devicons
-#   if: g:use_vim_devicons
-#   hook_add:
-#     set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Nerd\ Font\ Complete\ 12
-#     set encoding=utf-8
+# - repo: jtratner/vim-flavored-markdown
+#   on_ft: [markdown, vimwiki, text, ghmarkdown]
 
-#   set guifont=Hack
-
-- repo: fcpg/vim-waikiki
-  on_ft: [markdown, vimwiki, text]
+# - repo: fcpg/vim-waikiki
+#   on_ft: [markdown, vimwiki, text]
 
 - repo: embear/vim-foldsearch
   on_cmd: [Fw, Fs, Fp, FS, Fl, Fc, Fi, Fd, Fe]
@@ -96,13 +92,6 @@
 
 # -- Management / Tasks / ... ---
 
-# - repo: kraxli/vimwiki-task
-#   if: 0
-#   on_ft: [vimwiki, markdown]
-#   hook_add: let g:vimwiki_folding = 'custom'
-#   hook_source: |
-#     setlocal spell spelllang=en,de
-
 - repo: kraxli/markdown-misc
   on_ft: [text, vimwiki, markdown]
   hook_add: |
@@ -112,6 +101,56 @@
     let g:markdown_blog_index_key = '<leader>B'
     nmap <silent> th :TasksOpenHi<cr>
     nmap <silent> to :TasksOpen<cr>
+
+# - repo: SidOfc/mkdx
+#   on_ft: [markdown, vimwiki, text]
+#   hook_add: |
+#     let g:mkdx#settings = {
+#       \ 'image_extension_pattern': 'a\?png\|jpe\?g\|gif',
+#       \ 'restore_visual':          1,
+#       \ 'enter':                   { 'enable': 1, 'malformed': 1, 'o': 1,
+#       \                              'shifto': 1, 'shift': 0 },
+#       \ 'map':                     { 'prefix': '<leader>', 'enable': 1 },
+#       \ 'tokens':                  { 'enter': ['-', '*', '>'],
+#       \                              'bold': '**', 'italic': '*', 'strike': '',
+#       \                              'list': '-', 'fence': '',
+#       \                              'header': '#' },
+#       \ 'checkbox':                { 'toggles': [' ', '-', 'x'],
+#       \                              'update_tree': 2,
+#       \                              'initial_state': ' ' },
+#       \ 'toc':                     { 'text': "TOC", 'list_token': '-',
+#       \                              'update_on_write': 0,
+#       \                              'position': 0,
+#       \                              'details': {
+#       \                                 'enable': 0,
+#       \                                 'summary': 'Click to expand {{toc.text}}',
+#       \                                 'nesting_level': -1,
+#       \                                 'child_count': 5,
+#       \                                 'child_summary': 'show {{count}} items'
+#       \                              }
+#       \                            },
+#       \ 'table':                   { 'divider': '|',
+#       \                              'header_divider': '-',
+#       \                              'align': {
+#       \                                 'left':    [],
+#       \                                 'center':  [],
+#       \                                 'right':   [],
+#       \                                 'default': 'center'
+#       \                              }
+#       \                            },
+#       \ 'links':                   { 'external': {
+#       \                                 'enable': 0, 'timeout': 3, 'host': '', 'relative': 1,
+#       \                                 'user_agent':  'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/9001.0.0000.000 vim-mkdx/1.9.1'
+#       \                              },
+#       \                              'fragment': {
+#       \                                 'jumplist': 1,
+#       \                                 'complete': 1
+#       \                              }
+#       \                            },
+#       \ 'highlight':               { 'enable': 0 },
+#       \ 'auto_update':             { 'enable': 0 },
+#       \ 'fold':                    { 'enable':  }
+#     \ }
 
 - repo: soywod/kronos.vim
   on_cmd: [Kronos]
