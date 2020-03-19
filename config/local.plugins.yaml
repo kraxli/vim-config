@@ -92,10 +92,13 @@
 
 # -- Management / Tasks / ... ---
 
+- repo: kraxli/vim-mkd-fold
+  on_ft: [text, vimwiki, markdown]
+  hook_add: let g:markdown_list_folding = 1
+
 - repo: kraxli/markdown-misc
   on_ft: [text, vimwiki, markdown]
   hook_add: |
-    let g:markdown_enable_folding = 1
     let g:markdown_mapping_switch_status = '<c-space>'
     let g:markdown_wiki_index_key = '<leader>W'
     let g:markdown_blog_index_key = '<leader>B'
