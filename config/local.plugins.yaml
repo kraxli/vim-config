@@ -96,6 +96,8 @@
   on_ft: [text, vimwiki, markdown]
   hook_add: let g:markdown_list_folding = 1
 
+- {repo: kraxli/vim-mkd-org, on_ft: [text, vimwiki, markdown]}
+
 - repo: kraxli/markdown-misc
   on_ft: [text, vimwiki, markdown]
   hook_add: |

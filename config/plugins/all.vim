@@ -444,4 +444,6 @@ if dein#tap('soywod/kronos.vim')
 	nmap vic    <plug>(kronos-visual-in-cell)
 endif
 
+
+
 " vim: set ts=2 sw=2 tw=80 noet :
