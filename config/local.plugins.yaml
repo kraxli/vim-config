@@ -28,11 +28,8 @@
 # Lazily loading plugins
 # --------------------------------------------------
 
-# - repo: jtratner/vim-flavored-markdown
-#   on_ft: [markdown, vimwiki, text, ghmarkdown]
-
-# - repo: fcpg/vim-waikiki
-#   on_ft: [markdown, vimwiki, text]
+- repo: skywind3000/asyncrun.vim
+  on_cmd: [AsyncRun, AsyncStop]
 
 - repo: embear/vim-foldsearch
   on_cmd: [Fw, Fs, Fp, FS, Fl, Fc, Fi, Fd, Fe]
@@ -92,25 +89,37 @@
 
 # -- Management / Tasks / ... ---
 
+# - repo: fcpg/vim-waikiki
+#   on_ft: [markdown, vimwiki, text]
+#   hook_source: |
+#     nmap <c-space> <Plug>(waikikiToggleListItem)
+
 - repo: kraxli/vim-mkd-fold
   on_ft: [text, vimwiki, markdown]
   hook_add: let g:markdown_list_folding = 1
 
-- {repo: kraxli/vim-mkd-org, on_ft: [text, vimwiki, markdown]}
-
-- repo: kraxli/markdown-misc
+- repo: kraxli/vim-mkd-org
   on_ft: [text, vimwiki, markdown]
   hook_add: |
-    let g:markdown_mapping_switch_status = '<c-space>'
-    let g:markdown_wiki_index_key = '<leader>W'
-    let g:markdown_blog_index_key = '<leader>B'
+    let g:mkdd_mapping_switch_status = '<c-space>'
+    let g:mkdd_wiki_index_key = '<leader>W'
+    let g:mkdd_blog_index_key = '<leader>B'
     nmap <silent> th :TasksOpenHi<cr>
     nmap <silent> to :TasksOpen<cr>
+
+# - repo: kraxli/vim-config-addons
+
+# g:mkdx#settings.fold.enable
 
 # - repo: SidOfc/mkdx
 #   on_ft: [markdown, vimwiki, text]
 #   hook_add: |
 #     let g:mkdx#settings = {
+#       \ 'fold':                    { 'enable':  0},
+#       \ 'highlight':               { 'enable':  0},
+#       \ }
+#
+
 #       \ 'image_extension_pattern': 'a\?png\|jpe\?g\|gif',
 #       \ 'restore_visual':          1,
 #       \ 'enter':                   { 'enable': 1, 'malformed': 1, 'o': 1,
@@ -154,7 +163,6 @@
 #       \                            },
 #       \ 'highlight':               { 'enable': 0 },
 #       \ 'auto_update':             { 'enable': 0 },
-#       \ 'fold':                    { 'enable':  }
 #     \ }
 
 - repo: soywod/kronos.vim
@@ -187,6 +195,7 @@
 
 - repo: godlygeek/tabular
   on_ft: [markdown, latex, tex]
+  on_cmd: [Tab]
 
 # - repo: reedes/vim-pencil
 #   on_ft: [tex, markdown, vimwiki]

@@ -102,8 +102,9 @@
       \ ]
     let g:vim_markdown_no_extensions_in_markdown = 1
     let g:vim_markdown_math = 1
-    let g:vim_markdown_follow_anchor = 1
+    let g:vim_markdown_follow_anchor = 0
     let g:vim_markdown_auto_insert_bullets = 0
+    let g:vim_markdown_folding_disabled = 1
   hook_source: |
     nmap <silent> hi :HeaderIncrease<cr>
     nmap <silent> hd :HeaderDecrease<cr>
@@ -456,12 +457,6 @@
 # ========================================
 # Completion and code analysis
 # ----------
-
-# - repo: neoclide/coc.nvim
-#   on_ft: [python, julia, markdown, vimwiki]
-#   merge: 0
-#   rev: release
-#   hook_source: source $VIM_PATH/config/plugins/coc.vim
 
 - repo: prabirshrestha/async.vim  # only autoload functions, lazy by nature
 
