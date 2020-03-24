@@ -28,6 +28,12 @@
 # Lazily loading plugins
 # --------------------------------------------------
 
+- repo: vim-scripts/VisIncr
+  on_cmd: [I, II, IMOD, IREP, IMDY, IYMD, IDMY, ID, IM, IA, IX, IIX, IB, IIB,
+           \  IO, IIO, IR, IIR, IPOW, IIPOW, RI, RII, RIMOD, RIREP, RIMDY,
+           \  RIYMD, RIDMY, RID, RIM, RIA, RIX, RIIX, RIB, RIIB, RIO, RIIO, RIR,
+           \  RIIR, RIPOW, RIIPOW]
+
 - repo: skywind3000/asyncrun.vim
   on_cmd: [AsyncRun, AsyncStop]
 
