@@ -49,6 +49,7 @@
     nmap  <Leader>fi :Fi<cr>
     nmap  <Leader>fd :Fd<cr>
     nmap  <Leader>fe :Fe<cr>
+    nmap  ze :Fe<cr>
 
 # - repo: /home/dave/.fzf/bin/
 #   if: isdirectory('/home/dave/.fzf/bin/')
