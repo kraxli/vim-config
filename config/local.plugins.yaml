@@ -38,7 +38,9 @@
   on_cmd: [AsyncRun, AsyncStop]
 
 - repo: embear/vim-foldsearch
-  on_cmd: [Fw, Fs, Fp, FS, Fl, Fc, Fi, Fd, Fe]
+  on_cmd: [Fw, Fs, Fp, FS, Fl, Fc, Fi, Fd, Fe, TasksOpen]
+  on_map: [to]
+  on_ft: [text, vimwiki, markdown]
   hook_add: |
     let g:foldsearch_highlight=0
     let g:foldsearch_disable_mappings=1
@@ -49,7 +51,7 @@
     nmap  <Leader>fi :Fi<cr>
     nmap  <Leader>fd :Fd<cr>
     nmap  <Leader>fe :Fe<cr>
-    nmap  ze :Fe<cr>
+    nmap  <silent> ze :Fe<cr>
 
 # - repo: /home/dave/.fzf/bin/
 #   if: isdirectory('/home/dave/.fzf/bin/')
@@ -112,7 +114,8 @@
     let g:mkdd_wiki_index_key = '<leader>W'
     let g:mkdd_blog_index_key = '<leader>B'
     nmap <silent> th :TasksOpenHi<cr>
-    nmap <silent> to :TasksOpen<cr>
+  hook_source: |
+    nmap to :TasksOpen<cr>
 
 # - repo: kraxli/vim-config-addons
 
