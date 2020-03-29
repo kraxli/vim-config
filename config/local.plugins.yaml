@@ -24,6 +24,8 @@
 # let g:indentLine_char_list = ['|', '¦', '┆', '┊'] or ¦, ┆, │, ⎸, ▏, ':'
 # let g:indentLine_concealcursor = 'inc'
 
+# - repo: kraxli/vim-config-addons
+
 # --------------------------------------------------
 # Lazily loading plugins
 # --------------------------------------------------
@@ -117,63 +119,9 @@
   hook_source: |
     nmap to :TasksOpen<cr>
 
-# - repo: kraxli/vim-config-addons
-
-# g:mkdx#settings.fold.enable
 
 # - repo: SidOfc/mkdx
 #   on_ft: [markdown, vimwiki, text]
-#   hook_add: |
-#     let g:mkdx#settings = {
-#       \ 'fold':                    { 'enable':  0},
-#       \ 'highlight':               { 'enable':  0},
-#       \ }
-#
-
-#       \ 'image_extension_pattern': 'a\?png\|jpe\?g\|gif',
-#       \ 'restore_visual':          1,
-#       \ 'enter':                   { 'enable': 1, 'malformed': 1, 'o': 1,
-#       \                              'shifto': 1, 'shift': 0 },
-#       \ 'map':                     { 'prefix': '<leader>', 'enable': 1 },
-#       \ 'tokens':                  { 'enter': ['-', '*', '>'],
-#       \                              'bold': '**', 'italic': '*', 'strike': '',
-#       \                              'list': '-', 'fence': '',
-#       \                              'header': '#' },
-#       \ 'checkbox':                { 'toggles': [' ', '-', 'x'],
-#       \                              'update_tree': 2,
-#       \                              'initial_state': ' ' },
-#       \ 'toc':                     { 'text': "TOC", 'list_token': '-',
-#       \                              'update_on_write': 0,
-#       \                              'position': 0,
-#       \                              'details': {
-#       \                                 'enable': 0,
-#       \                                 'summary': 'Click to expand {{toc.text}}',
-#       \                                 'nesting_level': -1,
-#       \                                 'child_count': 5,
-#       \                                 'child_summary': 'show {{count}} items'
-#       \                              }
-#       \                            },
-#       \ 'table':                   { 'divider': '|',
-#       \                              'header_divider': '-',
-#       \                              'align': {
-#       \                                 'left':    [],
-#       \                                 'center':  [],
-#       \                                 'right':   [],
-#       \                                 'default': 'center'
-#       \                              }
-#       \                            },
-#       \ 'links':                   { 'external': {
-#       \                                 'enable': 0, 'timeout': 3, 'host': '', 'relative': 1,
-#       \                                 'user_agent':  'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/9001.0.0000.000 vim-mkdx/1.9.1'
-#       \                              },
-#       \                              'fragment': {
-#       \                                 'jumplist': 1,
-#       \                                 'complete': 1
-#       \                              }
-#       \                            },
-#       \ 'highlight':               { 'enable': 0 },
-#       \ 'auto_update':             { 'enable': 0 },
-#     \ }
 
 - repo: soywod/kronos.vim
   on_cmd: [Kronos]

@@ -54,27 +54,32 @@ vnoremap ~ y:call setreg('', utils#TwiddleCase(@"), getregtype(''))<CR>gv""Pgv
 " }}}
 
 " {{{ --- Folding ---
+		" toggle folds
 		inoremap <c-z> <C-O>za
 		nnoremap <c-z> za
 		onoremap <c-z> <C-C>za
+
 		" make fold from visual selection
 		vnoremap <c-z> zf
+
 		" Focus the current fold by closing all others
 		nnoremap <c-s-z> zMza
-		" nnoremap <c-s-z> zMzo
 
-		" Search for a pattern then press F10 to fold misses.
-		nnoremap <F10> :setlocal foldexpr=(getline(v:lnum)!~@/) foldmethod=expr<CR><Bar>zM
-		" TODO: restore original foldmethod (hack: simply by reloading file with ":e" )
+		" {{{ Keep as reference
+				" " Search for a pattern then press F10 to fold misses.
+				" nnoremap <F10> :setlocal foldexpr=(getline(v:lnum)!~@/) foldmethod=expr<CR><Bar>zM
+				" " TODO: restore original foldmethod (hack: simply by reloading file with ":e" )
+				"
+				" if has('gui')
+				" 	nnoremap <s-F10> :setlocal foldexpr=(getline(v:lnum)=~@/) foldmethod=expr<CR><Bar>zM
+				" else
+				" 	nnoremap z<F10> :setlocal foldexpr=(getline(v:lnum)=~@/) foldmethod=expr<CR><Bar>zM
+				" endif
 
-		if has('gui')
-			nnoremap <s-F10> :setlocal foldexpr=(getline(v:lnum)=~@/) foldmethod=expr<CR><Bar>zM
-		else
-			nnoremap z<F10> :setlocal foldexpr=(getline(v:lnum)=~@/) foldmethod=expr<CR><Bar>zM
-		endif
+				" " fold by search
+				" nnoremap zs :setlocal foldexpr=(getline(v:lnum)=~@/)?0:(getline(v:lnum-1)=~@/)\\|\\|(getline(v:lnum+1)=~@/)?1:2 foldmethod=expr foldlevel=0<CR>
+		" }}}
 
-		" fold by search
-		nnoremap zs :setlocal foldexpr=(getline(v:lnum)=~@/)?0:(getline(v:lnum-1)=~@/)\\|\\|(getline(v:lnum+1)=~@/)?1:2 foldmethod=expr foldlevel=0 foldcolumn=2<CR>
 " }}} folding
 
 " vim:set foldmethod=marker

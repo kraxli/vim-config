@@ -118,8 +118,8 @@ xnoremap > >gv|
 xnoremap <Tab> >gv|
 xnoremap <S-Tab> <gv
 " Indent and jump to first non-blank character linewise
-nmap >  >>_
-nmap <  <<_
+nmap >  >>_		" kraxli
+nmap <  <<_		" kraxli
 
 " Navigation in command line
 cnoremap <C-h> <Home>
@@ -130,8 +130,8 @@ cnoremap <C-b> <Left>
 " Switch history search pairs, matching my bash shell
 " cnoremap <C-p>  <Up>
 " cnoremap <C-n>  <Down>
-cnoremap <expr> <Up>  pumvisible() ? "\<C-p>" : "\<Up>"
-cnoremap <expr> <Down>  pumvisible() ? "\<C-n>" : "\<Down>"
+cnoremap <expr> <Up>  pumvisible() ? "\<C-p>" : "\<Up>"				" kraxli
+cnoremap <expr> <Down>  pumvisible() ? "\<C-n>" : "\<Down>"		" kraxli
 
 " cnoremap <expr> <C-p>  pumvisible() ? "\<C-p>" : "\<Up>"
 " cnoremap <expr> <C-n>  pumvisible() ? "\<C-n>" : "\<Down>"
@@ -300,8 +300,7 @@ nnoremap <silent> [Window]sh :split<CR>:wincmd p<CR>:e#<CR>
 nnoremap <silent> [Window]sv :vsplit<CR>:wincmd p<CR>:e#<CR>
 
 " Background dark/light toggle and contrasts
-nmap <silent> [Window]bg :<C-u>call <SID>toggle_background()<CR>
-"  or [Window]g
+nmap <silent> [Window]g :<C-u>call <SID>toggle_background()<CR>	" kraxli
 nmap <silent> [Window]- :<c-u>call <SID>toggle_contrast(-v:count1)<cr>
 nmap <silent> [Window]= :<c-u>call <SID>toggle_contrast(+v:count1)<cr>
 
