@@ -445,5 +445,7 @@ if dein#tap('soywod/kronos.vim')
 endif
 
 
-
+if dein#tap('SirVer/ultisnips')
+  UltiSnipsAddFiletypes vimwiki.markdown
+endif
 " vim: set ts=2 sw=2 tw=80 noet :
