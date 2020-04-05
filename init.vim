@@ -1,4 +1,6 @@
- 
+
+if !exists('g:vscode')
+
 " your directory with your local .vim-files to load
 let g:local_source_dir = fnamemodify(expand('<sfile>'), ':h').'/local/'
 
@@ -34,3 +36,6 @@ endif
 " === Rafi ===:
 execute 'source' fnamemodify(expand('<sfile>'), ':h').'/config/vimrc'
 
+else
+	imap jj <esc>
+endif
