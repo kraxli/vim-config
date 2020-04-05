@@ -1,4 +1,6 @@
-# Rafael Bodill's Neo/vim Config
+bg Kraxli's Neo/vim Config 
+
+All credit goes to [Rafael Bodill](https://github.com/rafi/vim-config)
 
 Lean mean Neo/vim machine, 30-45ms startup time.
 
@@ -19,7 +21,9 @@ Best with [Neovim] or [Vim8] and `python3` enabled.
 
 * [Features](#features)
 * [Screenshot](#screenshot)
-* [Prerequisites](#prerequisites)
+* [Pre-requisites](#pre-requisites)
+* [Difference to Rafael Bodill's
+  vim-config](#difference-to-rafael-bodills-vim-config)
 * [Install](#install)
 * [Language-Server Protocol (LSP)](#language-server-protocol-lsp)
 * [Upgrade](#upgrade)
@@ -82,7 +86,24 @@ Best with [Neovim] or [Vim8] and `python3` enabled.
 ## Prerequisites
 
 * Python 3 (`brew install python`)
+* Neovim or Vim (`brew install neovim` or `brew install vim`)
+* Virtualenv tool for Python 3 (not required from Python 3.6 on - I think):
+  ```bash
+  pip3 install virtualenv
+  ```
+  On Ubuntu you can use:
+  ```bash
+  apt-get install -y python3-venv
+  ```
 * Neovim or Vim (`brew install neovim` and/or `brew install vim`)
+
+## Difference to [Rafael Bodill's vim-config](https://github.com/rafi/vim-config)
+
+- [config/](./config) - Configuration
+- [init.vim](./init.vim): define additional global variables
+- [config/local.vim](./config/local.vim): Plugins different from plugins used by Rafi
+- [config_kraxli](./config_kraxli): additional setups
+- `local`: define your local directory with your local `init.vim` in where you define variables like `g:python_host_prog`, `g:python3_host_prog` and other variables you may want to set at the beginning. You can also put other files in this folder, e.g. a local `settings.vim` file. Other files than the `init.vim` in this folder are sourced at the end (so you can override preset settings and commands)
 
 ## Install
 
@@ -91,8 +112,9 @@ we'll also symlink it for regular Vim:
 
 ```bash
 mkdir ~/.config
-git clone git://github.com/rafi/vim-config.git ~/.config/nvim
+git clone git://github.com/kraxli/vim-config.git ~/.config/nvim
 cd ~/.config/nvim
+rm -rf ~/.cache/vim   
 ln -s ~/.config/nvim ~/.vim  # For "regular" Vim
 ```
 
@@ -153,6 +175,13 @@ brew cask install font-fira-code
 [Pragmata Pro]: https://www.fsd.it/shop/fonts/pragmatapro/
 [Nerd Fonts]: https://www.nerdfonts.com
 
+```sh
+mkdir -p ~/.fonts
+git clone https://github.com/ryanoasis/nerd-fonts.git ~/.fonts
+cd ~/.fonts
+./install.sh Meslo 
+```
+
 ### Recommended Linters
 
 * macOS with Homebrew:
@@ -180,17 +209,31 @@ pip3 install --user vim-vint pycodestyle pyflakes flake8
 * **ag** [ggreer/the_silver_searcher](https://github.com/ggreer/the_silver_searcher)
   (macOS: `brew install the_silver_searcher`)
   * and/or **ripgrep**: [BurntSushi/ripgrep](https://github.com/BurntSushi/ripgrep)
+* Jump around with **z**: [rupa/z](https://github.com/rupa/z) (macOS: `brew install z`)
+  or [rupa/j2](https://github.com/rupa/j2) for the older python version
   (macOS: `brew install rg`)
-* Jump around with **z**: [rupa/z](https://github.com/rupa/z)
-  (macOS: `brew install z`)
   * or **z.lua**: [acme/zlua](https://github.com/skywind3000/z.lua)
 * **[Universal ctags](https://ctags.io/)** for syntax tokenization
   (macOS: `brew install universal-ctags/universal-ctags/universal-ctags`)
 * Fuzzy file finders:
-  **[fzf](https://github.com/junegunn/fzf)**,
+  **[fzf](https://github.com/junegunn/fzf)**, (as of Feb. 10, 2020 install it in `/usr/local/opt/fzf`)
   **[fzy](https://github.com/jhawthorn/fzy)**, or
   **[peco](https://github.com/peco/peco)**
   (macOS: `brew install fzf`)
+* **Tern** for Javascript completion (`npm -g install tern`)
+* Nerd-fonts (e.g. for more beautiful Defx icons): [ryanoasis/nerd-fonts](https://github.com/ryanoasis/nerd-fonts)
+  e.g. MesloLGSDZ nerd Font Regular,  size 13. See also [Issue #109](https://github.com/rafi/vim-config/issues/109)
+* YAML parser: supported are [Ruby](https://www.ruby-lang.org/en/) (see also [RubyInstaller for Ms Windows](https://rubyinstaller.org/downloads/)), [yp](https://github.com/mikefarah/yq), and PyYaml(?)
+
+## Upgrade
+
+```bash
+cd <your installation path>
+make update
+```
+
+This will run `git pull -ff --ff-only` and update all plugins using
+[Shougo/dein.vim] package-manager.
 
 ## User Custom Config
 
@@ -204,6 +247,16 @@ If you want to disable some of the plugins I use, you can overwrite them, e.g.:
 ```yaml
 - { repo: dense-analysis/ale, if: 0 }
 ```
+
+You will need to run `:call dein#clear_state()` and `:call dein#recache_runtimepath()` probably for certain plugins that dein merges.
+
+## Updating Plugins with Dein
+
+- update the plugins installed by `:call dein#update()`
+- Don't use `:UpdateRemotePlugins`, it ignores lazy-loaded plugins (via dein), so you better run: `:call dein#remote_plugins()` which will take into account the lazy ones.
+- Reading the YAML files happens only once after they change. If you want to delete this cached state, run: `:call dein#clear_state()` and after the next you start n/vim, the state will rebuild.
+- If you make a lot of modifications to your `local.plugins.yaml`, you'll eventually need to run `:call dein#recache_runtimepath()` for dein to re-merge all the plugin essentials. Run it with a fresh state.
+
 
 ## Structure
 
@@ -265,12 +318,13 @@ _Note_ that 95% of the plugins are **[lazy-loaded]**.
 | [hail2u/vim-css3-syntax] | CSS3 syntax support to vim's built-in `syntax/css.vim`
 | [othree/csscomplete.vim] | Updated built-in CSS complete with latest standards
 | [cakebaker/scss-syntax.vim] | Syntax file for scss (Sassy CSS)
+| [kraxli/vim-markdown] | Markdown syntax highlighting
+| [kraxli/markdown-misc] | Markdown syntax highlighting
 | [groenewege/vim-less] | Syntax for LESS
 | [iloginow/vim-stylus] | Syntax, indentation and autocomplete for Stylus
 | [mustache/vim-mustache-handlebars] | Mustache and handlebars syntax
 | [digitaltoad/vim-pug] | Pug (formerly Jade) syntax and indentation
 | [othree/html5.vim] | HTML5 omnicomplete and syntax
-| [plasticboy/vim-markdown] | Markdown syntax highlighting
 | [rhysd/vim-gfm-syntax] | GitHub Flavored Markdown syntax highlight extension
 | [pangloss/vim-javascript] | Enhanced Javascript syntax
 | [HerringtonDarkholme/yats.vim] | Advanced TypeScript Syntax Highlighting
@@ -363,7 +417,6 @@ _Note_ that 95% of the plugins are **[lazy-loaded]**.
 | [junegunn/goyo] | Distraction-free writing
 | [junegunn/limelight] | Hyperfocus-writing
 | [itchyny/calendar.vim] | Calendar application
-| [vimwiki/vimwiki] | Personal Wiki for Vim
 
 #### Completion & Code-Analysis
 
@@ -522,7 +575,6 @@ _Note_ that 95% of the plugins are **[lazy-loaded]**.
 [junegunn/goyo]: https://github.com/junegunn/goyo.vim
 [junegunn/limelight]: https://github.com/junegunn/limelight.vim
 [itchyny/calendar.vim]: https://github.com/itchyny/calendar.vim
-[vimwiki/vimwiki]: https://github.com/vimwiki/vimwiki
 
 [prabirshrestha/async.vim]: https://github.com/prabirshrestha/async.vim
 [prabirshrestha/asyncomplete.vim]: https://github.com/prabirshrestha/asyncomplete.vim
@@ -570,8 +622,13 @@ _Note_ that 95% of the plugins are **[lazy-loaded]**.
 
 Note that,
 
+<<<<<<< HEAD
+* Leader key is set as <kbd>Space</kbd>
+* Local-leader is set as <kbd>,</kbd> and used for navigation and search mostly
+=======
 * **Leader** key set as <kbd>Space</kbd>
 * **Local-Leader** key set as <kbd>;</kbd> and used for navigation and search
+>>>>>>> rafi/vim-config/master
   (Denite and Defx)
 * Disable <kbd>←</kbd> <kbd>↑</kbd> <kbd>→</kbd> <kbd>↓</kbd> in normal mode by enabling `g:elite_mode` in `.vault.vim`
 
@@ -581,6 +638,53 @@ Note that,
     <small><i>(🔎 Click to expand/collapse)</i></small>
   </summary>
 
+<<<<<<< HEAD
+### General
+
+| Key   | Mode | Action
+| ----- |:----:| ------------------
+| `Space` | _All_ | **Leader**
+| `;` | _All_ | **Local Leader**
+| Arrows | Normal | Resize splits (* Enable `g:elite_mode` in `.vault.vim`)
+| `;`+`c` | Normal | Open context-menu
+| `Backspace` | Normal | Match bracket (%)
+| `gK` | Normal | Open Zeal or Dash on some file-types
+| `Y` | Normal | Yank to the end of line (y$)
+| `<Return>` | Normal | Toggle fold (za)
+| `S`+`<Return>` | Normal | Focus the current fold by closing all others (zMzvzt)
+| `S`+`<Return>` | Insert | Start new line from any cursor position (<C-o>o)
+| `hjkl` | Normal/Visual | Cursor moves through display-lines (g/hjkl)
+| `Ctrl`+`f` | Normal | Smart page forward (C-f/C-d)
+| `Ctrl`+`b` | Normal | Smart page backwards (C-b/C-u)
+| `Ctrl`+`e` | Normal | Smart scroll down (3C-e/j)
+| `Ctrl`+`y` | Normal | Smart scroll up (3C-y/k)
+| `Ctrl`+`q` | Normal | Remap to `Ctrl`+`w`
+| `Ctrl`+`x` | Normal | Rotate window placement
+| `!` | Normal | Shortcut for `:!`
+| `<` | Visual | Indent to left and re-select
+| `>` | Visual | Indent to right and re-select
+| `Tab` | Visual | Indent to right and re-select
+| `Shift`+`Tab` | Visual | Indent to left and re-select
+| `gh` | Normal | Show highlight groups for word
+| `gp` | Normal | Select last paste
+| `Q` | Normal | Start/stop macro recording
+| `gQ` | Normal | Play macro 'q'
+| `<Leader>`+`j`/`k` | Normal/Visual | Move lines down/up
+| `<leader>`+`cp` | Normal | Duplicate paragraph
+| `<leader>`+`cn`/`cN` | Normal/Visual | Change current word in a repeatable manner
+| `sg` | Visual | Replace / rename (local refactoring) within selected area
+| `Ctrl`+`a` | Command | Navigation in command line
+| `Ctrl`+`b` | Command | Move cursor backward in command line
+| `Ctrl`+`f` | Command | Move cursor forward in command line
+| `Ctrl`+`r` | Visual | Replace / rename (local refactoring) selection with step-by-step confirmation
+| `<leader>`+`cw` | Normal | Remove all spaces at EOL
+| `<leader>`+`<leader>` | Normal | Enter visual line-mode
+| `<leader>`+`sl` | Normal | Load workspace session
+| `<leader>`+`se` | Normal | Save current workspace session
+| `<leader>`+`d` | Normal/Visual | Duplicate line or selection
+| `<leader>`+`S` | Normal/Visual | Source selection
+| `<leader>`+`ml` | Normal | Append modeline
+=======
 <center>Modes: 𝐍=normal 𝐕=visual 𝐒=select 𝐈=insert 𝐂=command</center>
 
 ### Navigation
@@ -608,6 +712,7 @@ Note that,
 | <kbd>Ctrl</kbd>+<kbd>b</kbd> | 𝐂 | Move cursor backwards in command | <kbd>Left</kbd>
 | <kbd>Ctrl</kbd>+<kbd>h</kbd> | 𝐂 | Move cursor to the beginning in command | <kbd>Home</kbd>
 | <kbd>Ctrl</kbd>+<kbd>l</kbd> | 𝐂 | Move cursor to the end in command | <kbd>End</kbd>
+>>>>>>> rafi/vim-config/master
 
 ### File Operations
 
@@ -674,6 +779,30 @@ Note that,
 
 ### Editor UI
 
+<<<<<<< HEAD
+| Key   | Mode | Action
+| ----- |:----:| ------------------
+| `<leader>`+`ti` | Normal | Toggle indentation lines
+| `<leader>`+`ts` | Normal | Toggle spell-checker (:setlocal spell!)
+| `<leader>`+`tn` | Normal | Toggle line numbers (:setlocal nonumber!)
+| `<leader>`+`tl` | Normal | Toggle hidden characters (:setlocal nolist!)
+| `<leader>`+`th` | Normal | Toggle highlighted search (:set hlsearch!)
+| `<leader>`+`tw` | Normal | Toggle wrap (:setlocal wrap! breakindent!)
+| `g1` | Normal | Go to first tab (:tabfirst)
+| `g9` | Normal | Go to last tab (:tablast)
+| `g5` | Normal | Go to previous tab (:tabprevious)
+| `Ctrl`+`j` | Normal | Move to split below
+| `Ctrl`+`k` | Normal | Move to upper split
+| `Ctrl`+`h` | Normal | Move to left split
+| `Ctrl`+`l` | Normal | Move to right split
+| `*` | Visual | Search selection forwards
+| `#` | Visual | Search selection backwards
+| `]`+`c`/`q` | Normal | Next on location/quickfix list
+| `]`+`c`/`q` | Normal | Previous on location/quickfix list
+| `s`+`bg` | Normal | Toggle colorscheme background dark/light
+| `s`+`-` | Normal | Lower colorscheme contrast (Support solarized8)
+| `s`+`=` | Normal | Raise colorscheme contrast (Support solarized8)
+=======
 | Key   | Mode | Action             | Plugin or Mapping
 | ----- |:----:| ------------------ | ------
 | <kbd>Space</kbd>+<kbd>ts</kbd> | 𝐍 | Toggle spell-checker | <small>`:setlocal spell!`</small>
@@ -724,6 +853,7 @@ Note that,
 | <kbd>Space</kbd>+<kbd>gu</kbd> | 𝐍 | Open undo-tree | <small>[mbbill/undotree]</small>
 | <kbd>Space</kbd>+<kbd>K</kbd> | 𝐍 | Thesaurus | <small>[Ron89/thesaurus_query.vim]</small>
 | <kbd>Space</kbd>+<kbd>W</kbd> | 𝐍 | VimWiki | <small>[vimwiki/vimwiki]</small>
+>>>>>>> rafi/vim-config/master
 
 ### Window Management
 
@@ -813,6 +943,60 @@ Note that,
 | <kbd>;e</kbd> | 𝐍 | Open file-explorer (toggle)
 | <kbd>;a</kbd> | 𝐍 | Focus current file in file-explorer
 | **Within _Defx_ window** ||
+<<<<<<< HEAD
+| `h` | Normal | Collapse directory tree
+| `j` / `k` | Normal | Move up and down the tree
+| `<Return>` / `l` | Normal | Toggle collapse/expand directory or open file
+| `<Space>` | Normal | Select current file or directory
+| `*` | Normal | Invert selection (select all)
+| `<Backspace>` | Normal | Move into the parent directory
+| `&` / `\` | Normal | Move to project root
+| `~` | Normal | Move to user home directory
+| `st` | Normal | Open file in new tab
+| `sh` | Normal | Open file in a horizontal split
+| `sv` | Normal | Open file in a vertical split
+| `N` | Normal | Create new directories and/or files
+| `K` | Normal | Create new directory
+| `c`/`m`/`p` | Normal | Copy, move, and paste
+| `r` | Normal | Rename file or directory
+| `dd` | Normal | Delete selected files and directories
+| `y` | Normal | Yank selected item to clipboard
+| `w` | Normal | Toggle window size
+| `]`+`g` | Normal | Next dirty git item
+| `[`+`g` | Normal | Previous dirty git item
+| `x` / `gx` | Normal | Execute associated system application
+| `gd` | Normal | Open git diff on selected file
+| `gl` | Normal | Open terminal file explorer
+| `gr` | Normal | Grep in selected directory
+| `gf` | Normal | Find files in selected directory
+
+### Plugin: Deoplete and Emmet
+| <kbd>h</kbd> | Normal | Collapse directory tree
+| <kbd>j</kbd> or <kbd>k</kbd> | Normal | Move up and down the tree
+| <kbd>Return</kbd> or <kbd>l</kbd> | Normal | Toggle collapse/expand directory or open file
+| <kbd>Space</kbd> | Normal | Select current file or directory
+| <kbd>*</kbd> | Normal | Invert selection (select all)
+| <kbd>Backspace</kbd> | Normal | Move into the parent directory
+| <kbd>&</kbd> or <kbd>\</kbd> | Normal | Move to project root
+| <kbd>~</kbd> | Normal | Move to user home directory
+| <kbd>st</kbd> | Normal | Open file in new tab
+| <kbd>sv</kbd> | Normal | Open file in a horizontal split
+| <kbd>sg</kbd> | Normal | Open file in a vertical split
+| <kbd>N</kbd> | Normal | Create new directories and/or files
+| <kbd>K</kbd> | Normal | Create new directory
+| <kbd>c</kbd> / <kbd>m</kbd> / <kbd>p</kbd> | Normal | Copy, move, and paste
+| <kbd>r</kbd> | Normal | Rename file or directory
+| <kbd>dd</kbd> | Normal | Delete selected files and directories
+| <kbd>y</kbd> | Normal | Yank selected item to clipboard
+| <kbd>w</kbd> | Normal | Toggle window size
+| <kbd>]</kbd>+<kbd>g</kbd> | Normal | Next dirty git item
+| <kbd>[</kbd>+<kbd>g</kbd> | Normal | Previous dirty git item
+| <kbd>x</kbd> / <kbd>gx</kbd> | Normal | Execute associated system application
+| <kbd>gd</kbd> | Normal | Open git diff on selected file
+| <kbd>gl</kbd> | Normal | Open terminal file explorer
+| <kbd>gr</kbd> | Normal | Grep in selected directory
+| <kbd>gf</kbd> | Normal | Find files in selected directory
+=======
 | <kbd>j</kbd> or <kbd>k</kbd> | 𝐍 | Move up and down the tree
 | <kbd>l</kbd> or <kbd>Return</kbd> | 𝐍 | Toggle collapse/expand directory or open file
 | <kbd>h</kbd> | 𝐍 | Collapse directory tree
@@ -841,6 +1025,7 @@ Note that,
 | <kbd>gl</kbd> | 𝐍 | Open terminal file explorer with tmux
 | <kbd>gr</kbd> | 𝐍 | Grep in current position
 | <kbd>gf</kbd> | 𝐍 | Find files in current position
+>>>>>>> rafi/vim-config/master
 
 ### Plugin: Asyncomplete and Emmet
 
@@ -861,6 +1046,73 @@ Note that,
 
 | Key   | Mode | Action
 | ----- |:----:| ------------------
+<<<<<<< HEAD
+| <kbd>m</kbd> + <kbd>/</kbd> or <kbd>?</kbd> | Normal | Show list of buffer marks/markers
+| <kbd>m</kbd> + <kbd>m</kbd> | Normal | Toggle mark on current line
+| <kbd>m</kbd> + <kbd>,</kbd> | Normal | Place next mark
+| <kbd>m</kbd> + <kbd>a-z</kbd> | Normal | Place specific mark (Won't work for: <kbd>m</kbd>, <kbd>n</kbd>, <kbd>p</kbd>)
+| <kbd>d</kbd> + <kbd>m</kbd> + <kbd>a-z</kbd> | Normal | Remove specific mark (Won't work for: <kbd>m</kbd>, <kbd>n</kbd>, <kbd>p</kbd>)
+| <kbd>m</kbd> + <kbd>n</kbd> | Normal | Jump to next mark
+| <kbd>m</kbd> + <kbd>p</kbd> | Normal | Jump to previous mark
+| <kbd>]</kbd> + <kbd>=</kbd> | Normal | Jump to next marker
+| <kbd>[</kbd> + <kbd>=</kbd> | Normal | Jump to previous marker
+| <kbd>m</kbd> + <kbd>-</kbd> | Normal | Purge all on current line
+| <kbd>m</kbd> + <kbd>Space</kbd> | Normal | Purge marks
+| <kbd>m</kbd> + <kbd>Backspace</kbd> | Normal | Purge markers
+
+### Plugin: Easygit
+
+| Key   | Mode | Action
+| ----- |:----:| ------------------
+| <kbd>Space</kbd>+<kbd>ga</kbd> | Normal | Git add current file
+| <kbd>Space</kbd>+<kbd>gS</kbd> | Normal | Git status
+| <kbd>Space</kbd>+<kbd>gd</kbd> | Normal | Git diff
+| <kbd>Space</kbd>+<kbd>gD</kbd> | Normal | Close diff
+| <kbd>Space</kbd>+<kbd>gc</kbd> | Normal | Git commit
+| <kbd>Space</kbd>+<kbd>gb</kbd> | Normal | Git blame
+| <kbd>Space</kbd>+<kbd>gB</kbd> | Normal | Open in browser
+| <kbd>Space</kbd>+<kbd>gp</kbd> | Normal | Git push
+
+### Plugin: GitGutter
+
+| Key   | Mode | Action
+| ----- |:----:| ------------------
+| <kbd>[</kbd>+<kbd>g</kbd> | Normal | Jump to next hunk
+| <kbd>]</kbd>+<kbd>g</kbd> | Normal | Jump to previous hunk
+| <kbd>g</kbd>+<kbd>S</kbd> | Normal | Stage hunk
+| <kbd>Space</kbd>+<kbd>gr</kbd> | Normal | Revert hunk
+| <kbd>g</kbd>+<kbd>s</kbd> | Normal | Preview hunk
+
+### Plugin: Linediff
+
+| Key   | Mode | Action
+| ----- |:----:| ------------------
+| <kbd>Space</kbd>+<kbd>mda</kbd> | Visual | Sequentially mark region for diff
+| <kbd>Space</kbd>+<kbd>mdf</kbd> | Visual | Mark region for diff and compare if more than one
+| <kbd>Space</kbd>+<kbd>mds</kbd> | Normal | Shows the comparison for all marked regions
+| <kbd>Space</kbd>+<kbd>mdr</kbd> | Normal | Removes the signs denoting the diff regions
+
+### Misc Plugins
+
+| Key   | Mode | Action
+| ----- |:----:| ------------------
+| `v` / `V` | Visual/select | Expand/reduce selection (expand-region)
+| `-` | Normal | Choose a window to edit (choosewin)
+| `<leader>`+`mg` | Normal | Open Magit
+| `<leader>`+`mt` | Normal/Visual | Toggle highlighted word (quickhl)
+| `<leader>`+`-` | Normal | Switch editing window with selected (choosewin)
+| `<leader>`+`l` | Normal | Open sidemenu
+| `<leader>`+`o` | Normal/Visual | Open SCM detailed URL in browser (:OpenSCM)
+| `<leader>`+`t` | Normal | Toggle structure window (:Vista)
+| `<leader>`+`a` | Normal | Show nearby tag in structure window (:Vista show)
+| `<leader>`+`G` | Normal | Toggle distraction-free writing (goyo)
+| `<leader>`+`gu` | Normal | Open undo-tree
+| `<leader>`+`W` | Normal | Wiki
+| `<leader>`+`K` | Normal | Thesaurus
+| `gx`           | Normal/Visula | Open Url under cursor/selection
+| `to`           | Normal/Visula | show / unfold open tasks (markdown-misc)
+| `th`           | Normal/Visula | highlight open tasks (markdown-misc)
+=======
 | <kbd>m/</kbd> or <kbd>m?</kbd> | 𝐍 | Show list of buffer marks/markers
 | <kbd>mm</kbd> | 𝐍 | Toggle mark on current line
 | <kbd>m,</kbd> | 𝐍 | Place next mark
@@ -875,6 +1127,7 @@ Note that,
 | <kbd>m</kbd> <kbd>Backspace</kbd> | 𝐍 | Purge markers
 
 </details>
+>>>>>>> rafi/vim-config/master
 
 ## Credits & Contribution
 
