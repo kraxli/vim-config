@@ -18,6 +18,9 @@ noremap! <S-Insert> <MiddleMouse>
 " Include Time Stamps
 nnoremap <silent> <F4> "=strftime("%Y-%m-%d")<CR>P
 inoremap <silent> <F4> <C-R>=strftime("%Y-%m-%d")<CR>
+nnoremap <silent> <F3> "=strftime("%H:%M")<CR>P
+inoremap <silent> <F3> <C-R>=strftime("%H:%M")<CR>
+" or strftime("%T") " to display hour:minutes:seconds
 
 " jump around
 nnoremap g. `.	       " jump to excact last modified position
