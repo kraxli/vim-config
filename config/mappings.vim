@@ -111,8 +111,8 @@ xnoremap <Tab> >gv|
 xnoremap <S-Tab> <gv
 
 " Indent and jump to first non-blank character linewise
-nmap >>  >>_
-nmap <<  <<_
+nmap >  >>_
+nmap <  <<_
 
 " Drag current line/s vertically and auto-indent
 nnoremap <Leader>k :m-2<CR>
