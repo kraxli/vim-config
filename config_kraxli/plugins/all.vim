@@ -3,9 +3,6 @@ if dein#tap('denite.nvim')
 
 endif
 
-
-
-
 if dein#tap('vim-sandwich')
 	"" unmap / release some sandwich-operator mappings
 	" silent! nunmap sd  " or	nnoremap sd  <Nop>

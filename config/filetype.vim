@@ -70,19 +70,21 @@ augroup user_plugin_filetype " {{{
 
 	autocmd FileType html setlocal path+=./;/
 
-	autocmd FileType markdown,vimwiki,text
+	autocmd FileType markdown,vimwiki,text,mkdx
 		\ setlocal expandtab smarttab
 		\ | setlocal tabstop=2 softtabstop=2 shiftwidth=2
 		\ | setlocal autoindent
 		\ | setl formatoptions=tcroqn2
-		\ | setlocal comments=b:*,b:-,b:+,b:>,n:>,se:``` commentstring=>\ %s
+		"\ | setlocal comments=b:*,b:-,b:+,b:>,n:>,se:``` commentstring=>\ %s  " do not use with mkdx
 		\ | setl wrap linebreak nolist
 		\ | setl breakindent
 		\ | setl textwidth=0
 		\ | setl wrapmargin=0 " only used when textwidth=0
 		\ | setlocal nolisp
 		\ | setl spell spelllang=en,de
-		\ | setlocal formatlistpat=^\\s*\\d\\+\\.\\s\\+\\\\|^\\s*[+-\\*]\\s\\+
+		\ | setl formatlistpat=^\\s*\\d\\+\\.\\s\\+\\\\|^\\s*[+-\\*]\\s\\+
+		\ | setl iskeyword-=-,\-
+
 
 		"\ | au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
 
@@ -95,7 +97,7 @@ augroup user_plugin_filetype " {{{
 	autocmd FileType cam setlocal nonumber synmaxcol=10000
 
 	" autocmd FileType go highlight default link goErr WarningMsg |
-	" 	\ match goErr /\<err\>/
+	"	\ match goErr /\<err\>/
 
 	" autocmd! FileType defx,nofile IndentGuidesDisable
 	" autocmd! BufEnter,WinEnter defx,nofile IndentGuidesDisable

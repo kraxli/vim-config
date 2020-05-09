@@ -559,6 +559,10 @@
     let g:UltiSnipsListSnippets = ''
     let g:UltiSnipsJumpForwardTrigger = '<C-f>'
     let g:UltiSnipsJumpBackwardTrigger = '<C-b>'
+  hook_post_source: UltiSnipsAddFiletypes vimwiki.markdown
+
+# hook_post_source: UltiSnipsAddFiletypes markdown.vimwiki
+
 
 - repo: honza/vim-snippets
   depends: ultisnips

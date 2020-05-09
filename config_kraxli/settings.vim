@@ -8,6 +8,7 @@ set textwidth=0
 set wrapmargin=0
 set breakindent
 " let &showbreak=' '
+set iskeyword-=-  " no not highlight '-' as cursorword :-)
 
 set colorcolumn=
 

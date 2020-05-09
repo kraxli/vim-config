@@ -26,6 +26,8 @@ command! SpellEn setl spell spelllang=en
 command! SpellDe setl spell spelllang=de
 command! SpellEnDe setl spell spelllang=en,de
 
+" --- markdown ---
 " change filetpe
 command! SetFtMkd set filetype=markdown
 
+autocmd! FileType markdown command! MarkMap :!markmap %:p
