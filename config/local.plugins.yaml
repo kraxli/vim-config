@@ -109,10 +109,9 @@
 # Markdown / Latex / Text (writing)
 # --------------------------------------------------
 - repo: SidOfc/mkdx
-  if: 1
   on_ft: [markdown, vimwiki, text]
   hook_add: |
-    let g:mkdx#settings     = { 'highlight': { 'enable': 0 },
+    let g:mkdx#settings     = { 'highlight': { 'enable': 1 },
                             \ 'enter': { 'shift': 1 },
                             \ 'links': { 'external': { 'enable': 1 }, 'fragment': {'complete': 0} },
                             \ 'toc': { 'text': 'Table of Contents', 'update_on_write': 1 },
@@ -131,7 +130,6 @@
 
 
 - repo: kraxli/vim-mkd-org
-  if: 1
   on_ft: [text, vimwiki, markdown]
   hook_add: |
     let g:mkdd_mapping_switch_status = '<c-space>'
