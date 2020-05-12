@@ -112,7 +112,7 @@
   on_ft: [markdown, vimwiki, text]
   hook_add: |
     let g:mkdx#settings     = { 'highlight': { 'enable': 1 },
-                            \ 'enter': { 'shift': 1 },
+                            \ 'enter': { 'shift': 0 },
                             \ 'links': { 'external': { 'enable': 1 }, 'fragment': {'complete': 0} },
                             \ 'toc': { 'text': 'Table of Contents', 'update_on_write': 1 },
                             \ 'fold': { 'enable': 0 },

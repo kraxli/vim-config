@@ -85,8 +85,9 @@ augroup user_plugin_filetype " {{{
 		\ | setl formatlistpat=^\\s*\\d\\+\\.\\s\\+\\\\|^\\s*[+-\\*]\\s\\+
 		\ | setl iskeyword-=-,\-
 
-
 		"\ | au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
+
+	au BufNewFile,BufRead,BufFilePost,BufWinEnter *.mkdx,*.md,*.markdown let g:mkdx#settings = { 'enter': { 'shift': 0 } }
 
 	" set breakat
 	" \ | setl formatoptions=tcroqn2 / tron
