@@ -19,13 +19,13 @@ if !exists('g:use_vim_devicons')
 endif
 
 if !exists('g:python_host_prog')
-	let g:python_host_prog = '/usr/bin/python'
+	let g:python_host_prog = '/usr/bin/python3.8'
 endif
 
 if !exists('g:python3_host_prog')
 	" let g:loaded_python_provider = 1 " To disable Python 2 support:
 	if has('unix')
-		let g:python3_host_prog = '/usr/bin/python3'
+		let g:python3_host_prog = '/usr/bin/python3.8'
 	else
 		let g:python3_host_prog = 'C:/ProgramData/Anaconda3-5.2.0/python.exe'
 		" let g:python3_host_prog = '/~/.pyenv/versions/python364/bin/python'
