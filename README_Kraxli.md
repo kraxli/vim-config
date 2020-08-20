@@ -62,6 +62,9 @@ Best with [Neovim] or [Vim8] and `python3` enabled.
 <!-- vim-markdown-toc -->
 </details>
 
+## Discoveries
+<kbd>,<kbd>c<kbd> : some selections from ...
+
 ## Features
 
 * Fast startup time
