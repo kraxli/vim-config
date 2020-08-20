@@ -60,8 +60,13 @@ cnoremap <C-b> <Left>
 " Scroll {{{
 " ------
 
+" Scroll step sideways
 nnoremap zl z4l
 nnoremap zh z4h
+
+" Resize tab windows after top/bottom window movement
+nnoremap <C-w>K <C-w>K<C-w>=
+nnoremap <C-w>J <C-w>J<C-w>=
 
 " Improve scroll, credits: https://github.com/Shougo
 " noremap <expr> <C-f> max([winheight(0) - 2, 1])
@@ -115,8 +120,8 @@ nmap >  >>_
 nmap <  <<_
 
 " Drag current line/s vertically and auto-indent
-nnoremap <Leader>k :m-2<CR>
-nnoremap <Leader>j :m+<CR>
+nnoremap <Leader>k :m-2<CR>==
+nnoremap <Leader>j :m+<CR>==
 vnoremap <Leader>k :m'<-2<CR>gv=gv
 vnoremap <Leader>j :m'>+<CR>gv=gv
 
@@ -146,16 +151,19 @@ nnoremap <Leader>cw :<C-u>silent! keeppatterns %substitute/\s\+$//e<CR>
 nmap <BS> %
 xmap <BS> %
 
+" Repeat latest f, t, F or T
+nnoremap \ ;
+
 " Select last paste
 nnoremap <expr> gp '`['.strpart(getregtype(), 0, 1).'`]'
 
 " `<Tab>`/`<S-Tab>` to move between matches without leaving incremental search.
 " Note dependency on `'wildcharm'` being set to `<C-z>` in order for this to
 " work.
-cnoremap <expr> <Tab>
-	\ getcmdtype() == '/' \|\| getcmdtype() == '?' ? '<CR>/<C-r>/' : '<C-z>'
-cnoremap <expr> <S-Tab>
-	\ getcmdtype() == '/' \|\| getcmdtype() == '?' ? '<CR>?<C-r>/' : '<S-Tab>'
+" cnoremap <expr> <Tab>
+"	\ getcmdtype() == '/' \|\| getcmdtype() == '?' ? '<CR>/<C-r>/' : '<C-z>'
+" cnoremap <expr> <S-Tab>
+"	\ getcmdtype() == '/' \|\| getcmdtype() == '?' ? '<CR>?<C-r>/' : '<S-Tab>'
 
 " Quick substitute within selected area
 xnoremap sg :s//gc<Left><Left><Left>
@@ -243,7 +251,7 @@ cnoremap <expr> <Down>  pumvisible() ? "\<C-n>" : "\<Down>"		" kraxli
 map <Leader>cd :lcd %:p:h<CR>:pwd<CR>
 
 " Open file under the cursor in a vsplit
-nnoremap gf :rightbelow wincmd f<CR>
+nnoremap gf :vertical wincmd f<CR>
 
 " Fast saving from all modes
 nnoremap <Leader>w :write<CR>
@@ -320,6 +328,16 @@ nmap <silent> <Leader>h
 " Custom Tools {{{
 " ------------
 
+" Terminal
+if exists(':tnoremap')
+	if has('nvim')
+		tnoremap   jj         <C-\><C-n>
+	else
+		tnoremap   <ESC><ESC>  <C-w>N
+		tnoremap   jj          <C-w>N
+	endif
+endif
+
 " Source line and selection in vim
 vnoremap <Leader>S y:execute @@<CR>:echo 'Sourced selection.'<CR>
 nnoremap <Leader>S ^vg_y:execute @@<CR>:echo 'Sourced line.'<CR>
@@ -333,9 +351,9 @@ endif
 nmap <Leader>se :<C-u>SessionSave<CR>
 nmap <Leader>sl :<C-u>SessionLoad<CR>
 
-" Open SCM website
-nmap <Leader>o :<C-u>OpenSCM<CR>
-vmap <Leader>o :OpenSCM<CR>
+" Jump entire buffers in jumplist
+nnoremap g<C-i> :<C-u>call JumpBuffer(-1)<CR>
+nnoremap g<C-o> :<C-u>call JumpBuffer(1)<CR>
 
 if has('mac')
 	" Open the macOS dictionary on current word

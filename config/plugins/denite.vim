@@ -10,27 +10,26 @@ endif
 " Denite general settings
 call denite#custom#option('_', {
 	\ 'prompt': '❯',
-	\ 'auto_resume': 1,
-	\ 'start_filter': 1,
-	\ 'statusline': 1,
-	\ 'smartcase': 1,
-	\ 'vertical_preview': 1,
+	\ 'start_filter': v:true,
+	\ 'smartcase': v:true,
+	\ 'vertical_preview': v:true,
+	\ 'source_names': 'short',
 	\ 'max_dynamic_update_candidates': 50000,
 	\ })
+
+" Use Neovim's floating window
+if has('nvim-0.4')
+	call denite#custom#option('_', {
+		\ 'highlight_filter_background': 'NormalFloat',
+		\ 'split': 'floating',
+		\ 'filter_split_direction': 'floating',
+		\ 'floating_preview': v:true,
+		\ })
+endif
 
 " Interactive grep search
 call denite#custom#var('grep', 'min_interactive_pattern', 2)
 call denite#custom#source('grep', 'args', ['', '', '!'])
-
-" Use Neovim's floating window
-if has('nvim')
-	call denite#custom#option('_', {
-		\ 'statusline': 0,
-		\ 'split': 'floating',
-		\ 'floating_preview': 1,
-		\ 'filter_split_direction': 'floating',
-		\ })
-endif
 
 " Allow customizable window positions: top, bottom, center (default)
 function! s:denite_resize(position)
@@ -60,6 +59,16 @@ call s:denite_resize(g:denite_position)
 " MATCHERS
 " Default is 'matcher/fuzzy'
 call denite#custom#source('tag', 'matchers', ['matcher/substring'])
+call denite#custom#source('file/old', 'matchers', [
+	\ 'matcher/project_files', 'matcher/ignore_globs' ])
+
+" Use vim-clap's rust binary, called maple
+if dein#tap('vim-clap')
+	call denite#custom#filter('matcher/clap', 'clap_path',
+		\ dein#get('vim-clap')['path'])
+
+	call denite#custom#source('file/rec', 'matchers', [ 'matcher/clap' ])
+endif
 
 " SORTERS
 " Default is 'sorter/rank'
@@ -68,39 +77,35 @@ call denite#custom#source('z', 'sorters', ['sorter_z'])
 " CONVERTERS
 " Default is none
 call denite#custom#source(
-	\ 'buffer,file_mru,file_old',
+	\ 'buffer,file_mru,file/old',
 	\ 'converters', ['converter_relative_word'])
 
 " FIND and GREP COMMANDS
 " ---
+" Ripgrep
+if executable('rg')
+	call denite#custom#var('file/rec', 'command',
+		\ ['rg', '--hidden', '--files', '--glob', '!.git', '--color', 'never'])
+
+	call denite#custom#var('grep', {
+		\ 'command': ['rg'],
+		\ 'default_opts': ['--hidden', '-i', '--vimgrep', '--no-heading'],
+		\ 'recursive_opts': [],
+		\ 'pattern_opt': ['--regexp'],
+		\ })
+
 " The Silver Searcher (ag)
-if executable('ag')
+elseif executable('ag')
 	call denite#custom#var('file/rec', 'command',
 		\ ['ag', '--hidden', '--follow', '--nocolor', '--nogroup', '-g', ''])
 
-	" Setup ignore patterns in your .agignore file! Skipping VCS ignores.
+	" Setup ignore patterns in your .agignore file!
 	" https://github.com/ggreer/the_silver_searcher/wiki/Advanced-Usage
 	call denite#custom#var('grep', {
 		\ 'command': ['ag'],
 		\ 'default_opts': ['--vimgrep', '-i', '--hidden'],
 		\ 'recursive_opts': [],
 		\ 'pattern_opt': [],
-		\ 'final_opts': [],
-		\ 'separator': ['--'],
-		\ })
-
-" Ripgrep
-elseif executable('rg')
-	call denite#custom#var('file/rec', 'command',
-		\ ['rg', '--files', '--glob', '!.git'])
-
-	call denite#custom#var('grep', {
-		\ 'command': ['rg'],
-		\ 'default_opts': ['-i', '--vimgrep', '--no-heading'],
-		\ 'recursive_opts': [],
-		\ 'pattern_opt': ['--regexp'],
-		\ 'final_opts': [],
-		\ 'separator': ['--'],
 		\ })
 
 " Ack command
@@ -113,8 +118,6 @@ elseif executable('ack')
 		\ ],
 		\ 'recursive_opts': [],
 		\ 'pattern_opt': ['--match'],
-		\ 'separator': ['--'],
-		\ 'final_opts': [],
 		\ })
 endif
 
@@ -145,6 +148,10 @@ function! s:denite_settings() abort
 	setlocal signcolumn=no cursorline
 
 	" Denite selection window key mappings
+	nmap <silent><buffer> <C-j> j
+	nmap <silent><buffer> <C-k> k
+	nmap <silent><buffer> <C-n> j
+	nmap <silent><buffer> <C-p> k
 	nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
 	nnoremap <silent><buffer><expr> i    denite#do_map('open_filter_buffer')
 	nnoremap <silent><buffer><expr> /    denite#do_map('open_filter_buffer')
@@ -196,10 +203,11 @@ function! s:denite_filter_settings() abort
 	imap <silent><buffer> <Esc>       <Plug>(denite_filter_quit)
 	nmap <silent><buffer> <C-c>       <Plug>(denite_filter_quit)
 	imap <silent><buffer> <C-c>       <Plug>(denite_filter_quit)
-	inoremap <silent><buffer> <Tab>
-		\ <Esc><C-w>p:call cursor(line('.')+1,0)<CR><C-w>pA
-	inoremap <silent><buffer> <S-Tab>
-		\ <Esc><C-w>p:call cursor(line('.')-1,0)<CR><C-w>pA
+	imap <silent><buffer> <C-p>       <Up>
+	imap <silent><buffer> <C-n>       <Down>
+
+	imap <silent><buffer> <Tab>   <Plug>(denite_filter_quit)ji
+	imap <silent><buffer> <S-Tab> <Plug>(denite_filter_quit)ki
 endfunction
 
 " vim: set ts=2 sw=2 tw=80 noet :
