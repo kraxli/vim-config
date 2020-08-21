@@ -115,7 +115,7 @@
 # Markdown / Latex / Text (writing)
 # --------------------------------------------------
 - repo: SidOfc/mkdx
-  on_ft: [markdown, vimwiki, text]
+  on_ft: [markdown, vimwiki]
   hook_add: |
     let g:mkdx#settings     = { 'highlight': { 'enable': 1 },
                             \ 'enter': { 'shift': 0 },
