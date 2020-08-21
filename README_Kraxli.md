@@ -62,8 +62,12 @@ Best with [Neovim] or [Vim8] and `python3` enabled.
 <!-- vim-markdown-toc -->
 </details>
 
-## Discoveries
+## Discoveries / Enhancements
 <kbd>,<kbd>c<kbd> : some selections from ...
+<kbd>K<kbd> : <kbd>normla<kbd> , documentation through LSP
+<kbd><space>l <kbd>normla<kbd>
+<kbd><space>b or <space>a <kbd>normla<kbd>
+<kbd><space>f <kbd>normla<kbd>
 
 ## Features
 
