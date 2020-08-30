@@ -529,6 +529,7 @@
     \ }
 
 # let g:lsp_settings_filetype_python = 'pyls-ms' #  'pyls-all'
+# black, pycodestyle, flake8
 
 - repo: Shougo/neco-vim
   on_ft: vim

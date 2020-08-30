@@ -102,7 +102,7 @@ augroup user_plugin_filetype " {{{
 
 		"\ | au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
 
-	au BufNewFile,BufRead,BufFilePost,BufWinEnter *.mkdx,*.md,*.markdown let g:mkdx#settings = { 'enter': { 'shift': 0 } }
+	" au BufNewFile,BufRead,BufFilePost,BufWinEnter *.mkdx,*.md,*.markdown let g:mkdx#settings = { 'enter': { 'shift': 0 } }
 
 	" set breakat
 	" \ | setl formatoptions=tcroqn2 / tron

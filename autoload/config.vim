@@ -3,7 +3,23 @@ function config#mkdx_mappings()
     " use t or ; a regular prefix (except for most important maps)
 
     augroup Mkdx
+
+	au! filetype markdown,vimwiki nmap o <Plug>(mkdx-o)
+	au! filetype markdown,vimwiki nmap O <Plug>(mkdx-shift-o)
+	au! filetype markdown,vimwiki map <c-space>	<Plug>(mkdx-checkbox-next-n)
+	au! filetype markdown,vimwiki map -<space> <Plug>(mkdx-checkbox-prev-n)
+
+
 	au!
+
+	nmap gx <Nop>
+	vmap gx <Nop>
+	nmap gx :Open<cr>
+	vmap gx :Open<cr>
+	" map gx <Plug>(mkdx-gx)
+	nmap gf <Plug>(mkdx-gf)
+
+
 	map ;x <Plug>(mkdx-promote-header)  " <c-=>
 	map ;a <Plug>(mkdx-demote-header)   " <c-0>
 	map ;h <Plug>(mkdx-jump-to-header)
@@ -15,27 +31,11 @@ function config#mkdx_mappings()
 	map ;k <Plug>(mkdx-toggle-to-kbd-n)
 	vmap ;k <Plug>(mkdx-toggle-to-kbd-v)
 
-	nmap o <Nop>
-	nmap O <Nop>
-	nmap o <Plug>(mkdx-o)
-	nmap O <Plug>(mkdx-shift-o)
-
 	imap ~<cr> <Plug>(mkdx-fence-backtick)
 	imap ~<tab> <Plug>(mkdx-fence-backtick)
 	imap `<cr> <Plug>(mkdx-fence-backtick)
 	imap `<tab> <Plug>(mkdx-fence-backtick)
 	" imap <cr> <Plug>(mkdx-enter)
-
-	nmap gx <Nop>
-	vmap gx <Nop>
-	" map gx <Plug>(mkdx-gx)
-	nmap gx :Open<cr>
-	vmap gx :Open<cr>
-	" nmap gx :call config#open_url()<cr>
-	nmap gf <Plug>(mkdx-gf)
-
-	map <c-space>	<Plug>(mkdx-checkbox-next-n)
-	map -<space> <Plug>(mkdx-checkbox-prev-n)
 
 	nmap ;l <Plug>(mkdx-toggle-list-n)
 	vmap ;l <Plug>(mkdx-toggle-list-v)
