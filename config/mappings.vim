@@ -26,10 +26,14 @@ nmap <Leader><Leader> V
 vmap <Leader><Leader> <Esc>
 
 " Toggle fold
-nnoremap <CR> za
+" nnoremap <CR> za
+nnoremap <BS> za  " kraxli
+nmap $ za
 
 " Focus the current fold by closing all others
-nnoremap <S-Return> zMzvzt
+" nnoremap <S-Return> zMzvzt
+nnoremap <S-BS> zMzvzt  " kraxli
+nmap £ zMzvzt
 
 " The plugin rhysd/accelerated-jk moves through display-lines in normal mode,
 " these mappings will move through display-lines in visual mode too.
@@ -40,21 +44,9 @@ vnoremap k gk
 nnoremap gh g^
 nnoremap gl g$
 
-" Location/quickfix list movement
-nmap ]l :lnext<CR>
-nmap [l :lprev<CR>
-nmap ]q :cnext<CR>
-nmap [q :cprev<CR>
-
 " Whitespace jump (see plugin/whitespace.vim)
 nnoremap ]w :<C-u>WhitespaceNext<CR>
 nnoremap [w :<C-u>WhitespacePrev<CR>
-
-" Navigation in command line
-cnoremap <C-h> <Home>
-cnoremap <C-l> <End>
-cnoremap <C-f> <Right>
-cnoremap <C-b> <Left>
 
 " }}}
 " Scroll {{{
@@ -116,8 +108,10 @@ xnoremap <Tab> >gv|
 xnoremap <S-Tab> <gv
 
 " Indent and jump to first non-blank character linewise
-nmap >  >>_
-nmap <  <<_
+" nmap >  >>_
+" nmap <  <<_
+nmap >  >>A
+nmap <  <<A
 
 " Drag current line/s vertically and auto-indent
 nnoremap <Leader>k :m-2<CR>==
@@ -214,17 +208,6 @@ noremap <expr> <C-y> (line("w0") <= 1         ? "k" : "3\<C-y>")
 nnoremap <C-q> <C-w>
 nnoremap <C-x> <C-w>x
 nnoremap <silent><C-w>z :vert resize<CR>:resize<CR>:normal! ze<CR>
-
-" Re-select blocks after indenting in visual/select mode
-xnoremap < <gv
-xnoremap > >gv|
-
-" Use tab for indenting in visual/select mode
-xnoremap <Tab> >gv|
-xnoremap <S-Tab> <gv
-" Indent and jump to first non-blank character linewise
-nmap >  >>_		" kraxli
-nmap <  <<_		" kraxli
 
 " Navigation in command line
 cnoremap <C-h> <Home>

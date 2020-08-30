@@ -87,6 +87,14 @@
       let g:RenamerShowHidden=1
     endif
 
+- repo:  samoshkin/vim-mergetool
+  on_cmd: [MergetoolStart, MergetoolToggle]
+  hook_add: nmap <leader>mt <plug>(MergetoolToggle)
+
+
+# - repo: metakirby5/codi.vimcodi
+#   on_cmd: Codi
+
 - repo: dbakker/vim-projectroot
   hook_add: |
     let g:rootmarkers = ['.git', 'dub.json', 'dub.sdl', 'index.md',
@@ -96,10 +104,12 @@
       autocmd! BufEnter,BufRead *.* ProjectRootLCD
     augroup END
 
+
 - repo: xolox/vim-shell
   on_cmd: Open
   on_map: <F6>
   hook_add: let g:shell_verify_urls = 1
+
 
 - repo: xolox/vim-misc
   on_source: vim-shell
@@ -118,27 +128,33 @@
   on_ft: [markdown, vimwiki]
   hook_add: |
     let g:mkdx#settings     = { 'highlight': { 'enable': 1 },
-                            \ 'enter': { 'shift': 0 },
-                            \ 'links': { 'external': { 'enable': 1 }, 'fragment': {'complete': 0} },
+                            \ 'enter': { 'shift': 1, 'enable': 1},
+                            \ 'links': { 'external': { 'enable': 1, 'relative': 1 }, 'fragment': {'complete': 1, 'jumplist': 1 } },
                             \ 'toc': { 'text': 'Table of Contents', 'update_on_write': 1 },
                             \ 'fold': { 'enable': 0 },
-                            \ 'map': { 'enable': 0 },
+                            \ 'map': { 'enable': 1 },
+                            \ 'gf_on_steroids': 0,
+                            \ 'checkbox': { 'toggles': [' ', '-', 'x'] },
+                            \ 'tokens': { 'header': '#', 'enter': ['-', '*', '>'], 'fence': '`', 'list': '-', 'bold': '**', 'italic': '*', 'divider': '|' },
+                            \ 'tab': {'enable': 0}
                             \ }
     let g:polyglot_disabled = ['markdown']
-  hook_source: |
     call config#mkdx_mappings()
+  hook_source: |
+    set foldmethod=expr
 
-#  nmap <c-space>	<Plug>(mkdx-checkbox-next-n)
 
 - repo: kraxli/vim-mkd-fold
   on_ft: [text, vimwiki, markdown]
-  hook_add: let g:markdown_list_folding = 1
+  hook_add: |
+    let g:markdown_list_folding = 1
+    set foldmethod=expr
 
 
 - repo: kraxli/vim-mkd-org
   on_ft: [text, vimwiki, markdown]
   hook_add: |
-    let g:mkdd_mapping_switch_status = '<c-space>'
+    let g:mkdd_mapping_switch_status = ''
     let g:mkdd_wiki_index_key = '<leader>W'
     let g:mkdd_blog_index_key = '<leader>B'
     nmap <silent> th :TasksOpenHi<cr>

@@ -517,8 +517,18 @@
     \   'efm-langserver': {'disabled': 1},
     \   'yaml-language-server': {
     \     'allowlist': ['yaml', 'yaml.ansible'],
-    \   }
+    \   },
+    \   'filetype': {'python': 'pyls-all'},
+    \   'pyls': {
+    \     'workspace_config': {
+    \       'pyls': {
+    \         'configurationSources': ['black']
+    \       }
+    \     }
+    \   },
     \ }
+
+# let g:lsp_settings_filetype_python = 'pyls-ms' #  'pyls-all'
 
 - repo: Shougo/neco-vim
   on_ft: vim

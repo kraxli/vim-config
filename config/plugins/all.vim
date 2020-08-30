@@ -435,12 +435,15 @@ if dein#tap('soywod/kronos.vim')
 	nmap vic    <plug>(kronos-visual-in-cell)
 endif
 
+
 if dein#tap('kraxli/vim-mkd-fold')
 	autocmd FileType markdown,vimwiki,text setl foldmethod=expr
 endif
 
-if dein#tap('SidOfc/mkdx')
-endif
+
+" if dein#tap('SidOfc/mkdx')
+" endif
+
 
 " if dein#tap('SirVer/ultisnips')
 "   " UltiSnipsAddFiletypes vimwiki.markdown

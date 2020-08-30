@@ -3,8 +3,10 @@ imap jj <esc>
 " nnoremap > >>^
 " nnoremap < <<$
 
-noremap [d [sz=
-noremap ]d ]sz=
+noremap [D [sz=
+noremap ]D ]sz=
+noremap [z [sz=
+noremap ]z ]sz=
 
 " --- copy & pasting ---
 inoremap <c-v> <MiddleMouse>
@@ -25,8 +27,8 @@ inoremap <silent> <F3> <C-R>=strftime("%H:%M")<CR>
 " jump around
 nnoremap g. `.	       " jump to excact last modified position
 nnoremap g: '.	       " jump to last modified line
-nnoremap gf <c-I>      " move forward in jump list
-nnoremap gb <c-O>      " move backward in jump list
+" nnoremap gf <c-I>      " move forward in jump list
+" nnoremap gb <c-O>      " move backward in jump list
 
 " Twiddle / toggle case
 vnoremap ~ y:call setreg('', utils#TwiddleCase(@"), getregtype(''))<CR>gv""Pgv
