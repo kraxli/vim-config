@@ -279,9 +279,9 @@ if has('conceal') && v:version >= 703
 	" set concealcursor-=nciv " display all conceal text
 endif
 
-if exists('+previewpopup')
-	set previewpopup=height:10,width:60
-endif
+" if exists('+previewpopup')
+" 	set previewpopup=height:10,width:60
+" endif
 
 " Pseudo-transparency for completion menu and floating windows
 if has('termguicolors') && &termguicolors
