@@ -128,7 +128,7 @@
   on_ft: [markdown, vimwiki]
   hook_add: |
     let g:mkdx#settings     = { 'highlight': { 'enable': 1 },
-                            \ 'enter': { 'shift': 1, 'enable': 1},
+                            \ 'enter': { 'shift': 0, 'enable': 1},
                             \ 'links': { 'external': { 'enable': 1, 'relative': 1 }, 'fragment': {'complete': 1, 'jumplist': 1 } },
                             \ 'toc': { 'text': 'Table of Contents', 'update_on_write': 1 },
                             \ 'fold': { 'enable': 0 },
