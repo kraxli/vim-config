@@ -8,16 +8,16 @@ function config#mkdx_mappings()
 	au! filetype markdown,vimwiki nmap O <Plug>(mkdx-shift-o)
 	au! filetype markdown,vimwiki map <c-space>	<Plug>(mkdx-checkbox-next-n)
 	au! filetype markdown,vimwiki map -<space> <Plug>(mkdx-checkbox-prev-n)
+	" au! filetype markdown,vimwiki map gx <Plug>(mkdx-gx)
+	au! filetype markdown,vimwiki nmap gf <Plug>(mkdx-gf)
 
 
 	au!
 
-	nmap gx <Nop>
-	vmap gx <Nop>
-	nmap gx :Open<cr>
-	vmap gx :Open<cr>
-	" map gx <Plug>(mkdx-gx)
-	nmap gf <Plug>(mkdx-gf)
+	" nmap gx <Nop>
+	" vmap gx <Nop>
+	" nmap gx :Open<cr>
+	" vmap gx :Open<cr>
 
 
 	map ;x <Plug>(mkdx-promote-header)  " <c-=>
