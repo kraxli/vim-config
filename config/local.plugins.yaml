@@ -87,6 +87,7 @@
       let g:RenamerShowHidden=1
     endif
 
+
 - repo:  samoshkin/vim-mergetool
   on_cmd: [MergetoolStart, MergetoolToggle]
   hook_add: nmap <leader>mt <plug>(MergetoolToggle)
@@ -107,6 +108,12 @@
 
 - repo:  pianocomposer321/project-templates.nvim
   on_cmd: [LoadTemplate, SaveAsTemplate, DeleteTemplate]
+
+
+- repo:  samoshkin/vim-mergetool
+  on_cmd: [MergetoolToggle, MergetoolStart]
+  hook_add: nmap ;mt <plug>(MergetoolToggle)
+
 
 - repo: xolox/vim-shell
   on_cmd: Open

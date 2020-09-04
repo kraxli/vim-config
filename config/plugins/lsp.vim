@@ -19,12 +19,14 @@ function! s:on_lsp_buffer_enabled() abort
 	nmap <silent><buffer> gy     <Plug>(lsp-peek-type-definition)
 	nmap <buffer><leader>rn      <Plug>(lsp-rename)
 	nmap <silent><buffer> <C-]>  <Plug>(lsp-definition)
+	nmap <silent><buffer> gb  <Plug>(lsp-definition)
 	nmap <silent><buffer> g<C-]> <Plug>(lsp-peek-definition)
 	nmap <silent><buffer> gd     <Plug>(lsp-peek-declaration)
 	nmap <silent><buffer> gY     <Plug>(lsp-type-hierarchy)
 	nmap <silent><buffer> ,s     <Plug>(lsp-signature-help)
 	nmap <silent><buffer> [d <Plug>(lsp-previous-diagnostic)
 	nmap <silent><buffer> ]d <Plug>(lsp-next-diagnostic)
+	nmap <silent><buffer> <m-l> <Plug>(lsp-document-format)
 endfunction
 
 augroup lsp_user_plugin
