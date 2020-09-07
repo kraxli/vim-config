@@ -540,25 +540,19 @@
     \   },
     \   'filetype': {'python': 'pyls'},
     \   'pyls': {
-    \     'workspace_config': {
-    \         'pyls': {
     \             'configurationSources': ['pycodestyle'],
-    \             'pycodestyle': {
-    \                 'enabled': v:true,
-    \                 "ignore": ["E402", "E226", "E302", "E41"],
-    \                 "max-line-length": 120,
-    \                 },
     \             'plugins': {
-    \                 'pydocstyle': {'enabled': v:true},
-    \                 'pycodestyle': {'enabled': v:true},
-    \                 'autopep8': {'enabled': v:false},
-    \                 'black': {'enabled': v:true},
+    \                     'pycodestyle': {
+    \                     'enabled': v:true,
+    \                     'ignore': ['E402', 'E226', 'E302', 'E41'],
+    \                     'max-line-length': 120,
+    \                 },
+    \                 'autopep8': {'enabled': v:true},
+    \                 'black': {'enabled': v:false},
     \                 'pylint': {'enabled': v:false},
     \                 'pyflakes': {'enabled': v:false},
     \                 'flake8': {'enabled': v:false},
     \                 'isort': {'enabled': v:false},
-    \             },
-    \         },
     \     },
     \   },
     \ }
@@ -579,6 +573,40 @@
 # 'jedi': {'enabled': true},
 # "yapf": {"enabled": false }
 # let g:lsp_settings_filetype_python = 'pyls-ms' #  'pyls-all'
+
+
+# let g:lsp_settings = {
+# \   'efm-langserver': {'disabled': 1},
+# \   'gopls': {
+# \     'cmd': ['gopls', '-remote=auto'],
+# \   },
+# \   'yaml-language-server': {
+# \     'allowlist': ['yaml', 'yaml.ansible'],
+# \   },
+# \   'filetype': {'python': 'pyls'},
+# \   'pyls': {
+# \     'workspace_config': {
+# \         'pyls': {
+# \             'configurationSources': ['pycodestyle'],
+# \             'pycodestyle': {
+# \                 'enabled': v:true,
+# \                 "ignore": ["E402", "E226", "E302", "E41"],
+# \                 "max-line-length": 120,
+# \                 },
+# \             'plugins': {
+# \                 'pydocstyle': {'enabled': v:true},
+# \                 'pycodestyle': {'enabled': v:true},
+# \                 'autopep8': {'enabled': v:false},
+# \                 'black': {'enabled': v:true},
+# \                 'pylint': {'enabled': v:false},
+# \                 'pyflakes': {'enabled': v:false},
+# \                 'flake8': {'enabled': v:false},
+# \                 'isort': {'enabled': v:false},
+# \             },
+# \         },
+# \     },
+# \   },
+# \ }
 
 
 - repo: Shougo/neco-vim
