@@ -90,7 +90,6 @@
 
 - repo:  samoshkin/vim-mergetool
   on_cmd: [MergetoolStart, MergetoolToggle]
-  hook_add: nmap <leader>mt <plug>(MergetoolToggle)
 
 
 # - repo: metakirby5/codi.vimcodi

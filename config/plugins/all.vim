@@ -440,6 +440,10 @@ if dein#tap('kraxli/vim-mkd-fold')
 endif
 
 
+if dein#tap('samoshkin/vim-mergetool')
+	nmap ;mt <plug>(MergetoolToggle)
+endif
+
 " if dein#tap('SidOfc/mkdx')
 " endif
 
