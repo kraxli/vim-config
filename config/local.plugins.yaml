@@ -169,20 +169,21 @@
   on_ft: [markdown, vimwiki]
   hook_add: |
     let g:mkdx#settings     = { 'highlight': { 'enable': 1 },
-                            \ 'enter': { 'shift': 0, 'enable': 1},
+                            \ 'enter': { 'shift': 0, 'enable': 0},
                             \ 'links': { 'external': { 'enable': 1, 'relative': 1 }, 'fragment': {'complete': 1, 'jumplist': 1 } },
                             \ 'toc': { 'text': 'Table of Contents', 'update_on_write': 1 },
-                            \ 'fold': { 'enable': 0 },
+                            \ 'fold': { 'enable': 1 },
                             \ 'map': { 'enable': 1 },
                             \ 'gf_on_steroids': 0,
                             \ 'checkbox': { 'toggles': [' ', '-', 'x'] },
-                            \ 'tokens': { 'header': '#', 'enter': ['-', '*', '>'], 'fence': '`', 'list': '-', 'bold': '**', 'italic': '*', 'divider': '|' },
+                            \ 'tokens': { 'header': '#', 'enter': ['-', '*', '>'], 'fence': '`', 'list': '-', 'bold': '**', 'italic': '_', 'divider': '|' },
                             \ 'tab': {'enable': 0}
                             \ }
     let g:polyglot_disabled = ['markdown']
     call config#mkdx_mappings()
   hook_source: |
     set foldmethod=expr
+    set foldexpr=fold#FoldLevelOfLine(v:lnum)
 
 
 - repo: kraxli/vim-mkd-fold

@@ -2,16 +2,16 @@
 function config#mkdx_mappings()
     " use t or ; a regular prefix (except for most important maps)
 
+
+    au! filetype markdown,vimwiki nmap o <Plug>(mkdx-o)
+    au! filetype markdown,vimwiki nmap O <Plug>(mkdx-shift-o)
+    au! filetype markdown,vimwiki map <c-space>	<Plug>(mkdx-checkbox-next-n)
+    au! filetype markdown,vimwiki map -<space> <Plug>(mkdx-checkbox-prev-n)
+    " au! filetype markdown,vimwiki map gx <Plug>(mkdx-gx)
+    au! filetype markdown,vimwiki nmap gf <Plug>(mkdx-gf)
+
+
     augroup Mkdx
-
-	au! filetype markdown,vimwiki nmap o <Plug>(mkdx-o)
-	au! filetype markdown,vimwiki nmap O <Plug>(mkdx-shift-o)
-	au! filetype markdown,vimwiki map <c-space>	<Plug>(mkdx-checkbox-next-n)
-	au! filetype markdown,vimwiki map -<space> <Plug>(mkdx-checkbox-prev-n)
-	" au! filetype markdown,vimwiki map gx <Plug>(mkdx-gx)
-	au! filetype markdown,vimwiki nmap gf <Plug>(mkdx-gf)
-
-
 	au!
 
 	" nmap gx <Nop>
@@ -48,6 +48,7 @@ function config#mkdx_mappings()
 
 
     augroup END
+
 
 endfunction
 
