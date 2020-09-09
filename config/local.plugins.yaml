@@ -169,10 +169,10 @@
   on_ft: [markdown, vimwiki]
   hook_add: |
     let g:mkdx#settings     = { 'highlight': { 'enable': 1 },
-                            \ 'enter': { 'shift': 0, 'enable': 0},
+                            \ 'enter': { 'shift': 1, 'enable': 1},
                             \ 'links': { 'external': { 'enable': 1, 'relative': 1 }, 'fragment': {'complete': 1, 'jumplist': 1 } },
                             \ 'toc': { 'text': 'Table of Contents', 'update_on_write': 1 },
-                            \ 'fold': { 'enable': 1 },
+                            \ 'fold': { 'enable': 0 },
                             \ 'map': { 'enable': 1 },
                             \ 'gf_on_steroids': 0,
                             \ 'checkbox': { 'toggles': [' ', '-', 'x'] },
@@ -183,13 +183,13 @@
     call config#mkdx_mappings()
   hook_source: |
     set foldmethod=expr
-    set foldexpr=fold#FoldLevelOfLine(v:lnum)
 
 
 - repo: kraxli/vim-mkd-fold
   on_ft: [text, vimwiki, markdown]
   hook_add: |
     let g:markdown_list_folding = 1
+    let g:mkdd_use_mkdx = 1
     set foldmethod=expr
 
 
@@ -197,6 +197,7 @@
   on_ft: [text, vimwiki, markdown]
   hook_add: |
     let g:mkdd_mapping_switch_status = ''
+    let g:mkdd_mapping_switch_status_down = ''
     let g:mkdd_wiki_index_key = '<leader>W'
     let g:mkdd_blog_index_key = '<leader>B'
     nmap <silent> th :TasksOpenHi<cr>
@@ -259,4 +260,6 @@
 # -------------------------------------------------------
 # Watch
 # -------------------------------------------------------
+# sentientmachine/Pretty-Vim-Python : python syntax highlighting
+# tpope/vim-sensible : defaults anyone agrees on
 
