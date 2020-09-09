@@ -22,6 +22,8 @@ function config#mkdx_mappings()
 
 	map ;x <Plug>(mkdx-promote-header)  " <c-=>
 	map ;a <Plug>(mkdx-demote-header)   " <c-0>
+	nmap hi <Plug>(mkdx-promote-header)  " <c-=>
+	nmap hd <Plug>(mkdx-demote-header)   " <c-0>
 	map ;h <Plug>(mkdx-jump-to-header)
 
 	" silent! nunmap <buffer> <c-space>
@@ -37,18 +39,30 @@ function config#mkdx_mappings()
 	imap `<tab> <Plug>(mkdx-fence-backtick)
 	" imap <cr> <Plug>(mkdx-enter)
 
-	nmap ;l <Plug>(mkdx-toggle-list-n)
-	vmap ;l <Plug>(mkdx-toggle-list-v)
-	map li <Plug>(mkdx-toggle-list-n)
-	map cl <Plug>(mkdx-toggle-checklist-n)
+	map ;l <Nop>
+	map ;l <Plug>(mkdx-toggle-list-n)
 	map ;c <Nop>
 	map ;c <Plug>(mkdx-toggle-checklist-n)
-	map cn	<Plug>(mkdx-checkbox-next-n)
-	map cp <Plug>(mkdx-checkbox-prev-n)
+	map <c-space> <Plug>(mkdx-checkbox-next-n)
+	map <c-d> <Plug>(mkdx-checkbox-prev-n)
 
 
     augroup END
 
+    " nmap <c-space> :call mkdd#ToggleStatusUp()<cr>
+    " xmap <c-space> :call mkdd#ToggleStatusUp()<cr>
 
 endfunction
 
+
+function! s:ToggleStatusUp(...)
+  if a:0 == 0 | let lineNum = line('.') | else | let lineNum = a:1 | endif
+
+  let current_line = getline(lineNum)
+
+"     " no list item -> regular list item
+"     " regular list item -> to do / check box item
+"     " check box item -> check box item in progress
+"     " check box item in progress -> check box item done
+"     " check box item done -> no list item
+endfunction
