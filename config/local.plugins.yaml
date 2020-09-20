@@ -30,6 +30,21 @@
 # Lazily loading plugins
 # --------------------------------------------------
 
+- repo: tpope/vim-fugitive
+  on_cmd: [ G, Git, Gedit, Gsplit, Gvsplit, Gfetch, Gpush, Gpull, Glog, Gclog, Gdiffsplit, Gbrowse, Gread, Gwrite, Ggrep, Gmove, Grename, Gdelete, Gblame, Gmerge, Ghdiffsplit, Gvdiffsplit, Gwq, Gpedit, Gtabedit, Glcd, Gcd, 0Git, Glgrep, Ggrep, Gfetch ]
+  hook_source:
+    augroup user_fugitive_plugin
+      autocmd!
+      autocmd FileType fugitiveblame normal A
+    augroup END
+
+# Git mergetool, Git difftool
+
+- repo: junegunn/gv.vim
+  depends: vim-fugitive
+  on_cmd: GV
+
+
 - repo:  liuchengxu/vim-which-key
   on_cmd: [WhichKey, WhichKey!]
 
@@ -125,7 +140,6 @@
     vmap gx :Open<cr>
 
 
-
 - repo: xolox/vim-misc
   on_source: vim-shell
 
@@ -169,7 +183,6 @@
   on_ft: [markdown, vimwiki]
   hook_add: |
     let g:mkdx#settings     = { 'highlight': { 'enable': 1 },
-                            \ 'enter': { 'shift': 1, 'enable': 1},
                             \ 'links': { 'external': { 'enable': 1, 'relative': 1 }, 'fragment': {'complete': 1, 'jumplist': 1 } },
                             \ 'toc': { 'text': 'Table of Contents', 'update_on_write': 1 },
                             \ 'fold': { 'enable': 0 },
@@ -177,7 +190,8 @@
                             \ 'gf_on_steroids': 0,
                             \ 'checkbox': { 'toggles': [' ', '-', 'x'] },
                             \ 'tokens': { 'header': '#', 'enter': ['-', '*', '>'], 'fence': '`', 'list': '-', 'bold': '**', 'italic': '_', 'divider': '|' },
-                            \ 'tab': {'enable': 0}
+                            \ 'tab': {'enable': 0},
+                            \ 'enter': {'enable': 1,  'shift': 0, 'o': 1, 'shifto': 1, 'malformed': 1 },
                             \ }
     let g:polyglot_disabled = ['markdown']
     call config#mkdx_mappings()

@@ -89,7 +89,7 @@ augroup user_plugin_filetype " {{{
 		\ setlocal expandtab smarttab
 		\ | setlocal tabstop=2 softtabstop=2 shiftwidth=2
 		\ | setlocal autoindent
-		\ | setl formatoptions=tcroqn2
+		\ | setl formatoptions=tcoqn2  " do not set "r" (list indentation) when using mkdx
 		"\ | setlocal comments=b:*,b:-,b:+,b:>,n:>,se:``` commentstring=>\ %s  " do not use with mkdx
 		\ | setl wrap linebreak nolist
 		\ | setl breakindent
