@@ -229,7 +229,7 @@ pip3 install --user vim-vint pycodestyle pyflakes flake8
   (macOS: `brew install fzf`)
 * **Tern** for Javascript completion (`npm -g install tern`)
 * Nerd-fonts (e.g. for more beautiful Defx icons): [ryanoasis/nerd-fonts](https://github.com/ryanoasis/nerd-fonts)
-  e.g. MesloLGSDZ nerd Font Regular,  size 13. See also [Issue #109](https://github.com/rafi/vim-config/issues/109)
+  e.g. MesloLGSDZ nerd Font Regular,  size 13. See also [Issue #109](https://github.com/rafi/vim-config/issues/109) or I also like: "MesloLGS Nerd Font Mono 18"
 * YAML parser: supported are [Ruby](https://www.ruby-lang.org/en/) (see also [RubyInstaller for Ms Windows](https://rubyinstaller.org/downloads/)), [yp](https://github.com/mikefarah/yq), and PyYaml(?)
 
 ## Upgrade
