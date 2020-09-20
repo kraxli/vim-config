@@ -283,24 +283,6 @@
   on_cmd: [ GenTocGFM, GenTocRedcarpet, GenTocGitLab, UpdateToc ]
   hook_add: let g:vmt_auto_update_on_save = 0
 
-# - repo: chemzqm/vim-easygit
-# on_cmd: [Gcd, Glcd, Gblame, GcommitCurrent, GdiffThis, Gcommit, Gedit, Gdiff, Gremove, Grename, Gmove, Gcheckout, Gpush, Gpull, Gfetch, Gadd, Gstatus, Ggrep, Gmerge]
-# hook_add: let g:easygit_enable_command = 1
-
-# added kraxli
-- repo: tpope/vim-fugitive
-  on_cmd: [ G, Git, Gfetch, Gpush, Glog, Gclog, Gdiffsplit ]
-  hook_source:
-    augroup user_fugitive_plugin
-      autocmd!
-      autocmd FileType fugitiveblame normal A
-    augroup END
-
-# added kraxli
-- repo: junegunn/gv.vim
-  depends: vim-fugitive
-  on_cmd: GV
-
 - repo: liuchengxu/vista.vim
   on_cmd: Vista
   hook_add: |-
