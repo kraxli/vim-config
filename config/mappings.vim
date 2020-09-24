@@ -60,16 +60,6 @@ nnoremap zh z4h
 nnoremap <C-w>K <C-w>K<C-w>=
 nnoremap <C-w>J <C-w>J<C-w>=
 
-" Improve scroll, credits: https://github.com/Shougo
-" noremap <expr> <C-f> max([winheight(0) - 2, 1])
-"	\ ."\<C-d>".(line('w$') >= line('$') ? "L" : "M")
-" noremap <expr> <C-b> max([winheight(0) - 2, 1])
-"	\ ."\<C-u>".(line('w0') <= 1 ? "H" : "M")
-" nnoremap <expr> zz (winline() == (winheight(0)+1) / 2) ?
-"	\ 'zt' : (winline() == 1) ? 'zb' : 'zz'
-" noremap <expr> <C-e> (line("w$") >= line('$') ? "j" : "3\<C-e>")
-" noremap <expr> <C-y> (line("w0") <= 1         ? "k" : "3\<C-y>")
-
 " }}}
 " Clipboard {{{
 " ---------
@@ -134,8 +124,6 @@ vnoremap <expr> <Leader>cN "y/\\V\<C-r>=escape(@\", '/')\<CR>\<CR>" . "``cgN"
 " Duplicate paragraph
 nnoremap <Leader>cp yap<S-}>p
 
-" Remove spaces at the end of lines
-nnoremap <Leader>cw :<C-u>silent! keeppatterns %substitute/\s\+$//e<CR>
 
 " }}}
 " Search & Replace {{{
@@ -148,9 +136,6 @@ nnoremap <Leader>cw :<C-u>silent! keeppatterns %substitute/\s\+$//e<CR>
 " Repeat latest f, t, F or T
 nnoremap \ ;
 
-" Select last paste
-nnoremap <expr> gp '`['.strpart(getregtype(), 0, 1).'`]'
-
 " `<Tab>`/`<S-Tab>` to move between matches without leaving incremental search.
 " Note dependency on `'wildcharm'` being set to `<C-z>` in order for this to
 " work.
@@ -158,20 +143,6 @@ nnoremap <expr> gp '`['.strpart(getregtype(), 0, 1).'`]'
 "	\ getcmdtype() == '/' \|\| getcmdtype() == '?' ? '<CR>/<C-r>/' : '<C-z>'
 " cnoremap <expr> <S-Tab>
 "	\ getcmdtype() == '/' \|\| getcmdtype() == '?' ? '<CR>?<C-r>/' : '<S-Tab>'
-
-" Quick substitute within selected area
-xnoremap sg :s//gc<Left><Left><Left>
-
-" C-r: Easier search and replace visual/select mode
-xnoremap <C-r> :<C-u>call <SID>get_selection('/')<CR>:%s/\V<C-R>=@/<CR>//gc<Left><Left><Left>
-
-" Returns visually selected text
-function! s:get_selection(cmdtype) "{{{
-	let temp = @s
-	normal! gv"sy
-	let @/ = substitute(escape(@s, '\'.a:cmdtype), '\n', '\\n', 'g')
-	let @s = temp
-endfunction "}}}
 
 " }}}
 " Command & History {{{
@@ -191,9 +162,6 @@ cnoreabbrev Qa qa
 cnoreabbrev Bd bd
 cnoreabbrev bD bd
 
-nnoremap zl z4l
-nnoremap zh z4h
-
 " Improve scroll, credits: https://github.com/Shougo
 noremap <expr> <C-f> max([winheight(0) - 2, 1])
 	\ ."\<C-d>".(line('w$') >= line('$') ? "L" : "M")
@@ -204,10 +172,6 @@ nnoremap <expr> zz (winline() == (winheight(0)+1) / 2) ?
 noremap <expr> <C-e> (line("w$") >= line('$') ? "j" : "3\<C-e>")
 noremap <expr> <C-y> (line("w0") <= 1         ? "k" : "3\<C-y>")
 
-" Window control
-nnoremap <C-q> <C-w>
-nnoremap <C-x> <C-w>x
-nnoremap <silent><C-w>z :vert resize<CR>:resize<CR>:normal! ze<CR>
 
 " Navigation in command line
 cnoremap <C-h> <Home>
@@ -373,6 +337,7 @@ autocmd user_events BufWinEnter,BufNew *
 
 nnoremap <C-q> <C-w>
 nnoremap <C-x> <C-w>x
+nnoremap <silent><C-w>z :vert resize<CR>:resize<CR>:normal! ze<CR>
 
 " Window-control prefix
 nnoremap  [Window]   <Nop>
