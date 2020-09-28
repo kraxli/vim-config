@@ -35,8 +35,15 @@ vnoremap ~ y:call setreg('', utils#TwiddleCase(@"), getregtype(''))<CR>gv""Pgv
 
 
 " {{{ --- windows / splits ---
+
+		nmap bd :bd<cr>
+
 		" resize window / split
 		" nnoremap <c-w>< <c-w>5<
+
+		" see config/mappings.vim:
+		" nnoremap  [Window]   <Nop>
+		" nmap      s [Window]
 
 		" open and colose (new) tab
 		" map <leader>nt :tabnew<cr>
