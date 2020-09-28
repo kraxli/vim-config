@@ -82,7 +82,8 @@ function! s:defx_toggle_tree() abort
 	if defx#is_directory()
 		return defx#do_action('open_tree', ['nested', 'toggle'])
 	endif
-	return defx#do_action('multi', ['drop', 'quit'])
+	" return defx#do_action('multi', ['drop', 'quit'])
+	return defx#do_action('drop')
 endfunction
 
 function! s:defx_mappings() abort
@@ -96,8 +97,10 @@ function! s:defx_mappings() abort
 	nnoremap <silent><buffer><expr> h     defx#do_action('close_tree')
 	nnoremap <silent><buffer><expr> t     defx#do_action('open_tree', 'recursive')
 	nnoremap <silent><buffer><expr> st    defx#do_action('multi', [['drop', 'tabnew'], 'quit'])
+	" nnoremap <silent><buffer><expr> st    defx#do_action('multi', [['drop', 'tabnew']])
 	nnoremap <silent><buffer><expr> sv    defx#do_action('multi', [['drop', 'vsplit'], 'quit'])
-	nnoremap <silent><buffer><expr> sh    defx#do_action('multi', [['drop', 'split'], 'quit'])
+	" nnoremap <silent><buffer><expr> sh    defx#do_action('multi', [['drop', 'split'], 'quit'])
+	nnoremap <silent><buffer><expr> sh    defx#do_action('multi', [['drop', 'split']])
 "	nnoremap <silent><buffer><expr> P     defx#do_action('open', 'pedit')
 	vnoremap <silent><buffer><expr> P     defx#do_action('preview')
 	nnoremap <silent><buffer><expr> y     defx#do_action('yank_path')
