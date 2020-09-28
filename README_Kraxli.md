@@ -125,7 +125,7 @@ rm -rf ~/.cache/vim
 ln -s ~/.config/nvim ~/.vim  # For "regular" Vim
 ```
 
-* _**Note**:_ If you set a custom `$XDG_CONFIG_HOME`,
+* _**Note**_: If you set a custom `$XDG_CONFIG_HOME`,
   use that instead of `~/.config` in the commands above.
   Neovim follows the XDG base-directories convention, Vim doesn't.
 
@@ -228,8 +228,9 @@ pip3 install --user vim-vint pycodestyle pyflakes flake8
   **[peco](https://github.com/peco/peco)**
   (macOS: `brew install fzf`)
 * **Tern** for Javascript completion (`npm -g install tern`)
+* As default I use the Monospace Regular 15 in Gnome Terminal
 * Nerd-fonts (e.g. for more beautiful Defx icons): [ryanoasis/nerd-fonts](https://github.com/ryanoasis/nerd-fonts)
-  e.g. MesloLGSDZ nerd Font Regular,  size 13. See also [Issue #109](https://github.com/rafi/vim-config/issues/109) or I also like: "MesloLGS Nerd Font Mono 18"
+  e.g. MesloLGSDZ nerd Font Regular,  size 13. See also [Issue #109](https://github.com/rafi/vim-config/issues/109) or I also like: "MesloLGS Nerd Font Mono 18" and "Meslo LGSDZ Nerd Font Mono 16"
 * YAML parser: supported are [Ruby](https://www.ruby-lang.org/en/) (see also [RubyInstaller for Ms Windows](https://rubyinstaller.org/downloads/)), [yp](https://github.com/mikefarah/yq), and PyYaml(?)
 
 ## Upgrade
