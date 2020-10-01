@@ -1,4 +1,4 @@
-bg Kraxli's Neo/vim Config 
+bg Kraxli's Neo/vim Config
 
 All credit goes to [Rafael Bodill](https://github.com/rafi/vim-config)
 
@@ -121,7 +121,7 @@ we'll also symlink it for regular Vim:
 mkdir ~/.config
 git clone git://github.com/kraxli/vim-config.git ~/.config/nvim
 cd ~/.config/nvim
-rm -rf ~/.cache/vim   
+rm -rf ~/.cache/vim
 ln -s ~/.config/nvim ~/.vim  # For "regular" Vim
 ```
 
@@ -186,8 +186,11 @@ brew cask install font-fira-code
 mkdir -p ~/.fonts
 git clone https://github.com/ryanoasis/nerd-fonts.git ~/.fonts
 cd ~/.fonts
-./install.sh Meslo 
+./install.sh Meslo
 ```
+
+### Recommended Color schemes
+There are plenty of choices for color schemes, out of the box and to add by yourself. What I like from the ones out of the box are *gruvbox* and _(vim-)one_.
 
 ### Recommended Linters
 
@@ -771,9 +774,6 @@ Note that,
 | `#` | Visual | Search selection backwards
 | `]`+`c`/`q` | Normal | Next on location/quickfix list
 | `]`+`c`/`q` | Normal | Previous on location/quickfix list
-| `s`+`bg` | Normal | Toggle colorscheme background dark/light
-| `s`+`-` | Normal | Lower colorscheme contrast (Support solarized8)
-| `s`+`=` | Normal | Raise colorscheme contrast (Support solarized8)
 
 ### Window Management
 
@@ -782,8 +782,8 @@ Note that,
 | <kbd>q</kbd> | 𝐍 | Quit window (and Vim, if last window) | `:quit`
 | <kbd>Ctrl</kbd>+<kbd>q</kbd> | 𝐍 | Remap to C-w | <kbd>Ctrl</kbd>+<kbd>w</kbd>
 | <kbd>Ctrl</kbd>+<kbd>x</kbd> | 𝐍 | Rotate window placement | `C-w` `x`
-| <kbd>sv</kbd> | 𝐍 | Horizontal split | `:split`
-| <kbd>sg</kbd> | 𝐍 | Vertical split | `:vsplit`
+| <kbd>sh</kbd> | 𝐍 | Horizontal split | `:split`
+| <kbd>sv</kbd> | 𝐍 | Vertical split | `:vsplit`
 | <kbd>st</kbd> | 𝐍 | Open new tab | `:tabnew`
 | <kbd>so</kbd> | 𝐍 | Close other windows | `:only`
 | <kbd>sb</kbd> | 𝐍 | Previous buffer | `:b#`
@@ -791,7 +791,7 @@ Note that,
 | <kbd>sx</kbd> | 𝐍 | Delete buffer, leave blank window | `:enew │ bdelete`
 | <kbd>ssv</kbd> | 𝐍 | Split with previous buffer | `:split │ wincmd p │ e#`
 | <kbd>ssg</kbd> | 𝐍 | Vertical split with previous buffer | `:vsplit │ wincmd p │ e#`
-| <kbd>sh</kbd> | 𝐍 | Toggle colorscheme background=dark/light | `:set background` …
+| <kbd>sg</kbd> | 𝐍 | Toggle colorscheme background=dark/light | `:set background` …
 | <kbd>s-</kbd> | 𝐍 | Lower solarized8 colorscheme contrast | `:colorscheme ` …
 | <kbd>s=</kbd> | 𝐍 | Raise solarized8 colorscheme contrast | `:colorscheme ` …
 
