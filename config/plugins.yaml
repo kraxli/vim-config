@@ -520,8 +520,8 @@
     \   'yaml-language-server': {
     \     'allowlist': ['yaml', 'yaml.ansible'],
     \   },
-    \   'filetype': {'python': 'pyls'},
-    \   'pyls': {
+    \   'filetype': {'python': 'pyls-ms'},
+    \   'pyls-ms': {
     \             'configurationSources': ['pycodestyle'],
     \             'plugins': {
     \                     'pycodestyle': {
