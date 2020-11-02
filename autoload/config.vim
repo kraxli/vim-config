@@ -24,7 +24,7 @@ function config#mkdx_mappings()
 	map ;a <Plug>(mkdx-demote-header)   " <c-0>
 	nmap hi <Plug>(mkdx-promote-header)  " <c-=>
 	nmap hd <Plug>(mkdx-demote-header)   " <c-0>
-	map ;h <Plug>(mkdx-jump-to-header)
+	nmap ;h <Plug>(mkdx-jump-to-header)
 
 	" silent! nunmap <buffer> <c-space>
 	" nmap <c-space>	<Plug>(mkdx-checkbox-next-n)
@@ -40,9 +40,9 @@ function config#mkdx_mappings()
 	" imap <cr> <Plug>(mkdx-enter)
 
 	map ;l <Nop>
-	map ;l <Plug>(mkdx-toggle-list-n)
+	map ;l <Plug>(mkdx-toggle-list-n)$
 	map ;c <Nop>
-	map ;c <Plug>(mkdx-toggle-checklist-n)
+	map ;c <Plug>(mkdx-toggle-checklist-n)$
 	map <c-space> <Plug>(mkdx-checkbox-next-n)
 	map <c-d> <Plug>(mkdx-checkbox-prev-n)
 
