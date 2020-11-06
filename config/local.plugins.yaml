@@ -193,11 +193,11 @@
                             \ 'tab': {'enable': 0},
                             \ 'enter': {'enable': 1,  'shift': 0, 'o': 1, 'shifto': 1, 'malformed': 1 },
                             \ }
-    let g:polyglot_disabled = ['markdown']
     call config#mkdx_mappings()
   hook_source: |
     set foldmethod=expr
 
+#    let g:polyglot_disabled = ['markdown']
 
 - repo: kraxli/vim-mkd-fold
   on_ft: [text, vimwiki, markdown]
@@ -260,6 +260,10 @@
 # --------------------------------------------------
 # Programming language support
 # --------------------------------------------------
+
+- repo:  kraxli/julia-vim
+  on_ft: [julia, jl]
+
 
 - repo: JesseKPhillips/d.vim
   on_ft: [d, dlang, diet]
