@@ -144,6 +144,23 @@ nnoremap \ ;
 " cnoremap <expr> <S-Tab>
 "	\ getcmdtype() == '/' \|\| getcmdtype() == '?' ? '<CR>?<C-r>/' : '<S-Tab>'
 
+" Select last paste
+nnoremap <expr> gp '`['.strpart(getregtype(), 0, 1).'`]'
+
+" Quick substitute within selected area
+xnoremap sg :s//gc<Left><Left><Left>
+
+" C-r: Easier search and replace visual/select mode
+xnoremap <C-r> :<C-u>call <SID>get_selection('/')<CR>:%s/\V<C-R>=@/<CR>//gc<Left><Left><Left>
+
+" Returns visually selected text
+function! s:get_selection(cmdtype) "{{{
+	let temp = @s
+	normal! gv"sy
+	let @/ = substitute(escape(@s, '\'.a:cmdtype), '\n', '\\n', 'g')
+	let @s = temp
+endfunction "}}}
+
 " }}}
 " Command & History {{{
 " -----------------
@@ -241,20 +258,6 @@ nnoremap <silent> <A-}> :<C-u>+tabmove<CR>
 " Remove spaces at the end of lines
 nnoremap <Leader>cw :<C-u>silent! keeppatterns %substitute/\s\+$//e<CR>
 
-" C-r: Easier search and replace visual/select mode
-xnoremap <C-r> :<C-u>call <SID>get_selection('/')<CR>:%s/\V<C-R>=@/<CR>//gc<Left><Left><Left>
-
-" Quick substitute within selected area
-xnoremap sg :s//gc<Left><Left><Left>
-
-" Returns visually selected text
-function! s:get_selection(cmdtype) "{{{
-	let temp = @s
-	normal! gv"sy
-	let @/ = substitute(escape(@s, '\'.a:cmdtype), '\n', '\\n', 'g')
-	let @s = temp
-endfunction "}}}
-
 " Location/quickfix list movement
 nmap ]l :lnext<CR>
 nmap [l :lprev<CR>
@@ -263,8 +266,6 @@ nmap [c :lprev<CR>
 nmap ]q :cnext<CR>
 nmap [q :cprev<CR>
 
-" Select last paste
-nnoremap <expr> gp '`['.strpart(getregtype(), 0, 1).'`]'
 " Show vim syntax highlight groups for character under cursor
 nmap <silent> <Leader>h
 	\ :echo 'hi<'.synIDattr(synID(line('.'), col('.'), 1), 'name')
