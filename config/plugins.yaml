@@ -522,20 +522,11 @@
     \   },
     \   'filetype': {'python': 'pyls-ms'},
     \   'pyls-ms': {
-    \             'configurationSources': ['pycodestyle'],
-    \             'plugins': {
-    \                     'pycodestyle': {
-    \                     'enabled': v:true,
-    \                     'ignore': ['E402', 'E226', 'E302', 'E41'],
-    \                     'max-line-length': 120,
-    \                 },
-    \                 'autopep8': {'enabled': v:true},
-    \                 'black': {'enabled': v:false},
-    \                 'pylint': {'enabled': v:false},
-    \                 'pyflakes': {'enabled': v:false},
-    \                 'flake8': {'enabled': v:false},
-    \                 'isort': {'enabled': v:false},
-    \     },
+    \       'workspace_config': {
+    \         'pyls': {
+    \           'configurationSources': ['flake8', 'black', 'pylint', 'pyflakes', 'flake8', 'isort']
+    \         },
+    \       },
     \   },
     \ }
     let g:lsp_diagnostics_enabled = 1
@@ -544,6 +535,24 @@
     let g:lsp_signs_warning = {'text': '⚠'}
     highlight link LspErrorText ErrorMsg
     highlight link LspWarningText Type
+
+# \   'pyls-ms': {
+# \             'configurationSources': ['pycodestyle'],
+# \             'plugins': {
+# \                 'pycodestyle': {
+# \                     'enabled': v:true,
+# \                     'ignore': ['E402', 'E226', 'E302', 'E41'],
+# \                     'max-line-length': 120,
+# \                  },
+# \                 'autopep8': {'enabled': v:true},
+# \                 'black': {'enabled': v:false},
+# \                 'pylint': {'enabled': v:false},
+# \                 'pyflakes': {'enabled': v:false},
+# \                 'flake8': {'enabled': v:false},
+# \                 'isort': {'enabled': v:false},
+# \             },
+# \   },
+
 
 # let g:lsp_log_verbose = 1
 # let g:lsp_log_file = expand('~/vim-lsp.log')
