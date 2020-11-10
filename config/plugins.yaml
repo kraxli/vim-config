@@ -57,7 +57,8 @@
 
 # Markdown related
 # forked from: plasticboy/vim-markdown
-- repo: kraxli/vim-markdown
+# - repo: kraxli/vim-markdown
+- repo: plasticboy/vim-markdown
   on_ft: markdown
   hook_add: |-
     let g:vim_markdown_frontmatter = 1
@@ -449,7 +450,7 @@
   on_map: { n: <Plug> }
   on_cmd: [ VimwikiIndex, VimwikiUISelect ]
   hook_add: |
-    let g:vimwiki_listsyms = '\s○◐●x'
+    let g:vimwiki_listsyms = ' ○◐●x'
     let g:vimwiki_folding = 'custom'
     let g:vimwiki_conceallevel = 1
     let g:vimwiki_use_calendar = 1
@@ -458,7 +459,6 @@
     let g:vimwiki_autowriteall = 0
     let g:vimwiki_global_ext = 1
     let g:vimwiki_ext2syntax = {'.wiki': 'markdown', '.md': 'markdown'}
-  hook_source: |-
     let g:vimwiki_list = [
     \   { 'diary_header': 'Diary',
     \     'diary_link_fmt': '%Y-%m-%d',
@@ -472,8 +472,8 @@
     \     'ext': '.md' },
     \ ]
 
-
 # let g:vimwiki_listsyms = '✗○◐●✓'
+# au! FileType markdown set ft=vimwiki
 # hook_source: execute 'source '.g:nvim_dir.g:path_sep.'config_kraxli'.g:path_sep.'plugins'.g:path_sep.'vimwiki.vim' 'path': '~/Dropbox/PKD/vimwiki/',
 
 # ========================================

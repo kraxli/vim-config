@@ -7,7 +7,7 @@ let s:vimwiki_header_type = '#'     " set to '=' for wiki syntax
 setlocal foldlevel=1
 setlocal foldenable
 setlocal foldmethod=expr
-setlocal foldexpr=Fold(v:lnum)
+" setlocal foldexpr=Fold(v:lnum)
 
 
 function! Fold(lnum)

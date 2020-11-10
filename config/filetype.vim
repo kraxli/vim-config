@@ -100,6 +100,7 @@ augroup user_plugin_filetype " {{{
 		\ | setl formatlistpat=^\\s*\\d\\+\\.\\s\\+\\\\|^\\s*[+-\\*]\\s\\+
 		\ | setl iskeyword-=-,\-
 
+		" autocmd FileType markdown set filetype=vimwiki
 		"\ | au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
 
 	" au BufNewFile,BufRead,BufFilePost,BufWinEnter *.mkdx,*.md,*.markdown let g:mkdx#settings = { 'enter': { 'shift': 0 } }
@@ -122,7 +123,10 @@ augroup user_plugin_filetype " {{{
 
 	au FileType matlab setl foldmethod=indent nospell
 
+
 augroup END " }}}
+
+
 
 " Internal Plugin Settings  {{{
 " ------------------------
