@@ -4,9 +4,9 @@ let s:dir_filetype = fnamemodify(expand('<sfile>'), ':p:h:gs?\\?')
 
 let s:vimwiki_fold_blank_lines = 0  " set to 1 to fold blank lines
 let s:vimwiki_header_type = '#'     " set to '=' for wiki syntax
-setlocal foldlevel=1
-setlocal foldenable
-setlocal foldmethod=expr
+" setlocal foldlevel=1
+" setlocal foldenable
+" setlocal foldmethod=expr
 " setlocal foldexpr=Fold(v:lnum)
 
 

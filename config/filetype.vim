@@ -89,8 +89,8 @@ augroup user_plugin_filetype " {{{
 		\ setlocal expandtab smarttab
 		\ | setlocal tabstop=2 softtabstop=2 shiftwidth=2
 		\ | setlocal autoindent
-		\ | setl formatoptions=tcoqn2  " do not set "r" (list indentation) when using mkdx
-		"\ | setlocal comments=b:*,b:-,b:+,b:>,n:>,se:``` commentstring=>\ %s  " do not use with mkdx
+		\ | setl formatoptions=tcoq2  " do not set "r" (list indentation) when using mkdx
+		\ | setlocal comments=b:*,b:-,b:+,b:>,n:>,se:``` commentstring=>\ %s  " do not use with mkdx
 		\ | setl wrap linebreak nolist
 		\ | setl breakindent
 		\ | setl textwidth=0
@@ -98,7 +98,9 @@ augroup user_plugin_filetype " {{{
 		\ | setlocal nolisp
 		\ | setl spell spelllang=en,de
 		\ | setl formatlistpat=^\\s*\\d\\+\\.\\s\\+\\\\|^\\s*[+-\\*]\\s\\+
-		\ | setl iskeyword-=-,\-
+		\ | setlocal foldlevel=1 foldenable foldmethod=expr
+		\ | setlocal foldexpr=fold#FoldLevelOfLine(v:lnum)
+		" \ | setl iskeyword-=-,\-		" used for mkdx to insert new list items & do not highlight '-' as cursorword
 
 		" autocmd FileType markdown set filetype=vimwiki
 		"\ | au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
