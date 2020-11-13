@@ -100,16 +100,15 @@ augroup user_plugin_filetype " {{{
 		\ | setl formatlistpat=^\\s*\\d\\+\\.\\s\\+\\\\|^\\s*[+-\\*]\\s\\+
 		\ | setlocal foldlevel=1 foldenable foldmethod=expr
 		\ | setlocal foldexpr=fold#FoldLevelOfLine(v:lnum)
-		" \ | setl iskeyword-=-,\-		" used for mkdx to insert new list items & do not highlight '-' as cursorword
 
+		" \ | setl iskeyword-=-,\-		" used for mkdx to insert new list items & do not highlight '-' as cursorword
 		" autocmd FileType markdown set filetype=vimwiki
 		"\ | au BufNewFile,BufRead *.md,*.markdown setlocal filetype=ghmarkdown
 
-	" au BufNewFile,BufRead,BufFilePost,BufWinEnter *.mkdx,*.md,*.markdown let g:mkdx#settings = { 'enter': { 'shift': 0 } }
-
-	" set breakat
-	" \ | setl formatoptions=tcroqn2 / tron
-	" \ setlocal conceallevel=0 " not complient with indentLine
+		" au BufNewFile,BufRead,BufFilePost,BufWinEnter *.mkdx,*.md,*.markdown let g:mkdx#settings = { 'enter': { 'shift': 0 } }
+		" set breakat
+		" \ | setl formatoptions=tcroqn2 / tron
+		" \ setlocal conceallevel=0 " not complient with indentLine
 
 	autocmd FileType apache setlocal path+=./;/
 

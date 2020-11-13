@@ -294,6 +294,9 @@ endif
 
 if dein#tap('vimwiki')
 	nnoremap <silent> <Leader>W :<C-u>VimwikiIndex<CR>
+	" expand iabbrev on enter
+	inoremap <silent><buffer> <m-CR> <C-]><Esc>:VimwikiReturn 1 5<CR>
+	inoremap <silent><buffer> <S-CR> <Esc>:VimwikiReturn 2 2<CR>
 endif
 
 if dein#tap('vim-choosewin')

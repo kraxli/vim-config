@@ -9,6 +9,13 @@ let s:vimwiki_header_type = '#'     " set to '=' for wiki syntax
 " setlocal foldmethod=expr
 " setlocal foldexpr=Fold(v:lnum)
 
+" expand iabbrev on enter
+" inoremap <silent><buffer> <m-CR> <C-]><Esc>:VimwikiReturn 1 5<CR>
+" inoremap <silent><buffer> <S-CR> <Esc>:VimwikiReturn 2 2<CR>
+
+" add UltiSnips markdown-snppets for vimwiki
+UltiSnipsAddFiletypes vimwiki.markdown
+
 
 function! Fold(lnum)
   let fold_level = strlen(matchstr(getline(a:lnum), '^' . s:vimwiki_header_type . '\+'))
