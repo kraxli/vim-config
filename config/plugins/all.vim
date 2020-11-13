@@ -397,7 +397,7 @@ endif
 
 if dein#tap('caw.vim')
 	function! InitCaw() abort
-		if ! (&l:modifiable && &buftype ==# '')
+		" if ! (&l:modifiable && &buftype ==# '')
 			silent! nunmap <buffer> <Leader>V
 			silent! xunmap <buffer> <Leader>V
 			silent! nunmap <buffer> <Leader>v
@@ -406,7 +406,7 @@ if dein#tap('caw.vim')
 			silent! xunmap <buffer> gc
 			silent! nunmap <buffer> gcc
 			silent! xunmap <buffer> gcc
-		else
+		" else
 			xmap <buffer> <Leader>V <Plug>(caw:wrap:toggle)
 			nmap <buffer> <Leader>V <Plug>(caw:wrap:toggle)
 			xmap <buffer> <Leader>v <Plug>(caw:hatpos:toggle)
@@ -415,7 +415,7 @@ if dein#tap('caw.vim')
 			xmap <buffer> gc <Plug>(caw:prefix)
 			nmap <buffer> gcc <Plug>(caw:hatpos:toggle)
 			xmap <buffer> gcc <Plug>(caw:hatpos:toggle)
-		endif
+		" endif
 	endfunction
 	autocmd user_events FileType * call InitCaw()
 	call InitCaw()
