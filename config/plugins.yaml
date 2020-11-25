@@ -57,8 +57,8 @@
 
 # Markdown related
 # forked from: plasticboy/vim-markdown
-# - repo: kraxli/vim-markdown
-- repo: plasticboy/vim-markdown
+# - repo: plasticboy/vim-markdown
+- repo: kraxli/vim-markdown
   on_ft: markdown
   hook_add: |-
     let g:vim_markdown_frontmatter = 1
@@ -695,6 +695,7 @@
   if: has('python3')
   on_event: FileType
   hook_add: |-
+    let g:UltiSnipsSnippetDirectories=["UltiSnips", "snippets/UltiSnips"]
     let g:UltiSnipsExpandTrigger = '<C-Tab>'
     let g:UltiSnipsListSnippets = '<C-l>'
     let g:UltiSnipsJumpForwardTrigger = '<Tab>'
