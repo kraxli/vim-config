@@ -262,8 +262,11 @@
 # Programming language support
 # --------------------------------------------------
 
-# - repo:  kraxli/julia-vim
-  # on_ft: [julia]
+# https://dev.to/moinmoti/nim-on-neovim-24d3
+- repo:  zah/nim.vim
+  on_ft: [nim]
+
+# - repo:  JuliaEditorSupport/julia-vim
 
 
 - repo: JesseKPhillips/d.vim

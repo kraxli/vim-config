@@ -3,9 +3,16 @@
 
 " Apply settings for languages that registered LSP
 function! s:on_lsp_buffer_enabled() abort
+	if empty(globpath(&rtp, 'autoload/lsp.vim'))
+		finish
+	endif
 	setlocal omnifunc=lsp#complete
-	if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
-	" Slow
+
+	if exists('+tagfunc')
+		setlocal tagfunc=lsp#tagfunc
+	endif
+
+	" Folds are really slow
 	" setlocal foldmethod=expr
 	"	\ foldexpr=lsp#ui#vim#folding#foldexpr()
 	"	\ foldtext=lsp#ui#vim#folding#foldtext()
@@ -30,7 +37,9 @@ function! s:on_lsp_buffer_enabled() abort
 	nmap <silent><buffer> ,s     <Plug>(lsp-signature-help)
 	nmap <silent><buffer> [d <Plug>(lsp-previous-diagnostic)
 	nmap <silent><buffer> ]d <Plug>(lsp-next-diagnostic)
-	nmap <silent><buffer> <m-l> <Plug>(lsp-document-format)
+" 	nmap <silent><buffer> <m-l> <Plug>(lsp-document-format)
+	nmap <buffer> <Leader>F      <plug>(lsp-document-format)
+	vmap <buffer> <Leader>F      <plug>(lsp-document-range-format)
 endfunction
 
 augroup lsp_user_plugin
@@ -38,6 +47,7 @@ augroup lsp_user_plugin
 
 	autocmd User lsp_buffer_enabled call <SID>on_lsp_buffer_enabled()
 
-	" vim-lsp completion error
-	" autocmd CompleteDone * if pumvisible() == 0 | pclose | endif
+	autocmd CompleteDone * if pumvisible() == 0 | pclose | endif
+
+	autocmd BufWinEnter * let g:lsp_preview_max_width = winwidth(0) / 2
 augroup END
