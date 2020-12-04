@@ -34,3 +34,10 @@ command! SpellEnDe setl spell spelllang=en,de
 " change filetpe
 command! SetFtMkd set filetype=markdown
 autocmd! FileType markdown command! MarkMap :!markmap %:p
+
+
+"""""""""""""""
+"  utilities  "
+"""""""""""""""
+command! KeyMaps call utils#KeyMaps()
+

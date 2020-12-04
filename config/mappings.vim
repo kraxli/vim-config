@@ -1,6 +1,13 @@
 " Key-mappings
 " ===
 
+" Which-key (kraxli) {{{
+	nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+	nnoremap <silent> <localleader> :WhichKey ','<CR>
+	nnoremap <silent> ; :WhichKey ';'<CR>
+" }}}
+
+
 " Elite-mode {{{
 " ----------
 if get(g:, 'elite_mode')

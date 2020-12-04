@@ -10,6 +10,7 @@ function! utils#TwiddleCase(str) abort
   return result
 endfunction
 
+" {{{ function! utils#files_recent(path)
 " Reminder: https://jdhao.github.io/2019/04/22/mix_python_and_vim_script/
 function! utils#files_recent(path)
 let path = a:path
@@ -28,10 +29,10 @@ let files = py3eval('files')
 echo files
 return files
 endfunction
+" }}}
 
 function! utils#KeyMaps()
-	enew|pu=execute('verbose map')
-	g/\s*Last.*/d
-	g/\s*$/d
-	1
+    silent enew|pu=execute('verbose map')
+    silent g/\s*Last.*/d
+    silent g/^\s*$/d
 endfunction
