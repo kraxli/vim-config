@@ -62,7 +62,7 @@ if has('wildmenu')
 	endif
 	set wildignorecase
 	set wildignore+=.git,.hg,.svn,.stversions,*.pyc,*.spl,*.o,*.out,*~,%*
-	set wildignore+=*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store
+	set wildignore+=*.gif,*.zip,**/tmp/**,*.DS_Store " *.jpg,*.jpeg,*.png, " otherwise not asyncomplete for images
 	set wildignore+=**/node_modules/**,**/bower_modules/**,*/.sass-cache/*
 	set wildignore+=__pycache__,*.egg-info,.pytest_cache,.mypy_cache/**
 endif

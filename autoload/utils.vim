@@ -10,24 +10,30 @@ function! utils#TwiddleCase(str) abort
   return result
 endfunction
 
+" TODO: selected item from drop-down is not inserted
 " {{{ function! utils#files_recent(path)
+function! utils#files_sort_date()
 " Reminder: https://jdhao.github.io/2019/04/22/mix_python_and_vim_script/
-function! utils#files_recent(path)
-let path = a:path
 
+let path = split(getline('.')[0:col('.')-1])[-1]
+
+" TODO: python: how to handle ~/xxx
 python3 << EOF
 import os
 import vim
 path = vim.eval("path")
+path = os.path.expanduser(path)
 files = os.listdir(path)
 paths = [os.path.join(path, basename) for basename in files]
 files = sorted(paths, key=os.path.getctime, reverse=True)
+files = [os.path.basename(file) for file in files]
 # vim.command("let files = {}".format(files))
 EOF
 
 let files = py3eval('files')
-echo files
-return files
+call complete(col('.'), files)
+return ''
+
 endfunction
 " }}}
 

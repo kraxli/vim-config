@@ -24,6 +24,9 @@ nnoremap <silent> <F3> "=strftime("%H:%M")<CR>P
 inoremap <silent> <F3> <C-R>=strftime("%H:%M")<CR>
 " or strftime("%T") " to display hour:minutes:seconds
 
+" pop for auto-completion with most recent files
+inoremap <silent> <F5> <C-R>=utils#files_sort_date()<cr>
+
 " jump around
 nnoremap g. `.	       " jump to excact last modified position
 nnoremap g: '.	       " jump to last modified line

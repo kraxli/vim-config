@@ -15,6 +15,7 @@ let s:vimwiki_header_type = '#'     " set to '=' for wiki syntax
 
 " add UltiSnips markdown-snppets for vimwiki
 UltiSnipsAddFiletypes vimwiki.markdown
+UltiSnipsAddFiletypes vimwiki.writer
 
 
 function! Fold(lnum)
@@ -29,4 +30,6 @@ function! Fold(lnum)
   endif
   return '=' " return previous fold level
 endfunction
+
+
 
