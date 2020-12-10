@@ -75,7 +75,7 @@ Best with [Neovim] 0.5.x or [Vim] 8.x and `python3` enabled.
 * Light-weight but informative status/tabline
 * Easy customizable theme
 * Premium color-schemes
-* Central location for tags and sessions
+* Central [location](location) for tags and sessions
 
 ## Screenshot
 
