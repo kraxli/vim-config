@@ -49,5 +49,5 @@ augroup lsp_user_plugin
 
 	autocmd CompleteDone * if pumvisible() == 0 | pclose | endif
 
-	autocmd BufWinEnter * let g:lsp_preview_max_width = winwidth(0) / 2
+	" autocmd BufWinEnter * let g:lsp_preview_max_width = winwidth(0) / 2
 augroup END
