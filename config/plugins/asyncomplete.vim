@@ -54,6 +54,9 @@ inoremap <expr> <C-k>   pumvisible() ? "\<Up>"   : "\<C-k>"
 inoremap <expr> <C-d>   pumvisible() ? "\<PageDown>" : "\<C-d>"
 inoremap <expr> <C-u>   pumvisible() ? "\<PageUp>"   : "\<C-u>"
 
+" imap <expr> <Tab>   pumvisible() ? "\<C-n>"   : "\<Tab>"
+" imap <expr> <S-Tab>   pumvisible() ? "\<C-p>"   : "\<S-Tab>"
+
 " Menu control
 inoremap <expr> <C-y> pumvisible() ? asyncomplete#close_popup() : "\<C-y>"
 inoremap <expr> <C-e> pumvisible() ? asyncomplete#cancel_popup() : "\<C-e>"

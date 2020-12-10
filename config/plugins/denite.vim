@@ -170,6 +170,7 @@ function! s:denite_settings() abort
 	nmap <silent><buffer> <C-k> k
 	nmap <silent><buffer> <C-n> j
 	nmap <silent><buffer> <C-p> k
+	nmap <silent><buffer> <C-j> <down>
 	nnoremap <silent><buffer><expr> <CR> denite#do_map('do_action')
 	nnoremap <silent><buffer><expr> i    denite#do_map('open_filter_buffer')
 	nnoremap <silent><buffer><expr> /    denite#do_map('open_filter_buffer')
@@ -221,5 +222,27 @@ function! s:denite_filter_settings() abort
 	imap <silent><buffer> <Tab>   <Plug>(denite_filter_update)ji
 	imap <silent><buffer> <S-Tab> <Plug>(denite_filter_update)ki
 endfunction
+
+" move the cursor in a Denite filter window, while in insert mode:
+autocmd FileType denite-filter call s:denite_filter_my_settings()
+" faster but version which may lead to errors: see :h denite (Q/As)
+function! s:denite_filter_my_settings() abort
+	  inoremap <silent><buffer> <C-j> <Esc>
+	      \:call denite#move_to_parent()<CR>
+	      \:call cursor(line('.')+1,0)<CR>
+	      \:call denite#move_to_filter()<CR>A
+	  inoremap <silent><buffer> <C-k> <Esc>
+	      \:call denite#move_to_parent()<CR>
+	      \:call cursor(line('.')-1,0)<CR>
+	      \:call denite#move_to_filter()<CR>A
+	  inoremap <silent><buffer> <down> <Esc>
+	      \:call denite#move_to_parent()<CR>
+	      \:call cursor(line('.')+1,0)<CR>
+	      \:call denite#move_to_filter()<CR>A
+	  inoremap <silent><buffer> <up> <Esc>
+	      \:call denite#move_to_parent()<CR>
+	      \:call cursor(line('.')-1,0)<CR>
+	      \:call denite#move_to_filter()<CR>A
+	endfunction
 
 " vim: set ts=2 sw=2 tw=80 noet :

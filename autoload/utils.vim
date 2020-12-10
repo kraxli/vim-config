@@ -42,3 +42,6 @@ function! utils#KeyMaps()
     silent g/\s*Last.*/d
     silent g/^\s*$/d
 endfunction
+
+
+

@@ -82,7 +82,7 @@
 #   on_cmd: FZF
 
 - repo: junegunn/fzf.vim
-  on_cmd: FZF
+  on_cmd: [FZF, Ag]
 
 # -- ColorSchemes --
 # see config/theme.vim for speedup config/init.vim
@@ -209,8 +209,11 @@
 
 
 - repo: kraxli/vim-mkd-org
-  on_ft: [text, vimwiki, markdown]
+  depends: [vimwiki/vimwiki]
+  on_ft: [text, markdown, vimwiki]
   hook_add: |
+    let g:mkdd_task_done_symbols = ''
+    let g:mkdd_mapping_switch_status = ''
     let g:mkdd_mapping_switch_status = ''
     let g:mkdd_mapping_switch_status_down = ''
     let g:mkdd_wiki_index_key = '<leader>W'

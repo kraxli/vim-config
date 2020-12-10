@@ -111,15 +111,16 @@ augroup user_plugin_filetype " {{{
 		\ setlocal expandtab smarttab
 		\ | setlocal tabstop=2 softtabstop=2 shiftwidth=2
 		\ | setlocal autoindent
-		\ | setl formatoptions=tcoq2  " do not set "r" (list indentation) when using mkdx  rafi: formatoptions=tcroqn2 comments=n:>
-		\ | setlocal comments=b:*,b:-,b:+,b:>,n:>,se:``` commentstring=>\ %s  " do not use with mkdx
+		"\ | setl formatoptions=tcoq2  " do not set "r" (list indentation) when using mkdx  rafi: formatoptions=tcroqn2 comments=n:>
+		"\ | setlocal comments=b:*,b:-,b:+,b:>,n:>,se:``` commentstring=>\ %s  " do not use with mkdx
+		\ | setl formatoptions=tcroqn2 comments=n:>
+		\ | setl formatlistpat=^\\s*\\d\\+\\.\\s\\+\\\\|^\\s*[+-\\*]\\s\\+
 		\ | setl wrap linebreak nolist
 		\ | setl breakindent
 		\ | setl textwidth=0
 		\ | setl wrapmargin=0 " only used when textwidth=0
 		\ | setlocal nolisp
 		\ | setl spell spelllang=en,de
-		\ | setl formatlistpat=^\\s*\\d\\+\\.\\s\\+\\\\|^\\s*[+-\\*]\\s\\+
 		\ | setlocal foldlevel=1 foldenable foldmethod=expr
 		\ | setlocal foldexpr=fold#FoldLevelOfLine(v:lnum)
 		\ | setlocal conceallevel=0

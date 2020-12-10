@@ -417,10 +417,10 @@
   on_map: { nxo: <Plug> }
   hook_add: let g:shot_f_no_default_key_mappings = 1
 
-- repo:  kraxli/vimwiki
-  on_ft: [vimwiki, markdown]
-  on_map: { n: <Plug> }
-  on_cmd: [ VimwikiIndex, VimwikiUISelect ]
+# on_map: { n: <Plug> }
+# on_cmd: [ VimwikiIndex, VimwikiUISelect ]
+# on_ft: [vimwiki, markdown]
+- repo:  vimwiki/vimwiki
   hook_add: |
     let g:vimwiki_listsyms = ' ○◐●x'
     let g:vimwiki_folding = 'custom'
@@ -434,15 +434,19 @@
     let g:vimwiki_list = [
     \   { 'diary_header': 'Diary',
     \     'diary_link_fmt': '%Y-%m-%d',
-    \     'path': exists('g:wiki_dir') ? g:wiki_dir : '~/docs/wiki/',
+    \     'path': exists('g:wiki_dir') ? g:wiki_dir : '~/Dropbox/PKD/',
     \     'auto_toc': 1,
     \     'syntax': 'markdown',
-    \     'ext': '.md' },
+    \     'ext': '.md'},
     \   {
-    \     'path': exists('g:blog_dir') ? g:blog_dir : '~/docs/blog/',
+    \     'path': exists('g:blog_dir') ? g:blog_dir : '~/Dropbox/PKD/blog_posts/',
     \     'syntax': 'markdown',
     \     'ext': '.md' },
     \ ]
+    nnoremap xxx <Plug>VimwikiNextLink<cr>
+    nnoremap yyy <Plug>VimwikiPrevLink<cr>
+
+
 
 # let g:vimwiki_listsyms = '✗○◐●✓'
 # au! FileType markdown set ft=vimwiki
@@ -673,8 +677,8 @@
   on_event: FileType
   hook_add: |-
     let g:UltiSnipsSnippetDirectories=["UltiSnips", "snippets/UltiSnips"]
-    let g:UltiSnipsExpandTrigger = '<C-Tab>'
     let g:UltiSnipsListSnippets = '<C-l>'
+    let g:UltiSnipsExpandTrigger = '<C-Tab>'
     let g:UltiSnipsJumpForwardTrigger = '<Tab>'
     let g:UltiSnipsJumpBackwardTrigger = '<S-Tab>'
 

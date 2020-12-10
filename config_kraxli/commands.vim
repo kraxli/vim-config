@@ -15,11 +15,11 @@ command! VTerm :vsp +term " or :vsp|terminal<Paste>
 command! W :w!
 command! Q :q
 cnoreabbrev <silent> ww w!
-cnoreabbrev <silent> wa wa!
+cnoreabbrev <silent> wwa wa!
 cnoreabbrev <silent> xx x!
-cnoreabbrev <silent> xa xa!
+cnoreabbrev <silent> xxa xa!
 cnoreabbrev <silent> qq q!
-cnoreabbrev <silent> qa qa!
+cnoreabbrev <silent> qqa qa!
 cnoreabbrev <silent> ee e!
 
 " Open vim-config ReadMe

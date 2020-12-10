@@ -22,11 +22,7 @@ function! s:source_file(path, ...)
 	endtry
 endfunction
 
-
-if filereadable($VIM_PATH.'/config_local/local_exante_load.vim')
-	call s:source_file('config_local/local_exante_load.vim')
-endif
-
+" ================================================================================
 let g:config_plugins_dir = $VIM_PATH.path_sep.'config_kraxli'.path_sep.'plugins'
 
 for file in split(globpath(g:config_plugins_dir, '*.vim'), '\n')
@@ -43,6 +39,7 @@ call s:source_file('config_kraxli/general.vim')
 " load local config / setting files
 if exists('g:local_source_dir') && isdirectory(g:local_source_dir)
    for file in split(globpath(g:local_source_dir, '*.vim'), '\n')
+      " local/init.vim already loaded in init.vim (main init.vim file in parent directory)
       if file == g:local_source_dir . 'init.vim'
 	 continue
       endif
