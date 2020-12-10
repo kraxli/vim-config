@@ -62,6 +62,11 @@ Best with [Neovim] or [Vim8] and `python3` enabled.
 <!-- vim-markdown-toc -->
 </details>
 
+## Differences to Raphi's config
+### Key Mappings
+sg
+sh
+
 ## Discoveries / Enhancements
 <kbd>,<kbd>c<kbd> : some selections from ...
 <kbd>K<kbd> : <kbd>normla<kbd> , documentation through LSP

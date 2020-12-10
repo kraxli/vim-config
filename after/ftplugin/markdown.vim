@@ -5,3 +5,4 @@
 " set spell spelllang=en,de
 " set iskeyword-=-		" do not highlight '-' as cursorword
 
+UltiSnipsAddFiletypes markdown.writer
