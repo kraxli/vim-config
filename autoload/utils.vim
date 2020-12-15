@@ -15,13 +15,17 @@ endfunction
 function! utils#files_sort_date()
 " Reminder: https://jdhao.github.io/2019/04/22/mix_python_and_vim_script/
 
-let path = split(getline('.')[0:col('.')-1])[-1]
+let subline = getline('.')[0:col('.')-1]
+let subline = subline != '' ? subline : expand('%:p:h')
+let path = split(subline)[-1]
 
 " TODO: python: how to handle ~/xxx
 python3 << EOF
 import os
 import vim
 path = vim.eval("path")
+path = vim.eval("expand('%:p:h')") if path[-1] == '' else path
+path = path if os.path.isdir(path) else vim.eval("expand('%:p:h')")
 path = os.path.expanduser(path)
 files = os.listdir(path)
 paths = [os.path.join(path, basename) for basename in files]
