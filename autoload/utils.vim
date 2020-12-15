@@ -17,7 +17,7 @@ function! utils#files_sort_date()
 
 let subline = getline('.')[0:col('.')-1]
 let subline = subline != '' ? subline : expand('%:p:h')
-let path = split(subline)[-1]
+let path = split(subline, '[ ,\[, \], \(, \)]')[-1]
 
 " TODO: python: how to handle ~/xxx
 python3 << EOF
