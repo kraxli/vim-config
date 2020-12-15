@@ -420,7 +420,7 @@
 # on_map: { n: <Plug> }
 # on_cmd: [ VimwikiIndex, VimwikiUISelect ]
 # on_ft: [vimwiki, markdown]
-- repo:  vimwiki/vimwiki
+- repo:  kraxli/vimwiki
   hook_add: |
     let g:vimwiki_listsyms = ' ○◐●x'
     let g:vimwiki_folding = 'custom'
@@ -434,12 +434,12 @@
     let g:vimwiki_list = [
     \   { 'diary_header': 'Diary',
     \     'diary_link_fmt': '%Y-%m-%d',
-    \     'path': exists('g:wiki_dir') ? g:wiki_dir : '~/Dropbox/PKD/',
+    \     'path': exists('g:dir_wiki') ? g:dir_wiki : '~/Dropbox/PKD/',
     \     'auto_toc': 1,
     \     'syntax': 'markdown',
     \     'ext': '.md'},
     \   {
-    \     'path': exists('g:blog_dir') ? g:blog_dir : '~/Dropbox/PKD/blog_posts/',
+    \     'path': exists('g:dir_blog') ? g:dir_blog : '~/Dropbox/PKD/blog_posts/',
     \     'syntax': 'markdown',
     \     'ext': '.md' },
     \ ]
@@ -677,8 +677,8 @@
   on_event: FileType
   hook_add: |-
     let g:UltiSnipsSnippetDirectories=["UltiSnips", "snippets/UltiSnips"]
-    let g:UltiSnipsListSnippets = '<C-l>'
-    let g:UltiSnipsExpandTrigger = '<C-Tab>'
+    let g:UltiSnipsExpandTrigger = '<C-l>'
+    let g:UltiSnipsListSnippets = '<C-Tab>'
     let g:UltiSnipsJumpForwardTrigger = '<Tab>'
     let g:UltiSnipsJumpBackwardTrigger = '<S-Tab>'
 

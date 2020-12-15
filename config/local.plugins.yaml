@@ -223,6 +223,13 @@
     nmap to :TasksOpen<cr>
 
 
+- repo: kraxli/vim-snips
+  depends: ultisnips
+  on_event: FileType
+  if: has('python3')
+  merged: 0
+
+
 - repo: lervag/vimtex
   on_ft: [tex]
   hook_add: |

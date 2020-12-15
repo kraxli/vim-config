@@ -169,5 +169,5 @@ You will need to run `:call dein#clear_state()` and `:call dein#recache_runtimep
 
 # Miscellaneous
 
-Snippets: a snippet fully written out needs to be triggered by <c-l> (expand trigger). A partially written snippet can be selected from the suggestion of the pop-up by `<c-n/p>` or `<c-j/k>` and completed (expanded) by `<CR>`.
+Snippets: a snippet fully written out needs to be triggered by `<c-l>` (expand trigger) or selected by `<c-tab>` from the pop-up/selction menu and triggered by `<CR>`. A partially written snippet can be selected from the suggestion of the pop-up by `<c-n/p>` or `<c-j/k>` and completed (expanded) by `<CR>`.
 
