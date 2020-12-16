@@ -681,6 +681,9 @@
     let g:UltiSnipsListSnippets = '<C-Tab>'
     let g:UltiSnipsJumpForwardTrigger = '<Tab>'
     let g:UltiSnipsJumpBackwardTrigger = '<S-Tab>'
+  hook_source:
+    UltiSnipsAddFiletypes vimwiki.markdown
+    UltiSnipsAddFiletypes vimwiki.writer
 
 #    let g:UltiSnipsListSnippets = ''
 #    let g:UltiSnipsJumpForwardTrigger = '<C-f>'
