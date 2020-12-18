@@ -42,7 +42,7 @@
 
 " Smart selection
 " inoremap <silent> <CR> <C-R>=<SID>smart_carriage_return()<CR>
-inoremap <silent> <CR> <C-R>=complete#smart_carriage_return()<CR>
+inoremap <silent> <CR> <C-R>=<SID>complete#smart_carriage_return()<CR>
 
 " Force completion pop-up display
 imap <C-Space> <Plug>(asyncomplete_force_refresh)
