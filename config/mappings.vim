@@ -268,8 +268,8 @@ nnoremap <Leader>cw :<C-u>silent! keeppatterns %substitute/\s\+$//e<CR>
 " Location/quickfix list movement
 nmap ]l :lnext<CR>
 nmap [l :lprev<CR>
-nmap ]c :lnext<CR>
-nmap [c :lprev<CR>
+" nmap ]c :lnext<CR>
+" nmap [c :lprev<CR>
 nmap ]q :cnext<CR>
 nmap [q :cprev<CR>
 
