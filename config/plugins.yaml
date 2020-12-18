@@ -417,7 +417,7 @@
   on_map: { nxo: <Plug> }
   hook_add: let g:shot_f_no_default_key_mappings = 1
 
-# on_map: { n: <Plug> }
+# on_map: { n: <Plug>, <leader>ww, <leader>wt, <leader>ws, <leader>wi}
 # on_cmd: [ VimwikiIndex, VimwikiUISelect ]
 # on_ft: [vimwiki, markdown]
 - repo:  kraxli/vimwiki
@@ -445,8 +445,7 @@
     \ ]
     nnoremap xxx <Plug>VimwikiNextLink<cr>
     nnoremap yyy <Plug>VimwikiPrevLink<cr>
-
-
+    autocmd! FileType vimwiki,makdown inoremap <expr><silent><buffer> <CR> pumvisible() ? "\<C-R>=complete#smart_carriage_return()<CR>" :  "\<C-]><Esc>:VimwikiReturn 1 5<CR>"
 
 # let g:vimwiki_listsyms = '✗○◐●✓'
 # au! FileType markdown set ft=vimwiki
