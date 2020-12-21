@@ -250,7 +250,12 @@
   on_ft: [markdown, latex, tex, pandoc.markdown, rmd]
   on_cmd: [MarkdownPreview, MarkdownPreviewToggle]
   hook_add: |
+    let g:mkdp_auto_start = 0
+    let g:mkdp_auto_close = 0
     let g:mkdp_browser=''
+    let g:mkdp_page_title = '${name}'
+    let g:mkdp_filetypes = ['markdown', 'vimwiki']
+    command! Mp :MarkdownPreview
 
 # - repo: reedes/vim-pencil
 #   on_ft: [tex, markdown, vimwiki]
