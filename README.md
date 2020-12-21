@@ -23,6 +23,8 @@ Best with [Neovim] or [Vim8] and `python3` enabled.
 * [Difference to Rafael Bodill's vim-config](#difference-to-rafael-bodills-vim-config)
 * [Install](#install)
 
+
+
 <!-- vim-markdown-toc -->
 </details>
 
@@ -30,6 +32,13 @@ Best with [Neovim] or [Vim8] and `python3` enabled.
 sg
 sh
 sv
+```vim
+  autocmd! FileType vimwiki,makdown inoremap <expr><buffer> <c-t> vimwiki#tbl#kbd_tab()
+  autocmd! FileType vimwiki,makdown inoremap <expr><buffer> <c-s-t> vimwiki#tbl#kbd_shift_tab()
+  autocmd! FileType vimwiki,makdown nnoremap ]l <Plug>VimwikiNextLink<cr>
+  autocmd! FileType vimwiki,makdown nnoremap [l <Plug>VimwikiPrevLink<cr>
+  autocmd! FileType vimwiki,makdown inoremap <expr><silent><buffer> <CR> pumvisible() ? "\<C-R>=complete#smart_carriage_return()<CR>" :  "\<C-]><Esc>:VimwikiReturn 1 5<CR>"
+```
 
 ### Plugin: Asyncomplete and Emmet
 | <kbd>Ctrl</kbd>+<kbd>f</kbd> | 𝐈 𝐒 | Jump to next snippet placeholder
@@ -58,6 +67,12 @@ sv
   ```bash
   apt-get install -y python3-venv
   ```
+* yarn (required for [iamcco/markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim))  
+  ```sh
+  sudo apt-get -y install yarn
+  ```
+  
+
 
 ## Difference to [Rafael Bodill's vim-config](https://github.com/rafi/vim-config)
 ## Install
