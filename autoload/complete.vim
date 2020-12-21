@@ -1,4 +1,5 @@
 
+
 function complete#smart_carriage_return()
 	if pumvisible()
 		let l:info = complete_info()

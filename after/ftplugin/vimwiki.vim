@@ -14,8 +14,8 @@ let s:vimwiki_header_type = '#'     " set to '=' for wiki syntax
 " inoremap <silent><buffer> <S-CR> <Esc>:VimwikiReturn 2 2<CR>
 
 " add UltiSnips markdown-snppets for vimwiki
-UltiSnipsAddFiletypes vimwiki.markdown
-UltiSnipsAddFiletypes vimwiki.writer
+" UltiSnipsAddFiletypes vimwiki.markdown
+UltiSnipsAddFiletypes vimwiki.writer.markdown
 
 
 function! Fold(lnum)

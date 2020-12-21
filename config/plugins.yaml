@@ -439,13 +439,19 @@
     \     'syntax': 'markdown',
     \     'ext': '.md'},
     \   {
-      \     'path': exists('g:dir_blog') && g:dir_blog != '' ? g:dir_blog : '~/Dropbox/PKD/blog_posts/',
+    \     'path': exists('g:dir_blog') && g:dir_blog != '' ? g:dir_blog : '~/Dropbox/PKD/blog_posts/',
     \     'syntax': 'markdown',
     \     'ext': '.md' },
     \ ]
-    nnoremap xxx <Plug>VimwikiNextLink<cr>
-    nnoremap yyy <Plug>VimwikiPrevLink<cr>
+    let g:vimwiki_key_mappings =
+    \   { 'table_mappings': 0,
+    \   }
+    autocmd! FileType vimwiki,makdown nnoremap '' <Plug>VimwikiNextLink<cr>
+    autocmd! FileType vimwiki,makdown nnoremap '' <Plug>VimwikiPrevLink<cr>
     autocmd! FileType vimwiki,makdown inoremap <expr><silent><buffer> <CR> pumvisible() ? "\<C-R>=complete#smart_carriage_return()<CR>" :  "\<C-]><Esc>:VimwikiReturn 1 5<CR>"
+
+# autocmd! FileType vimwiki,makdown inoremap <expr><buffer> <c-t> vimwiki#tbl#kbd_tab()
+# autocmd! FileType vimwiki,makdown inoremap <expr><buffer> <c-r> vimwiki#tbl#kbd_shift_tab()
 
 # let g:vimwiki_listsyms = '✗○◐●✓'
 # au! FileType markdown set ft=vimwiki
