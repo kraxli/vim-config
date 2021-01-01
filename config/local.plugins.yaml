@@ -50,7 +50,6 @@
   depends: vim-fugitive
   on_cmd: GV
 
-
 - repo:  liuchengxu/vim-which-key
   on_cmd: [WhichKey, WhichKey!]
 
@@ -308,8 +307,8 @@
       autocmd FileType python,cpp,d nmap <leader>F5 <Plug>VimspectorRestart
       autocmd FileType python,cpp,d nmap <leader>0 :VimspectorReset<cr>
       autocmd FileType python,cpp,d nmap <F9> <Plug>VimspectorToggleBreakpoint
-      autocmd FileType python,cpp,d nmap <F3> <Plug>VimspectorStop
-      autocmd FileType python,cpp,d nmap <F7> Plug>VimspectorPause
+      autocmd FileType python,cpp,d nmap <F3> Plug>VimspectorPause
+      autocmd FileType python,cpp,d nmap <leader><F3> <Plug>VimspectorStop
       autocmd FileType python,cpp,d nmap <F8> Plug>VimspectorAddFunctionBreakpoint
       autocmd FileType python,cpp,d nmap <leader><F8> Plug>VimspectorToggleConditionalBreakpoint
       autocmd FileType python,cpp,d nmap <F10> Plug>VimspectorStepOver
