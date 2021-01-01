@@ -26,4 +26,8 @@ set conceallevel=2
 set concealcursor=nc
 " set concealcursor-=nciv " display all conceal text
 
+if executable('ag')
+  set grepprg=ag\ --vimgrep\ $*
+  set grepformat=%f:%l:%c:%m
+endif
 
