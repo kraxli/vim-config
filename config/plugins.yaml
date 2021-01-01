@@ -282,13 +282,12 @@
       \ }
 
 - repo: junegunn/fzf
+  build: sh -c "vim -c fzf#install()"
   merged: 0
   on_cmd: FZF
   type__depth: 1
   hook_source: |-
     let g:fzf_layout = { 'down': '~25%' }
-
-# - { repo: junegunn/fzf.vim, if: executable('fzf'), merge: 0, on_source: vista.vim }
 
 - repo: junegunn/fzf.vim
   depends: fzf

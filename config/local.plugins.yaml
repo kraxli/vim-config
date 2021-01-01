@@ -77,12 +77,6 @@
     nmap  <Leader>fe :Fe<cr>
     nmap  <silent> ze :Fe<cr>
 
-# - repo: /home/dave/.fzf/bin/
-#   if: isdirectory('/home/dave/.fzf/bin/')
-#   on_cmd: FZF
-
-- repo: junegunn/fzf.vim
-  on_cmd: [FZF, Ag]
 
 # -- ColorSchemes --
 # see config/theme.vim for speedup config/init.vim
