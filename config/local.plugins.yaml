@@ -284,7 +284,34 @@
 # Programming language support
 # --------------------------------------------------
 
+# - repo: sakhnik/nvim-gdb
+#   build: sh ./install.sh
+
+- repo: puremourning/vimspector
+  build: sh ./install_gadget.py --enable-python
+  on_ft: [python, cpp]
+  hook_add: |
+    let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools', 'CodeLLDB' ]
+    let g:vimspector_enable_mappings = ''
+    augroup group_vimspector
+      autocmd!
+      autocmd FileType python,cpp,d nmap <F5> <Plug>VimspectorContinue
+      autocmd FileType python,cpp,d nmap <leader>F5 <Plug>VimspectorRestart
+      autocmd FileType python,cpp,d nmap <leader>0 :VimspectorReset<cr>
+      autocmd FileType python,cpp,d nmap <F9> <Plug>VimspectorToggleBreakpoint
+      autocmd FileType python,cpp,d nmap <F3> <Plug>VimspectorStop
+      autocmd FileType python,cpp,d nmap <F7> Plug>VimspectorPause
+      autocmd FileType python,cpp,d nmap <F8> Plug>VimspectorAddFunctionBreakpoint
+      autocmd FileType python,cpp,d nmap <leader><F8> Plug>VimspectorToggleConditionalBreakpoint
+      autocmd FileType python,cpp,d nmap <F10> Plug>VimspectorStepOver
+      autocmd FileType python,cpp,d nmap <F11> Plug>VimspectorStepInto
+      autocmd FileType python,cpp,d nmap <F12> Plug>VimspectorStepOut
+      autocmd FileType python,cpp,d nmap <F2> Plug>VimspectorRunToCursor
+    augroup END
+
+
 # https://dev.to/moinmoti/nim-on-neovim-24d3
+
 - repo:  zah/nim.vim
   on_ft: [nim]
 
