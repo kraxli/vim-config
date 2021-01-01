@@ -31,14 +31,19 @@
 # Lazily loading plugins
 # --------------------------------------------------
 
+- repo: tpope/vim-scriptease
+  on_cmd: [Scriptnames, Messages, Time, Breakadd, Breakdel, PP, Runtime, Disarm, Verbose, Vedit, Vsplit, Vtabedit]
+  on_map: [zS, g=] # K
+
 - repo: tpope/vim-fugitive
-  on_cmd: [ G, Git, Gedit, Gsplit, Gvsplit, Gfetch, Gpush, Gpull, Glog, Gclog, Gdiffsplit, Gbrowse, Gread, Gwrite, Ggrep, Gmove, Grename, Gdelete, Gblame, Gmerge, Ghdiffsplit, Gvdiffsplit, Gwq, Gpedit, Gtabedit, Glcd, Gcd, 0Git, Glgrep, Ggrep, Gfetch ]
+  on_cmd: [ G, Git, Gedit, Gsplit, Gvsplit, Gfetch, Gpush, Gpull, Glog, Gclog, Gdiffsplit, Gbrowse, Gread, Gwrite, Ggrep, Gmove, Grename, Gdelete, Gblame, Gmerge, Ghdiffsplit, Gvdiffsplit, Gwq, Gpedit, Gtabedit, Glcd, Gcd, 0Git, Glgrep, Ggrep, Gfetch, Gcommit ]
   hook_source:
     augroup user_fugitive_plugin
       autocmd!
       autocmd FileType fugitiveblame normal A
     augroup END
 
+# if: exists(expand(execute('pwd') . '/.git', 1))
 # Git mergetool, Git difftool
 
 - repo: junegunn/gv.vim
@@ -217,6 +222,15 @@
     nmap to :TasksOpen<cr>
 
 
+- repo: michal-h21/vim-zettel
+
+#  hook_add: |
+#    let g:zettel_options = [{}, {}, {"~/Dropbox/PKD/zettelk" : [["tags", ""], ["type","note"]],
+#    \ "template" :  "~/mytemplate.tpl", 'syntax': 'markdown', 'ext': '.md'}]
+
+# - repo: alok/notational-fzf-vim
+
+
 - repo: kraxli/vim-snips
   depends: ultisnips
   on_event: FileType
@@ -249,7 +263,8 @@
     let g:mkdp_browser=''
     let g:mkdp_page_title = '${name}'
     let g:mkdp_filetypes = ['markdown', 'vimwiki']
-    command! Mp :MarkdownPreview
+    command! Pv :MarkdownPreview
+    nmap <leader>pv <Plug>MarkdownPreviewToggle
 
 # - repo: reedes/vim-pencil
 #   on_ft: [tex, markdown, vimwiki]
