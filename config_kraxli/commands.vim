@@ -40,4 +40,5 @@ autocmd! FileType markdown command! MarkMap :!markmap %:p
 "  utilities  "
 """""""""""""""
 command! KeyMaps call utils#KeyMaps()
+command! -nargs=1 -complete=file Vdiff :vert diffsplit <q-args>
 
