@@ -207,7 +207,7 @@
 
 
 - repo: kraxli/vim-mkd-org
-  depends: [vimwiki/vimwiki]
+  depends: [vimwiki, fzf, fzf.vim]
   on_ft: [text, markdown, vimwiki]
   hook_add: |
     let g:mkdd_task_done_symbols = ''
@@ -217,18 +217,27 @@
     let g:mkdd_wiki_index_key = '<leader>W'
     let g:mkdd_blog_index_key = '<leader>B'
     nmap <silent> th :TasksOpenHi<cr>
+    au BufReadPre,BufEnter,BufRead,BufNewFile *.wiki,*.md set foldmethod=expr
   hook_source: |
     nmap to :TasksOpen<cr>
 
-
-- repo: michal-h21/vim-zettel
-
-#  hook_add: |
-#    let g:zettel_options = [{}, {}, {"~/Dropbox/PKD/zettelk" : [["tags", ""], ["type","note"]],
-#    \ "template" :  "~/mytemplate.tpl", 'syntax': 'markdown', 'ext': '.md'}]
+# - repo: michal-h21/vim-zettel
+#   hook_add: |
+#     let s:vimwiki_list = {
+#         \ 'path':'~/Dropbox/PKD/zettelk',
+#         \ 'ext':'.md',
+#         \ 'syntax':'markdown'
+#         \ }
+#     if exists('g:vimwiki_list')
+#       let g:vimwiki_list = add(g:vimwiki_list, s:vimwiki_list)
+#     else
+#       let g:vimwiki_list = [s:vimwiki_list]
+#     endif
+#     let g:zettel_options = [{}, {}, {"~/Dropbox/PKD/zettelk" : [["tags", ""], ["type","note"]],
+#       \ "template" :  "~/mytemplate.tpl", 'syntax': 'markdown', 'ext': '.md'}]
 
 # - repo: alok/notational-fzf-vim
-
+# - repo: gera2ld/markmap / dundalek/markmap
 
 - repo: kraxli/vim-snips
   depends: ultisnips

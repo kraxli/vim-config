@@ -293,7 +293,7 @@
   depends: fzf
   merged: 0
   on_cmd: [ Files, GitFiles, Buffers, Lines, Locate, Colors, Ag, Rg, Tags ]
-  on_func: [ fzf#vim#with_preview, fzf#run, vista#finder#fzf#Run ]
+  on_func: [ fzf#vim#with_preview, fzf#run, vista#finder#fzf#Run, fzf#vim#complete, fzf#wrap ]
 
 - repo: Ron89/thesaurus_query.vim
   on_cmd:
