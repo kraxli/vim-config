@@ -48,8 +48,8 @@ if has('mac') && has('vim_starting')
 endif
 
 if has('clipboard') && has('vim_starting')
-	" set clipboard& clipboard+=unnamedplus
-	set clipboard& clipboard^=unnamed,unnamedplus
+	set clipboard& clipboard+=unnamedplus
+	" set clipboard& clipboard^=unnamed,unnamedplus
 endif
 
 " }}}
