@@ -230,13 +230,6 @@
     au FileType vimwiki,markdown nmap T <Plug>ZettelYankNameMap
     au FileType vimwiki,markdown xmap z <Plug>ZettelNewSelectedMap
     au FileType vimwiki,markdown nmap gZ <Plug>ZettelReplaceFileWithLink
-    let s:vimwiki_list_zettel = {
-        \ 'path':'~/Dropbox/PKD/zettelk',
-        \ 'ext':'.md',
-        \ 'syntax':'markdown',
-        \ 'links_space_char': '-'
-        \ }
-        let g:vimwiki_list = add(g:vimwiki_list, s:vimwiki_list_zettel)
     function! s:insert_id()
         let ext = vimwiki#vars#get_wikilocal('ext')
         return zettel#vimwiki#count_files("*" . ext)
