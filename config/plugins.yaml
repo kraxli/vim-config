@@ -420,6 +420,7 @@
 # on_cmd: [ VimwikiIndex, VimwikiUISelect ]
 # on_ft: [vimwiki, markdown]
 - repo:  kraxli/vimwiki
+  on_ft: [vimwiki, markdown]
   hook_add: |
     let g:vimwiki_listsyms = ' ○◐●x'
     let g:vimwiki_folding = 'custom'
@@ -433,6 +434,7 @@
     let g:vimwiki_list = [
     \   { 'diary_header': 'Diary',
     \     'diary_link_fmt': '%Y-%m-%d',
+    \     'links_space_char': '-',
     \     'path': exists('g:dir_wiki') && g:dir_wiki != '' ? g:dir_wiki : '~/Dropbox/PKD/',
     \     'auto_toc': 1,
     \     'syntax': 'markdown',
@@ -440,6 +442,7 @@
     \   {
     \     'path': exists('g:dir_blog') && g:dir_blog != '' ? g:dir_blog : '~/Dropbox/PKD/blog_posts/',
     \     'syntax': 'markdown',
+    \     'links_space_char': '-',
     \     'ext': '.md' },
     \ ]
     let g:vimwiki_key_mappings =

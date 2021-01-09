@@ -207,7 +207,6 @@
 
 
 - repo: kraxli/vim-mkd-org
-  depends: [vimwiki, fzf, fzf.vim]
   on_ft: [text, markdown, vimwiki]
   hook_add: |
     let g:mkdd_task_done_symbols = ''
@@ -221,23 +220,44 @@
   hook_source: |
     nmap to :TasksOpen<cr>
 
-# - repo: michal-h21/vim-zettel
-#   hook_add: |
-#     let s:vimwiki_list = {
-#         \ 'path':'~/Dropbox/PKD/zettelk',
-#         \ 'ext':'.md',
-#         \ 'syntax':'markdown'
-#         \ }
-#     if exists('g:vimwiki_list')
-#       let g:vimwiki_list = add(g:vimwiki_list, s:vimwiki_list)
-#     else
-#       let g:vimwiki_list = [s:vimwiki_list]
-#     endif
-#     let g:zettel_options = [{}, {}, {"~/Dropbox/PKD/zettelk" : [["tags", ""], ["type","note"]],
-#       \ "template" :  "~/mytemplate.tpl", 'syntax': 'markdown', 'ext': '.md'}]
+
+- repo: michal-h21/vim-zettel
+  on_ft: [markdown, vimwiki]
+  hook_add: |
+    let g:zettel_default_mappings=0
+    au FileType vimwiki,markdown nnoremap <leader>zn :ZettelNew<space>
+    au FileType vimwiki,markdown imap %% <esc><Plug>ZettelSearchMap
+    au FileType vimwiki,markdown nmap T <Plug>ZettelYankNameMap
+    au FileType vimwiki,markdown xmap z <Plug>ZettelNewSelectedMap
+    au FileType vimwiki,markdown nmap gZ <Plug>ZettelReplaceFileWithLink
+    let s:vimwiki_list_zettel = {
+        \ 'path':'~/Dropbox/PKD/zettelk',
+        \ 'ext':'.md',
+        \ 'syntax':'markdown',
+        \ 'links_space_char': '-'
+        \ }
+        let g:vimwiki_list = add(g:vimwiki_list, s:vimwiki_list_zettel)
+    function! s:insert_id()
+        let ext = vimwiki#vars#get_wikilocal('ext')
+        return zettel#vimwiki#count_files("*" . ext)
+    endfunction
+    let g:zettel_options = [{"front_matter" : [["tags", ""], ["type", "note"], [ "id" , function("s:insert_id")]],
+        \ "template" :  ""}]
+    let g:zettel_format = "Zet%file_no-%Y%m%d-%title"
+    let g:vimwiki_markdown_link_ext = 1
+    let g:zettel_date_format = "%Y-%m-%d"
+  hook_post_source:
+    au BufReadPost,BufWritePost *.wiki,*.md VimwikiRebuildTags<cr>
+
+# " inoremap [[ [[<esc>:ZettelSearch<CR>
+# au FileType vimwiki,markdown imap #r <esc><Plug>ZettelSearchMap
+# " xnoremap z :call zettel#vimwiki#zettel_new_selected()<CR>
+
+
 
 # - repo: alok/notational-fzf-vim
-# - repo: gera2ld/markmap / dundalek/markmap
+# - repo: gera2ld/markmap or dundalek/markmap
+# - repo: michal-h21/vimwiki-sync
 
 - repo: kraxli/vim-snips
   depends: ultisnips
