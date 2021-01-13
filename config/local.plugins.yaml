@@ -219,7 +219,7 @@
 
 
 - repo: kraxli/vim-zettel
-  on_ft: [ markdown, vimwiki, vimwiki.mardown ]
+  on_ft: [ markdown, vimwiki, vimwiki.markdown ]
   on_cmd: [ ZettelSearch, ZettelNew, ZettelOpen ]
   depends: vimwiki
   hook_add: |
@@ -232,7 +232,6 @@
     let g:vimwiki_markdown_link_ext = 1
     function! s:insert_id()
         let ext = vimwiki#vars#get_wikilocal('ext')
-        let ext = '.md'
         return zettel#vimwiki#count_files("*" . ext)
     endfunction
     let g:zettel_options = [{"front_matter" : [["tags", ""], ["type", "note"], [ "id" , function("s:insert_id")]],
