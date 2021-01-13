@@ -420,8 +420,9 @@
 # on_cmd: [ VimwikiIndex, VimwikiUISelect ]
 # on_ft: [vimwiki, markdown]
 - repo:  kraxli/vimwiki
-  on_ft: [vimwiki, markdown]
+  on_ft: [ vimwiki, markdown ]
   hook_add: |
+    let g:vimwiki_filetypes = [ 'markdown' ]
     let g:vimwiki_listsyms = ' ○◐●x'
     let g:vimwiki_folding = 'custom'
     let g:vimwiki_conceallevel = 1
@@ -430,7 +431,7 @@
     let g:vimwiki_hl_cb_checked = 1
     let g:vimwiki_autowriteall = 0
     let g:vimwiki_global_ext = 1
-    let g:vimwiki_ext2syntax = {'.wiki': 'markdown', '.md': 'markdown'}
+    let g:vimwiki_ext2syntax = {'.wiki': 'markdown', '.md': 'markdown', '.mkd': 'markdown'}
     let g:vimwiki_list = [
     \   { 'diary_header': 'Diary',
     \     'diary_link_fmt': '%Y-%m-%d',
@@ -458,6 +459,7 @@
         \ 'links_space_char': '-'
         \ }
     let g:vimwiki_list = add(g:vimwiki_list, s:vimwiki_list_zettel)
+    let g:vimwiki_markdown_link_ext = 1
 
 
 # autocmd! FileType vimwiki,makdown inoremap <expr><buffer> <c-t> vimwiki#tbl#kbd_tab()

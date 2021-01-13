@@ -198,16 +198,16 @@
 
 #    let g:polyglot_disabled = ['markdown']
 
+#   on_ft: [ text, vimwiki, markdown ]
 - repo: kraxli/vim-mkd-fold
-  on_ft: [text, vimwiki, markdown]
   hook_add: |
     let g:markdown_list_folding = 1
     let g:mkdd_use_mkdx = 1
-    set foldmethod=expr
+    au FileType vimwiki,markdown set foldmethod=expr
 
 
 - repo: kraxli/vim-mkd-org
-  on_ft: [text, markdown, vimwiki]
+  on_ft: [ markdown, vimwiki ]
   hook_add: |
     let g:mkdd_task_done_symbols = ''
     let g:mkdd_mapping_switch_status = ''
@@ -215,14 +215,13 @@
     let g:mkdd_mapping_switch_status_down = ''
     let g:mkdd_wiki_index_key = '<leader>W'
     let g:mkdd_blog_index_key = '<leader>B'
-    nmap <silent> th :TasksOpenHi<cr>
     au BufReadPre,BufEnter,BufRead,BufNewFile *.wiki,*.md set foldmethod=expr
-  hook_source: |
-    nmap to :TasksOpen<cr>
 
 
-- repo: michal-h21/vim-zettel
-  on_ft: [markdown, vimwiki]
+- repo: kraxli/vim-zettel
+  on_ft: [ markdown, vimwiki, vimwiki.mardown ]
+  on_cmd: [ ZettelSearch, ZettelNew, ZettelOpen ]
+  depends: vimwiki
   hook_add: |
     let g:zettel_default_mappings=0
     au FileType vimwiki,markdown nnoremap <leader>zn :ZettelNew<space>
@@ -230,23 +229,23 @@
     au FileType vimwiki,markdown nmap T <Plug>ZettelYankNameMap
     au FileType vimwiki,markdown xmap z <Plug>ZettelNewSelectedMap
     au FileType vimwiki,markdown nmap gZ <Plug>ZettelReplaceFileWithLink
+    let g:vimwiki_markdown_link_ext = 1
     function! s:insert_id()
         let ext = vimwiki#vars#get_wikilocal('ext')
+        let ext = '.md'
         return zettel#vimwiki#count_files("*" . ext)
     endfunction
     let g:zettel_options = [{"front_matter" : [["tags", ""], ["type", "note"], [ "id" , function("s:insert_id")]],
         \ "template" :  ""}]
     let g:zettel_format = "Zet%file_no-%Y%m%d-%title"
-    let g:vimwiki_markdown_link_ext = 1
     let g:zettel_date_format = "%Y-%m-%d"
-  hook_post_source:
-    au BufReadPost,BufWritePost *.wiki,*.md VimwikiRebuildTags<cr>
+
+# hook_post_source:
+#   au BufReadPost,BufWritePost *.wiki,*.md VimwikiRebuildTags<cr>
 
 # " inoremap [[ [[<esc>:ZettelSearch<CR>
 # au FileType vimwiki,markdown imap #r <esc><Plug>ZettelSearchMap
 # " xnoremap z :call zettel#vimwiki#zettel_new_selected()<CR>
-
-
 
 # - repo: alok/notational-fzf-vim
 # - repo: gera2ld/markmap or dundalek/markmap
@@ -276,7 +275,7 @@
 
 - repo: iamcco/markdown-preview.nvim
   build: sh -c "cd app && ./install.sh"
-  on_ft: [markdown, latex, tex, pandoc.markdown, rmd]
+  on_ft: [ vimwiki, markdown ]
   on_cmd: [MarkdownPreview, MarkdownPreviewToggle]
   hook_add: |
     let g:mkdp_auto_start = 0
