@@ -453,7 +453,7 @@
     autocmd! FileType vimwiki,makdown nnoremap '' <Plug>VimwikiPrevLink<cr>
     autocmd! FileType vimwiki,makdown inoremap <expr><silent><buffer> <CR> pumvisible() ? "\<C-R>=complete#smart_carriage_return()<CR>" :  "\<C-]><Esc>:VimwikiReturn 1 5<CR>"
     let s:vimwiki_list_zettel = {
-        \ 'path':'~/Dropbox/PKD/zettelk',
+        \ 'path': exists('g:dir_zettelk') && g:dir_zettelk != '' ? g:dir_zettelk : '~/Dropbox/PKD/zettelk/',
         \ 'ext':'.md',
         \ 'syntax':'markdown',
         \ 'links_space_char': '-'
