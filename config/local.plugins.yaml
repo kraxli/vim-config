@@ -128,6 +128,7 @@
   hook_add: nmap ;mt <plug>(MergetoolToggle)
 
 
+# - repo: kraxli/vim-shell
 - repo: xolox/vim-shell
   on_cmd: Open
   on_map: <F6>
@@ -139,7 +140,8 @@
     vmap gx :Open<cr>
 
 
-- repo: xolox/vim-misc
+# - repo: xolox/vim-misc
+- repo: kraxli/vim-misc
   on_source: vim-shell
 
 
