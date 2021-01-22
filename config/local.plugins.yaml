@@ -143,7 +143,9 @@
 # - repo: xolox/vim-misc
 - repo: kraxli/vim-misc
   on_source: vim-shell
-
+  hook_add: |
+    let g:wsl_mount_map = {'/mnt/c': 'C:'}
+    let g:use_windows_apps = 1
 
 # - repo: dense-analysis/ale
 #   on_ft: [python]
