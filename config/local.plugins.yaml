@@ -229,10 +229,12 @@
   hook_add: |
     let g:zettel_default_mappings=0
     au FileType vimwiki,markdown nnoremap <leader>zn :ZettelNew<space>
-    au FileType vimwiki,markdown imap %% <esc><Plug>ZettelSearchMap
-    au FileType vimwiki,markdown nmap T <Plug>ZettelYankNameMap
-    au FileType vimwiki,markdown xmap z <Plug>ZettelNewSelectedMap
-    au FileType vimwiki,markdown nmap gZ <Plug>ZettelReplaceFileWithLink
+    au FileType vimwiki,markdown,vimwiki.markdown imap ]s <esc><Plug>ZettelSearchMap
+    au FileType vimwiki,markdow,vimwiki.markdown imap ]a <esc><Plug>ZettelAnchor
+    au FileType vimwiki,markdow,vimwiki.markdown imap && <esc><Plug>ZettelAnchor
+    au FileType vimwiki,markdow,vimwiki.markdown nmap T <Plug>ZettelYankNameMap
+    au FileType vimwiki,markdow,vimwiki.markdown xmap z <Plug>ZettelNewSelectedMap
+    au FileType vimwiki,markdow,vimwiki.markdown nmap gZ <Plug>ZettelReplaceFileWithLink
     let g:vimwiki_markdown_link_ext = 1
     function! s:insert_id()
         let ext = vimwiki#vars#get_wikilocal('ext')
