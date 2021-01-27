@@ -1,5 +1,5 @@
 
-if !exists('g:vscode')
+" if !exists('g:vscode')
 
 " === Kraxli ===:
 " your directory with your local .vim-files to load
@@ -32,10 +32,6 @@ if !exists('g:python3_host_prog')
 	endif
 endif
 
-
 " === Rafi ===:
 execute 'source' fnamemodify(expand('<sfile>'), ':h').'/config/vimrc'
 
-else
-	imap jj <esc>
-endif
