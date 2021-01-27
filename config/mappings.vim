@@ -392,7 +392,10 @@ function! s:toggle_background()
 			echo 'Set colorscheme to '.&background.' mode'
 		endif
 	endif
-endfunction
+
+	call theme#theme_adjust()
+
+	endfunction
 
 function! s:toggle_contrast(delta)
 	let l:scheme = ''

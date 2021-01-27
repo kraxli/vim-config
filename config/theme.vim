@@ -12,6 +12,7 @@ function! s:theme_init()
 		let l:scheme = filereadable(l:cache) ? readfile(l:cache)[0] : l:default
 		silent! execute 'colorscheme' l:scheme
 	endif
+	call theme#theme_adjust()
 endfunction
 
 function! s:theme_autoload()
@@ -23,6 +24,7 @@ function! s:theme_autoload()
 		" Persist theme
 		call writefile([g:colors_name], s:theme_cache_file())
 	endif
+	call theme#theme_adjust()
 endfunction
 
 function! s:theme_cache_file()
