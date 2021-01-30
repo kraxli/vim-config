@@ -432,6 +432,7 @@
     let g:vimwiki_autowriteall = 0
     let g:vimwiki_global_ext = 1
     let g:vimwiki_ext2syntax = {'.wiki': 'markdown', '.md': 'markdown', '.mkd': 'markdown'}
+    let s:nested_syntax = {'py': 'python', 'sh': 'bash'}
     let g:vimwiki_list = [
     \   { 'diary_header': 'Diary',
     \     'diary_link_fmt': '%Y-%m-%d',
@@ -439,12 +440,16 @@
     \     'path': exists('g:dir_wiki') && g:dir_wiki != '' ? g:dir_wiki : '~/Dropbox/PKD/',
     \     'auto_toc': 1,
     \     'syntax': 'markdown',
-    \     'ext': '.md'},
+    \     'ext': '.md',
+    \     'nested_syntaxes': s:nested_syntax
+    \   },
     \   {
     \     'path': exists('g:dir_blog') && g:dir_blog != '' ? g:dir_blog : '~/Dropbox/PKD/blog_posts/',
     \     'syntax': 'markdown',
     \     'links_space_char': '-',
-    \     'ext': '.md' },
+    \     'ext': '.md',
+    \     'nested_syntaxes': s:nested_syntax
+    \   },
     \ ]
     let g:vimwiki_key_mappings =
     \   { 'table_mappings': 0,
@@ -456,7 +461,8 @@
         \ 'path': exists('g:dir_zettelk') && g:dir_zettelk != '' ? g:dir_zettelk : '~/Dropbox/PKD/zettelk/',
         \ 'ext':'.md',
         \ 'syntax':'markdown',
-        \ 'links_space_char': '-'
+        \ 'links_space_char': '-',
+        \ 'nested_syntaxes': s:nested_syntax,
         \ }
     let g:vimwiki_list = add(g:vimwiki_list, s:vimwiki_list_zettel)
     let g:vimwiki_markdown_link_ext = 1
