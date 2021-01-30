@@ -37,6 +37,8 @@
 
 - repo: tpope/vim-fugitive
   on_cmd: [ G, Git, Gedit, Gsplit, Gvsplit, Gfetch, Gpush, Gpull, Glog, Gclog, Gdiffsplit, Gbrowse, Gread, Gwrite, Ggrep, Gmove, Grename, Gdelete, Gblame, Gmerge, Ghdiffsplit, Gvdiffsplit, Gwq, Gpedit, Gtabedit, Glcd, Gcd, 0Git, Glgrep, Ggrep, Gfetch, Gcommit ]
+  hook_add: |
+    let g:fugitive_summary_format = '[%cs, %an] %s'
   hook_source:
     augroup user_fugitive_plugin
       autocmd!
