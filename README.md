@@ -28,55 +28,7 @@ Best with [Neovim] or [Vim8] and `python3` enabled.
 <!-- vim-markdown-toc -->
 </details>
 
-## Different Key Mappings to Raphi's config
-sg
-sh
-sv
-```vim
-  autocmd! FileType vimwiki,makdown inoremap <expr><buffer> <c-t> vimwiki#tbl#kbd_tab()
-  autocmd! FileType vimwiki,makdown inoremap <expr><buffer> <c-s-t> vimwiki#tbl#kbd_shift_tab()
-  autocmd! FileType vimwiki,makdown nnoremap ]l <Plug>VimwikiNextLink<cr>
-  autocmd! FileType vimwiki,makdown nnoremap [l <Plug>VimwikiPrevLink<cr>
-  autocmd! FileType vimwiki,makdown inoremap <expr><silent><buffer> <CR> pumvisible() ? "\<C-R>=complete#smart_carriage_return()<CR>" :  "\<C-]><Esc>:VimwikiReturn 1 5<CR>"
-```
-
-### Plugin: Asyncomplete and Emmet
-| <kbd>Ctrl</kbd>+<kbd>f</kbd> | 𝐈 𝐒 | Jump to next snippet placeholder
-| <kbd>Ctrl</kbd>+<kbd>b</kbd> | 𝐈 𝐒 | Jump to previous snippet placeholder
-
-### Discoveries / Enhancements
-<kbd>,<kbd>c<kbd> : some selections from ...
-<kbd>K<kbd> : <kbd>normla<kbd> , documentation through LSP
-<kbd><space>l <kbd>normla<kbd>
-<kbd><space>b or <space>a <kbd>normla<kbd>
-
-<kbd><space>f <kbd>normla<kbd>
-
-### Plugin: Denite
-| <kbd>Space</kbd>+<kbd>gl</kbd> | 𝐍 | Git log (all)
-| <kbd>Space</kbd>+<kbd>gs</kbd> | 𝐍 | Git status
-| <kbd>Space</kbd>+<kbd>gc</kbd> | 𝐍 | Git branches
-
-## Prerequisites
-
-* Virtualenv tool for Python 3 (not required from Python 3.6 on - I think):
-  ```bash
-  pip3 install virtualenv
-  ```
-  On Ubuntu you can use:
-  ```bash
-  apt-get install -y python3-venv
-  ```
-* yarn (required for [iamcco/markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim))  
-  ```sh
-  sudo apt-get -y install yarn
-  ```
-  
-
-
-## Difference to [Rafael Bodill's vim-config](https://github.com/rafi/vim-config)
 ## Install
-
 
 **_1._** Let's clone this repo! Clone to `~/.config/nvim`,
 we'll also symlink it for regular Vim:
@@ -182,7 +134,58 @@ You will need to run `:call dein#clear_state()` and `:call dein#recache_runtimep
 - Reading the YAML files happens only once after they change. If you want to delete this cached state, run: `:call dein#clear_state()` and after the next you start n/vim, the state will rebuild.
 - If you make a lot of modifications to your `local.plugins.yaml`, you'll eventually need to run `:call dein#recache_runtimepath()` for dein to re-merge all the plugin essentials. Run it with a fresh state.
 
+
+## Different Key Mappings to Raphi's config
+sg
+sh
+sv
+```vim
+  autocmd! FileType vimwiki,makdown inoremap <expr><buffer> <c-t> vimwiki#tbl#kbd_tab()
+  autocmd! FileType vimwiki,makdown inoremap <expr><buffer> <c-s-t> vimwiki#tbl#kbd_shift_tab()
+  autocmd! FileType vimwiki,makdown nnoremap ]l <Plug>VimwikiNextLink<cr>
+  autocmd! FileType vimwiki,makdown nnoremap [l <Plug>VimwikiPrevLink<cr>
+  autocmd! FileType vimwiki,makdown inoremap <expr><silent><buffer> <CR> pumvisible() ? "\<C-R>=complete#smart_carriage_return()<CR>" :  "\<C-]><Esc>:VimwikiReturn 1 5<CR>"
+```
+
+### Plugin: Asyncomplete and Emmet
+| <kbd>Ctrl</kbd>+<kbd>f</kbd> | 𝐈 𝐒 | Jump to next snippet placeholder
+| <kbd>Ctrl</kbd>+<kbd>b</kbd> | 𝐈 𝐒 | Jump to previous snippet placeholder
+
+### Discoveries / Enhancements
+<kbd>,<kbd>c<kbd> : some selections from ...
+<kbd>K<kbd> : <kbd>normla<kbd> , documentation through LSP
+<kbd><space>l <kbd>normla<kbd>
+<kbd><space>b or <space>a <kbd>normla<kbd>
+
+<kbd><space>f <kbd>normla<kbd>
+
+### Plugin: Denite
+| <kbd>Space</kbd>+<kbd>gl</kbd> | 𝐍 | Git log (all)
+| <kbd>Space</kbd>+<kbd>gs</kbd> | 𝐍 | Git status
+| <kbd>Space</kbd>+<kbd>gc</kbd> | 𝐍 | Git branches
+
+## Prerequisites
+
+* Virtualenv tool for Python 3 (not required from Python 3.6 on - I think):
+  ```bash
+  pip3 install virtualenv
+  ```
+  On Ubuntu you can use:
+  ```bash
+  apt-get install -y python3-venv
+  ```
+* yarn (required for [iamcco/markdown-preview.nvim](https://github.com/iamcco/markdown-preview.nvim))  
+  ```sh
+  sudo apt-get -y install yarn
+  ```
+  
+
+
+## Difference to [Rafael Bodill's vim-config](https://github.com/rafi/vim-config)
 # Miscellaneous
 
 Snippets: a snippet fully written out needs to be triggered by `<c-l>` (expand trigger) or selected by `<c-tab>` from the pop-up/selction menu and triggered by `<CR>`. A partially written snippet can be selected from the suggestion of the pop-up by `<c-n/p>` or `<c-j/k>` and completed (expanded) by `<CR>`.
+
+## Reminers
+- Copy / get absolute or relative path of current file, relative: `<leader>y`, absolute: `<leader>Y`
 
