@@ -226,14 +226,14 @@
 
 - repo: kraxli/vim-zettel
   on_ft: [ markdown, vimwiki, vimwiki.markdown ]
-  on_cmd: [ ZettelSearch, ZettelNew, ZettelOpen, ZetO, ZetN ]
+  on_cmd: [ ZettelSearch, ZettelNew, ZettelOpen, ZettelAnchor, ZetA, ZetO, ZetN ]
   depends: vimwiki
   hook_add: |
     let g:zettel_default_mappings=0
     au FileType vimwiki,markdown nnoremap <leader>zn :ZettelNew<space>
     au FileType vimwiki,markdown,vimwiki.markdown imap ]s <esc><Plug>ZettelSearchMap
-    au FileType vimwiki,markdow,vimwiki.markdown imap ]a <esc><Plug>ZettelAnchor
-    au FileType vimwiki,markdow,vimwiki.markdown imap && <esc><Plug>ZettelAnchor
+    au FileType vimwiki,markdow,vimwiki.markdown imap ]a <esc><Plug>ZettelAnchorInsert
+    au FileType vimwiki,markdow,vimwiki.markdown imap <c-r> <esc><Plug>ZettelAnchorInsert
     au FileType vimwiki,markdow,vimwiki.markdown nmap T <Plug>ZettelYankNameMap
     au FileType vimwiki,markdow,vimwiki.markdown xmap z <Plug>ZettelNewSelectedMap
     au FileType vimwiki,markdow,vimwiki.markdown nmap gZ <Plug>ZettelReplaceFileWithLink
