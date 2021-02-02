@@ -107,7 +107,7 @@ augroup user_plugin_filetype " {{{
 
 	autocmd FileType html setlocal path+=./;/
 
-	autocmd FileType markdown,vimwiki,text,mkdx
+	autocmd FileType markdown,vimwiki,text,mkdx,vimwiki.markdown,markdown.vimwiki
 		\ setlocal expandtab smarttab
 		\ | setlocal tabstop=2 softtabstop=2 shiftwidth=2
 		\ | setlocal autoindent
