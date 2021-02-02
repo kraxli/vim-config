@@ -226,7 +226,7 @@
 
 - repo: kraxli/vim-zettel
   on_ft: [ markdown, vimwiki, vimwiki.markdown ]
-  on_cmd: [ ZettelSearch, ZettelNew, ZettelOpen, ZettelAnchor, ZetA, ZetO, ZetN ]
+  on_cmd: [ ZettelSearch, ZettelNew, ZettelOpen, ZettelAnchor, ZetAi, ZetAo, ZetO, ZetN ]
   depends: vimwiki
   hook_add: |
     let g:zettel_default_mappings=0
