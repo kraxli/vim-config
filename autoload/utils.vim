@@ -15,7 +15,7 @@ endfunction
 function! utils#files_sort_date()
 " Reminder: https://jdhao.github.io/2019/04/22/mix_python_and_vim_script/
 
-let subline = getline('.')[0:col('.')-1]
+let subline = trim(getline('.')[0:col('.')-1])
 let subline = subline != '' ? subline : expand('%:p:h')
 let path = split(subline, '[ ,\[, \], \(, \)]')[-1]
 
