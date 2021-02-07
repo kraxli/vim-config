@@ -149,11 +149,16 @@
     let g:wsl_mount_map = {'/mnt/c': 'C:'}
     let g:use_windows_apps = 1
 
+
+- repo: ernstwi/vim-secret
+  on_cmd: [Secret]
+
+
 # - repo: dense-analysis/ale
-#   on_ft: [python]
+#   on_ft: [markdown]
 #   hook_add: |
 #     let g:ale_disable_lsp = 1
-#     let g:ale_linters = {'python': ['pycodestyle']}
+#     let g:ale_linters = {'python': ['pyright']}
 #     let g:ale_fixers = {'python': ['autopep8']}
 #     let g:ale_lint_on_save = 1
 #     let g:ale_lint_on_text_changed = 'never'
