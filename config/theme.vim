@@ -8,7 +8,8 @@ function! s:theme_init()
 	let l:default = 'hybrid'
 	let l:cache = s:theme_cache_file()
 	if ! exists('g:colors_name')
-		set background=dark
+		set background=light
+		if exists('g:background_colour') | execute('set background=' . g:background_colour) |  else | set background=light | endif
 		let l:scheme = filereadable(l:cache) ? readfile(l:cache)[0] : l:default
 		silent! execute 'colorscheme' l:scheme
 	endif
