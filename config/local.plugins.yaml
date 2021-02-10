@@ -5,11 +5,13 @@
 
 # --- Disable plugins from Rafi ---
 - {repo: rhysd/vim-gfm-syntax, if: 0}
-- {repo: neoclide/coc.nvim, if: 0}
 # - {repo: vimwiki/vimwiki, if: 0}
 - {repo: nathanaelkane/vim-indent-guides, if: 0}
 - {repo: kraxli/vim-markdown, if: 0}
 # - {repo: plasticboy/vim-markdown, if: 0}
+# - {repo: prabirshrestha/vim-lsp, if: 0 }
+# - {repo: mattn/vim-lsp-settings, if: 0}
+
 
 # --------------------------------------------------
 # Base plugins
@@ -66,6 +68,8 @@
 
 - repo: skywind3000/asyncrun.vim
   on_cmd: [AsyncRun, AsyncStop]
+  hook_add: |
+    let g:asyncrun_open = 12
 
 - repo: embear/vim-foldsearch
   on_cmd: [Fw, Fs, Fp, FS, Fl, Fc, Fi, Fd, Fe, TasksOpen]
@@ -154,30 +158,42 @@
   on_cmd: [Secret]
 
 
-# - repo: dense-analysis/ale
-#   on_ft: [markdown]
-#   hook_add: |
-#     let g:ale_disable_lsp = 1
-#     let g:ale_linters = {'python': ['pyright']}
-#     let g:ale_fixers = {'python': ['autopep8']}
-#     let g:ale_lint_on_save = 1
-#     let g:ale_lint_on_text_changed = 'never'
-#     let g:ale_lint_on_insert_leave = 0
-#     let g:ale_lint_on_enter = 1
-#     let g:ale_completion_enabled = 0
-#     let g:ale_sign_error = 'E>'
-#     let g:ale_sign_warning = 'W-'
-#     let g:ale_echo_msg_error_str = 'E'
-#     let g:ale_echo_msg_warning_str = 'W'
-#     let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-#     let g:ale_set_loclist = 1
-#     let g:ale_set_quickfix = 0
-#     let g:ale_open_list = 0
-#     let g:ale_keep_list_window_open = 0
-#     let g:ale_sign_error = '✗'
-#     let g:ale_sign_warning = '⚠'
+- repo: dense-analysis/ale
+  on_ft: [markdown]
+  hook_add: |
+    let g:ale_disable_lsp = 0
+    let g:ale_completion_enabled = 0
+    let g:ale_fixers = {'python': ['black', 'isort']}
+    let g:ale_python_flake8_options = '--max-line-length=120 --ignore=E265,E266,501'
+    let g:ale_python_mypy_options = '--ignore-missing-imports'
+    let g:ale_python_pyls_options = '--ignore-missing-imports'
+    let g:ale_yaml_yamllint_options = '-d "{extends: relaxed, rules: {line-length: disable}}"'
+    let g:ale_lint_on_save = 1
+    let g:ale_lint_on_text_changed = 'never'
+    let g:ale_lint_on_insert_leave = 1
+    let g:ale_lint_on_enter = 1
+    let g:ale_echo_msg_error_str = 'E'
+    let g:ale_echo_msg_warning_str = 'W'
+    let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+    let g:ale_set_loclist = 1
+    let g:ale_set_quickfix = 0
+    let g:ale_open_list = 0
+    let g:ale_keep_list_window_open = 0
+    let g:ale_sign_error = '✗'
+    let g:ale_sign_warning = '⚠'
+    let g:ale_change_sign_column_color = 1
+    highlight clear ALEErrorSign
+    highlight clear ALEWarningSign
+    hi link ALEErrorSign    Error
+    hi link ALEWarningSign  Warning
 
-#    let g:ale_linters = {'python': ['pyls']}
+# let g:ale_linters = {'python': ['bandit', 'flake8', 'mypy', 'prospector', 'pycodestyle', 'pydocstyle', 'pyflakes', 'pylama', 'pylint', 'pyls', 'pyre', 'pyright', 'vulture']}
+# let g:ale_fixers = {'python': ['black', 'isort', 'autopep8']}
+# let g:ale_sign_error = "◉"
+# let g:ale_sign_warning = "◉"
+
+# - repo: neoclide/coc.nvim
+#   on_ft: python
 
 # -- Management / Tasks / ... ---
 
@@ -247,14 +263,13 @@
         let ext = vimwiki#vars#get_wikilocal('ext')
         return zettel#vimwiki#count_files("*" . ext)
     endfunction
-    let s:zettel_options_spec = {"front_matter" : [["type", "note"], [ "id" , function("s:insert_id")]], "template" :  ""}
+    let s:zettel_options_spec = {"front_matter" : [["tags", ""], ["type", "note"], [ "id" , function("s:insert_id")]], "template" :  ""}
     let g:zettel_options = [s:zettel_options_spec, {}, s:zettel_options_spec]
     let g:zettel_format = "Zet%file_no-%Y%m%d-%title"
     let g:zettel_date_format = "%Y-%m-%d"
 
 # hook_post_source:
 #   au BufReadPost,BufWritePost *.wiki,*.md VimwikiRebuildTags<cr>
-# let s:zettel_options_spec = {"front_matter" : [["tags", ""], ["type", "note"], [ "id" , function("s:insert_id")]], "template" :  ""}
 
 # " inoremap [[ [[<esc>:ZettelSearch<CR>
 # au FileType vimwiki,markdown imap #r <esc><Plug>ZettelSearchMap
@@ -364,6 +379,9 @@
       autocmd FileType python,cpp,d nmap <F2> Plug>VimspectorRunToCursor
     augroup END
 
+
+- repo: lambdalisue/vim-pyenv
+  on_cmd: [PyenvActivate, PyenvDeactivate, PyenvCreateCtags, PyenvAssignCtags, PyenvWithdrawCtags]
 
 # https://dev.to/moinmoti/nim-on-neovim-24d3
 

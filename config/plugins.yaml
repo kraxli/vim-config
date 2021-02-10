@@ -6,10 +6,6 @@
 # Startup
 # -------
 - repo: Shougo/dein.vim
-# - repo: rafi/awesome-vim-colorschemes
-# - repo: christoomey/vim-tmux-navigator
-# - repo: itchyny/vim-gitbranch
-# - repo: itchyny/vim-parenmatch
 - repo: thinca/vim-localrc
 - repo: Shougo/context_filetype.vim
 - repo: jaawerth/nrun.vim
@@ -84,7 +80,7 @@
     let g:vim_markdown_edit_url_in = 'vsplit'
     let g:vim_markdown_fenced_languages = [
       \ 'c++=cpp',
-      \ 'vim',
+      \ 'vim=vim',
       \ 'bash=sh',
       \ 'ini=dosini',
       \ 'js=javascript',
@@ -239,7 +235,8 @@
     let g:any_jump_disable_default_keybindings = 1
     autocmd user_events FileType any-jump setlocal cursorline
 
-- repo: Vigemus/iron.nvim
+# - repo: Vigemus/iron.nvim
+- repo:  hkupty/iron.nvim
   if: has('nvim')
   on_cmd: [ IronRepl, IronReplHere, IronFocus, IronSend, IronWatchCurrentFile ]
   on_map: { nv: <Plug> }
@@ -293,39 +290,11 @@
 - repo: junegunn/fzf.vim
   depends: fzf
   merged: 0
-  on_cmd: [ Files, GitFiles, Buffers, Lines, Locate, Colors, Ag, Rg, Tags ]
+  on_cmd: [ Files, GitFiles, Buffers, Lines, Locate, Colors, Ag, Rg, Tags, GLog, History, Maps, BCommits, Commits, Windows, Helptags, Marks, Commands, Snippets, BTags, Tags, Locate, Colors, BLines, GFiles ]
   on_func: [ fzf#vim#with_preview, fzf#run, vista#finder#fzf#Run, fzf#vim#complete, fzf#wrap ]
+  hook_source: source $VIM_PATH/config/plugins/fzf.vim
   hook_add: |
-    let s:fzf_spec = {'options': ['--layout=reverse', '--info=inline', '--exact', '--tiebreak=end'], 'down': '40%'}
     let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr (%cs), %an"'
-    command! -bang -nargs=? -complete=dir Ag call fzf#vim#ag(<q-args>, s:fzf_spec, <bang>0)
-    command!      -bang -nargs=? -complete=dir Files       call fzf#vim#files(<q-args>, fzf#vim#with_preview(s:fzf_spec), <bang>0)
-    command!      -bang -nargs=? GitFiles                  call fzf#vim#gitfiles(<q-args>, fzf#vim#with_preview(<q-args> == "?" ? extend({ "placeholder": "" }, s:fzf_spec) : s:fzf_spec), <bang>0)
-    command!      -bang -nargs=? GFiles                    call fzf#vim#gitfiles(<q-args>, fzf#vim#with_preview(<q-args> == "?" ? extend({ "placeholder": "" }, s:fzf_spec) : s:fzf_spec), <bang>0)
-    command! -bar -bang -nargs=? -complete=buffer Buffers  call fzf#vim#buffers(<q-args>, fzf#vim#with_preview(extend({ "placeholder": "{1}"}, s:fzf_spec)), <bang>0)
-    command!      -bang -nargs=* Lines                     call fzf#vim#lines(<q-args>, fzf#vim#with_preview(s:fzf_spec), <bang>0)
-    command!      -bang -nargs=* BLines                    call fzf#vim#buffer_lines(<q-args>, fzf#vim#with_preview(s:fzf_spec), <bang>0)
-    command! -bar -bang Colors                             call fzf#vim#colors(<bang>0, fzf#vim#with_preview(s:fzf_spec))
-    command!      -bang -nargs=+ -complete=dir Locate      call fzf#vim#locate(<q-args>, fzf#vim#with_preview(s:fzf_spec), <bang>0)
-    command!      -bang -nargs=* Ag                        call fzf#vim#ag(<q-args>, fzf#vim#with_preview(s:fzf_spec), <bang>0)
-    command!      -bang -nargs=* Rg                        call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case -- ".shellescape(<q-args>), 1, fzf#vim#with_preview(s:fzf_spec), <bang>0)
-    command!      -bang -nargs=* Tags                      call fzf#vim#tags(<q-args>, fzf#vim#with_preview(extend({ "placeholder": "--tag {2}:{-1}:{3}"}, s:fzf_spec)), <bang>0)
-    command!      -bang -nargs=* BTags                     call fzf#vim#buffer_tags(<q-args>, fzf#vim#with_preview(extend({ "placeholder": "{2}:{3}"}, s:fzf_spec)), <bang>0)
-    command! -bar -bang Snippets                           call fzf#vim#snippets(fzf#vim#with_preview(s:fzf_spec), <bang>0)
-    command! -bar -bang Commands                           call fzf#vim#commands(fzf#vim#with_preview(s:fzf_spec), <bang>0)
-    command! -bar -bang Marks                              call fzf#vim#marks(fzf#vim#with_preview(s:fzf_spec), <bang>0)
-    command! -bar -bang Helptags                           call fzf#vim#helptags(fzf#vim#with_preview(s:fzf_spec), <bang>0)
-    command! -bar -bang Windows                            call fzf#vim#windows(fzf#vim#with_preview(s:fzf_spec), <bang>0)
-    command! -bar -bang Commits                            call fzf#vim#commits(fzf#vim#with_preview(extend({ "placeholder": "" }, s:fzf_spec)), <bang>0)
-    command! -bar -bang BCommits                           call fzf#vim#buffer_commits(fzf#vim#with_preview(extend({ "placeholder": "" }, s:fzf_spec)), <bang>0)
-    command! -bar -bang Maps                               call fzf#vim#maps("n", fzf#vim#with_preview(s:fzf_spec), <bang>0)
-    command! -bar -bang Filetypes                          call fzf#vim#filetypes(fzf#vim#with_preview(s:fzf_spec), <bang>0)
-    command!      -bang -nargs=* History                   call s:history(<q-args>, fzf#vim#with_preview(s:fzf_spec), <bang>0)
-    command! -bar -bang GLog Commits<bang>
-
-
-#        let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr"':
-# let g:fugitive_summary_format = '[%cs, %an] %s'
 
 - repo: Ron89/thesaurus_query.vim
   on_cmd:
@@ -470,7 +439,7 @@
     let g:vimwiki_autowriteall = 0
     let g:vimwiki_global_ext = 1
     let g:vimwiki_ext2syntax = {'.wiki': 'markdown', '.md': 'markdown', '.mkd': 'markdown'}
-    let s:nested_syntax = {'py': 'python', 'sh': 'bash'}
+    let s:nested_syntax = {'py': 'python', 'sh': 'bash', 'json': 'javascript'}
     let g:vimwiki_list = [
     \   { 'diary_header': 'Diary',
     \     'diary_link_fmt': '%Y-%m-%d',
@@ -552,11 +521,13 @@
     let g:lsp_diagnostics_virtual_text_enabled = 0
     let g:lsp_diagnostics_highlights_delay = 400
     let g:lsp_diagnostics_signs_error = {'text': '✖'}
-    let g:lsp_diagnostics_signs_warning = {'text': '⬪'}
+    let g:lsp_diagnostics_signs_warning = {'text': '⚠'}
     let g:lsp_diagnostics_signs_hint = {'text': '▪'}
     let g:lsp_diagnostics_signs_information = {'text': '▫'}
+    let g:lsp_use_lua = has('nvim-0.4.0') || (has('lua') && has('patch-8.2.0775'))
 
 # helpful source: https://urfoex.blogspot.com/2020/04/vim-lsp.html
+
 - repo: mattn/vim-lsp-settings
   on_event: [ BufReadPre, VimEnter ]
   merged: 0
@@ -565,89 +536,21 @@
       call lsp#enable()
     endif
   hook_add: |-
-    let g:lsp_settings = {
-    \   'yaml-language-server': {
-    \     'allowlist': ['yaml', 'yaml.ansible'],
-    \   },
-    \   'filetype': {'python': 'pyls-ms'},
-    \   'pyls-ms': {
-    \       'workspace_config': {
-    \         'pyls': {
-    \           'configurationSources': ['flake8', 'black', 'pylint', 'pyflakes', 'flake8', 'isort']
-    \         },
-    \       },
-    \   },
-    \ }
-    let g:lsp_diagnostics_enabled = 1
     let g:lsp_settings_root_markers = ['.git', '.git/', '.svn', '.hg', '.bzr']
     let g:lsp_signs_error = {'text': '✗'}
     let g:lsp_signs_warning = {'text': '⚠'}
     highlight link LspErrorText ErrorMsg
     highlight link LspWarningText Type
+    let g:lsp_settings = {
+      \   'yaml-language-server': {
+      \     'allowlist': ['yaml', 'yaml.ansible'],
+      \   },
+    \   }
+    let g:lsp_settings_filetype_python = ['pyright-langserver']
 
-# \   'pyls-ms': {
-# \             'configurationSources': ['pycodestyle'],
-# \             'plugins': {
-# \                 'pycodestyle': {
-# \                     'enabled': v:true,
-# \                     'ignore': ['E402', 'E226', 'E302', 'E41'],
-# \                     'max-line-length': 120,
-# \                  },
-# \                 'autopep8': {'enabled': v:true},
-# \                 'black': {'enabled': v:false},
-# \                 'pylint': {'enabled': v:false},
-# \                 'pyflakes': {'enabled': v:false},
-# \                 'flake8': {'enabled': v:false},
-# \                 'isort': {'enabled': v:false},
-# \             },
-# \   },
+# you need to install stubs: https://github.com/typeddjango/awesome-python-typing#stub-packages
 
-
-# let g:lsp_log_verbose = 1
-# let g:lsp_log_file = expand('~/vim-lsp.log')
-
-# https://www.w3schools.com/charsets/ref_utf_symbols.asp
-# ⚠  ☒  ✗
-#    let g:lsp_diagnostics_echo_cursor = 1
-#    let g:lsp_diagnostics_float_cursor = 1
-# 'jedi': {'enabled': true},
-# "yapf": {"enabled": false }
-# let g:lsp_settings_filetype_python = 'pyls-ms' #  'pyls-all'
-
-
-# let g:lsp_settings = {
-# \   'efm-langserver': {'disabled': 1},
-# \   'gopls': {
-# \     'cmd': ['gopls', '-remote=auto'],
-# \   },
-# \   'yaml-language-server': {
-# \     'allowlist': ['yaml', 'yaml.ansible'],
-# \   },
-# \   'filetype': {'python': 'pyls'},
-# \   'pyls': {
-# \     'workspace_config': {
-# \         'pyls': {
-# \             'configurationSources': ['pycodestyle'],
-# \             'pycodestyle': {
-# \                 'enabled': v:true,
-# \                 "ignore": ["E402", "E226", "E302", "E41"],
-# \                 "max-line-length": 120,
-# \                 },
-# \             'plugins': {
-# \                 'pydocstyle': {'enabled': v:true},
-# \                 'pycodestyle': {'enabled': v:true},
-# \                 'autopep8': {'enabled': v:false},
-# \                 'black': {'enabled': v:true},
-# \                 'pylint': {'enabled': v:false},
-# \                 'pyflakes': {'enabled': v:false},
-# \                 'flake8': {'enabled': v:false},
-# \                 'isort': {'enabled': v:false},
-# \             },
-# \         },
-# \     },
-# \   },
-# \ }
-
+# let g:lsp_settings_filetype_python = ['pyls-all']
 
 - repo: prabirshrestha/asyncomplete-necovim.vim
   on_source: asyncomplete.vim
