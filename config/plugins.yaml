@@ -546,7 +546,7 @@
       \     'allowlist': ['yaml', 'yaml.ansible'],
       \   },
     \   }
-    let g:lsp_settings_filetype_python = ['pyright-langserver']
+    let g:lsp_settings_filetype_python = ['pyls-all', 'pyright-langserver']
 
 # you need to install stubs: https://github.com/typeddjango/awesome-python-typing#stub-packages
 
