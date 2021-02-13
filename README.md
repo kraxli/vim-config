@@ -188,4 +188,6 @@ Snippets: a snippet fully written out needs to be triggered by `<c-l>` (expand t
 
 ## Reminers
 - Copy / get absolute or relative path of current file, relative: `<leader>y`, absolute: `<leader>Y`
+- `netrw`:  Toggle the directory banner by pressing I.
+- `netrw`: `:Explore` for full netrw-window, `:Vexplore` for vertical side-split netrw-window
 
