@@ -2,30 +2,30 @@
 " ---
 
 if dein#tap('denite.nvim')
-	nnoremap <silent><LocalLeader>r :<C-u>Denite -resume -refresh -no-start-filter<CR>
-	nnoremap <silent><LocalLeader>f :<C-u>Denite file/rec<CR>
-	nnoremap <silent><LocalLeader>g :<C-u>Denite grep -start-filter<CR>
-	nnoremap <silent><LocalLeader>b :<C-u>Denite buffer -default-action=switch<CR>
-	nnoremap <silent><LocalLeader>i :<C-u>Denite file/old<CR>
-	nnoremap <silent><LocalLeader>d :<C-u>Denite directory_rec directory_mru -default-action=cd<CR>
-	nnoremap <silent><LocalLeader>v :<C-u>Denite neoyank -buffer-name=register<CR>
-	xnoremap <silent><LocalLeader>v :<C-u>Denite neoyank -buffer-name=register -default-action=replace<CR>
-	nnoremap <silent><LocalLeader>l :<C-u>Denite location_list -buffer-name=list -no-start-filter<CR>
-	nnoremap <silent><LocalLeader>q :<C-u>Denite quickfix -buffer-name=list -no-start-filter<CR>
-	nnoremap <silent><LocalLeader>m :<C-u>Denite mark<CR>
-	nnoremap <silent><LocalLeader>n :<C-u>Denite dein<CR>
-	nnoremap <silent><LocalLeader>j :<C-u>Denite jump change file/point -no-start-filter<CR>
-	nnoremap <silent><LocalLeader>u :<C-u>Denite junkfile:new junkfile -buffer-name=list<CR>
-	nnoremap <silent><LocalLeader>o :<C-u>Denite outline -no-start-filter<CR>
-	nnoremap <silent><LocalLeader>s :<C-u>Denite session -buffer-name=list<CR>
-	nnoremap <silent><LocalLeader>t :<C-u>Denite tag<CR>
-	nnoremap <silent><LocalLeader>p :<C-u>Denite jump<CR>
-	nnoremap <silent><LocalLeader>h :<C-u>Denite help<CR>
-	nnoremap <silent><LocalLeader>w :<C-u>Denite file/rec -buffer-name=memo -path=~/docs/blog<CR>
-	nnoremap <silent><LocalLeader>x :<C-u>Denite file_mru<CR>
-	nnoremap <silent><LocalLeader>z :<C-u>Denite z -buffer-name=list<CR>
-	nnoremap <silent><LocalLeader>; :<C-u>Denite command_history command<CR>
-	nnoremap <silent><expr><LocalLeader>/ wordcount().chars > 10000 ?
+	nnoremap <silent>;r :<C-u>Denite -resume -refresh -no-start-filter<CR>
+	nnoremap <silent>;f :<C-u>Denite file/rec<CR>
+	nnoremap <silent>;g :<C-u>Denite grep -start-filter<CR>
+	nnoremap <silent>;b :<C-u>Denite buffer -default-action=switch<CR>
+	nnoremap <silent>;i :<C-u>Denite file/old<CR>
+	nnoremap <silent>;d :<C-u>Denite directory_rec directory_mru -default-action=cd<CR>
+	nnoremap <silent>;v :<C-u>Denite neoyank -buffer-name=register<CR>
+	xnoremap <silent>;v :<C-u>Denite neoyank -buffer-name=register -default-action=replace<CR>
+	nnoremap <silent>;l :<C-u>Denite location_list -buffer-name=list -no-start-filter<CR>
+	nnoremap <silent>;q :<C-u>Denite quickfix -buffer-name=list -no-start-filter<CR>
+	nnoremap <silent>;m :<C-u>Denite mark<CR>
+	nnoremap <silent>;n :<C-u>Denite dein<CR>
+	nnoremap <silent>;j :<C-u>Denite jump change file/point -no-start-filter<CR>
+	nnoremap <silent>;u :<C-u>Denite junkfile:new junkfile -buffer-name=list<CR>
+	nnoremap <silent>;o :<C-u>Denite outline -no-start-filter<CR>
+	nnoremap <silent>;s :<C-u>Denite session -buffer-name=list<CR>
+	nnoremap <silent>;t :<C-u>Denite tag<CR>
+	nnoremap <silent>;p :<C-u>Denite jump<CR>
+	nnoremap <silent>;h :<C-u>Denite help<CR>
+	nnoremap <silent>;w :<C-u>Denite file/rec -buffer-name=memo -path=~/docs/blog<CR>
+	nnoremap <silent>;x :<C-u>Denite file_mru<CR>
+	nnoremap <silent>;z :<C-u>Denite z -buffer-name=list<CR>
+	nnoremap <silent>;; :<C-u>Denite command_history command<CR>
+	nnoremap <silent><expr>;/ wordcount().chars > 10000 ?
 		\ ":\<C-u>Denite -search line/external\<CR>"
 		\ : ":\<C-u>Denite -search line\<CR>"
 	nnoremap <silent><expr><LocalLeader>* wordcount().chars > 10000 ?
@@ -33,19 +33,14 @@ if dein#tap('denite.nvim')
 		\ : ":\<C-u>DeniteCursorWord -no-start-filter -search line\<CR>"
 
 	" Open Denite with word under cursor or selection
-	nnoremap <silent> <Leader>gt :DeniteCursorWord tag:include -no-start-filter -immediately<CR>
-	nnoremap <silent> <Leader>gf :DeniteCursorWord file/rec -no-start-filter<CR>
-	nnoremap <silent> <Leader>gg :DeniteCursorWord grep -no-start-filter<CR>
-	vnoremap <silent> <Leader>gg
+	nnoremap <silent> ;gt :DeniteCursorWord tag:include -no-start-filter -immediately<CR>
+	nnoremap <silent> ;gf :DeniteCursorWord file/rec -no-start-filter<CR>
+
+	nnoremap <silent> ;gg :DeniteCursorWord grep -no-start-filter<CR>
+	vnoremap <silent> ;gg
 		\ :<C-u>call <SID>get_selection('/')<CR>
 		\ :execute 'Denite -no-start-filter grep:::'.escape(@/, ' :')<CR><CR>
 
-	function! s:get_selection(cmdtype)
-		let temp = @s
-		normal! gv"sy
-		let @/ = substitute(escape(@s, '\' . a:cmdtype), '\n', '\\n', 'g')
-		let @s = temp
-	endfunction
 endif
 
 if dein#tap('vim-clap')
@@ -108,8 +103,9 @@ endif
 if dein#tap('defx.nvim')
 	nnoremap <silent> <LocalLeader>e
 		\ :<C-u>Defx -toggle -buffer-name=explorer`tabpagenr()`<CR>
-	nnoremap <silent> <LocalLeader>a
+	nnoremap <silent> <localleader>a
 		\ :<C-u>Defx
+		\		-toggle
 		\   -search=`escape(expand('%:p'), ' :')`
 		\   -buffer-name=explorer`tabpagenr()`<CR>
 endif
@@ -153,6 +149,8 @@ if dein#tap('iron.nvim')
 	nmap <silent> <Leader>rq <Plug>(iron-exit)
 	nmap <silent> <Leader>rl <Plug>(iron-send-line)
 	vmap <silent> <Leader>rl <Plug>(iron-visual-send)
+	nmap <silent> <Leader>rs <Plug>(iron-send-line)
+	vmap <silent> <Leader>rs <Plug>(iron-visual-send)
 	nmap <silent> <Leader>rp <Plug>(iron-repeat-cmd)
 	nmap <silent> <Leader>rc <Plug>(iron-clear)
 	nmap <silent> <Leader>r<CR>  <Plug>(iron-cr)
@@ -478,6 +476,78 @@ if dein#tap('samoshkin/vim-mergetool')
 	nmap ;mt <plug>(MergetoolToggle)
 endif
 
+if dein#tap('fzf.vim')
+	" --- Not repliated by FZF (use ; instead of localleader) ---
+	" nnoremap <silent><localleader>r :<C-u>Denite -resume -refresh -no-start-filter<CR>
+	" nnoremap <silent><localleader>d :<C-u>Denite directory_rec directory_mru -default-action=cd<CR>
+	" nnoremap <silent><localleader>v :<C-u>Denite neoyank -buffer-name=register<CR>
+	" xnoremap <silent><localleader>v :<C-u>Denite neoyank -buffer-name=register -default-action=replace<CR>
+	" nnoremap <silent><localleader>l :<C-u>Denite location_list -buffer-name=list -no-start-filter<CR>
+	" nnoremap <silent><localleader>q :<C-u>Denite quickfix -buffer-name=list -no-start-filter<CR>
+	" nnoremap <silent><localleader>j :<C-u>Denite jump change file/point -no-start-filter<CR>
+	" nnoremap <silent><localleader>n :<C-u>Denite dein<CR>
+	" nnoremap <silent><localleader>u :<C-u>Denite junkfile:new junkfile -buffer-name=list<CR>
+	" nnoremap <silent><localleader>o :<C-u>Denite outline -no-start-filter<CR>
+	" nnoremap <silent><localleader>p :<C-u>Denite jump<CR>
+	" nnoremap <silent><localleader>h :<C-u>Denite help<CR>
+	" nnoremap <silent><localleader>w :<C-u>Denite file/rec -buffer-name=memo -path=~/docs/blog<CR>
+	" nnoremap <silent><localleader>x :<C-u>Denite file_mru<CR>
+	" nnoremap <silent><localleader>z :<C-u>Denite z -buffer-name=list<CR>
+
+
+	" --- Remapped from Denite (as close as possible) ---
+	nnoremap <silent><localleader>f :call fzf#vim#files('', extend({'options': ['--layout=reverse', '--info=inline', '--preview-window', 'right:60%:hidden']}, {'window': {'height': 0.5,  'width': 0.5}}), 0)<cr>
+	nnoremap <silent><localleader>b :call fzf#vim#buffers('', fzf#vim#with_preview(extend({'options': ['--layout=reverse', '--info=inline', '--preview-window', 'right:60%:hidden']}, {'window': {'height': 0.5,  'width': 0.5 }})), 0)<cr>
+	nnoremap <silent><localleader>i :call fzf#vim#history(fzf#vim#with_preview(extend({'options': ['--layout=reverse', '--info=inline', '--preview-window', 'right:60%:hidden']}, {'window': {'height': 0.5,  'width': 0.4 }})), 0)<cr>
+	nnoremap <silent><localleader>m :call fzf#vim#marks(fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline', '--preview-window', 'right:50%:hidden'], 'window': {'height': 0.5,  'width': 0.75}}), 0)<cr>
+	nnoremap <silent><localleader>; :call fzf#vim#command_history(fzf#vim#with_preview(s:fzf_spec), 0)<cr>
+	nnoremap <silent><localleader>t :call fzf#vim#tags('', fzf#vim#with_preview({ "placeholder": "--tag {2}:{-1}:{3}", 'options': ['--layout=reverse', '--info=inline', '--preview-window', 'right:50%:hidden'], 'window': {'height': 0.5,  'width': 0.75}}), 0)<cr>
+	nnoremap <silent><localleader>h :call fzf#vim#helptags(fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline', '--exact', '--tiebreak=end', '--preview-window', 'hidden'], 'down': '40%', 'window': { 'height': 0.5, 'width': 0.7 }}), 0)<cr>
+	nnoremap <silent><localleader>/ :call fzf#vim#lines('', fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline', '--exact', '--tiebreak=end', '--preview-window', 'hidden'], 'down': '40%', 'window': { 'height': 0.5, 'width': 0.6 }}), 0)<cr>
+	" nnoremap <silent><localleader>/ :call fzf#vim#buffer_lines('', fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline', '--exact', '--tiebreak=end', '--preview-window', 'hidden'], 'down': '40%', 'window': { 'height': 0.5, 'width': 0.6 }}), 0)<cr>
+	vnoremap <silent> <localleader>*
+			\ :<C-u>call <SID>get_selection('/')<CR>
+			\ :execute 'call fzf#vim#lines(' .shellescape(@/, " :") . ', fzf#vim#with_preview({"options": ["--layout=reverse", "--info=inline", "--exact", "--tiebreak=end", "--preview-window", "hidden"], "down": "40%", "window": { "height": 0.5, "width": 0.6 }}), 0)'<cr>
+	vnoremap <silent> ;gt
+			\ :<C-u>call <SID>get_selection('/')<CR>
+			\ :execute 'call fzf#vim#tags(' .shellescape(@/, " :") . ', fzf#vim#with_preview({ "placeholder": "--tag {2}:{-1}:{3}", "options": ["--layout=reverse", "--info=inline", "--preview-window", "right:50%:hidden"], "window": {"height": 0.5,  "width": 0.75}}), 0)'<cr>
+	vnoremap <silent> ;gf
+			\ :<C-u>call <SID>get_selection('/')<CR>
+			\ :execute 'call fzf#vim#files(' .shellescape(@/, " :") . ', extend({"options": ["--layout=reverse", "--info=inline", "--preview-window", "right:60%:hidden"]}, {"window": {"height": 0.5,  "width": 0.5}}), 0)'<cr>
+
+
+	" --- Deviating from Denite ---
+  nmap <silent> <localleader>gg :call fzf#vim#ag('', {'options': ['--layout=reverse', '--info=inline', '--exact', '--tiebreak=end'], 'down': '40%', 'window': { 'width': 0.9, 'height': 0.6 }}, 0)<cr>
+  " nnoremap <silent> <leader>gg :call fzf#vim#ag(expand('<cword>'), {'options': ['--layout=reverse', '--info=inline', '--exact', '--tiebreak=end'], 'down': '40%', 'window': { 'width': 0.9, 'height': 0.6 }}, 0)<cr>
+  nnoremap <silent> <localleader>gw :call fzf#vim#ag(expand('<cword>'), {'options': ['--layout=reverse', '--info=inline', '--exact', '--tiebreak=end'], 'down': '40%', 'window': { 'width': 0.9, 'height': 0.6 }}, 0)<cr>
+	vnoremap <silent> <localleader>gw
+			\ :<C-u>call <SID>get_selection('/')<CR>
+			\ :execute 'call fzf#vim#ag(' .shellescape(@/, " :") . ', {"options": ["--layout=reverse", "--info=inline", "--exact", "--tiebreak=end"], "down": "40%", "window": { "width": 0.9, "height": 0.6 }}, 0)'<cr>
+
+	nnoremap <silent><localleader>gc :call fzf#vim#commits(fzf#vim#with_preview({ "placeholder": "" , 'options': ['--layout=reverse', '--info=inline', '--exact', '--tiebreak=end'], 'down': '40%', 'window': { 'width': 0.9, 'height': 0.6 }}), 0)<cr>
+	nnoremap <silent><localleader>gb :call fzf#vim#buffer_commits(fzf#vim#with_preview({ "placeholder": "" , 'options': ['--layout=reverse', '--info=inline', '--exact', '--tiebreak=end'], 'down': '40%', 'window': { 'width': 0.9, 'height': 0.6 }}), 0)<cr>
+	nnoremap <silent><localleader>gf :call fzf#vim#gitfiles('', fzf#vim#with_preview({ "placeholder": "" , 'options': ['--layout=reverse', '--info=inline', '--exact', '--tiebreak=end', '--preview-window', 'right:60%'], 'down': '40%', 'window': { 'width': 0.7, 'height': 0.5 }}), 0)<cr>
+
+	" --- Not available with Denite ---
+	nnoremap <silent>;c :call fzf#vim#commands(fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline', '--exact', '--tiebreak=end', '--preview-window', 'hidden'], 'down': '40%', 'window': { 'height': 0.5, 'width': 0.9 }}), 0)<cr>
+	nnoremap <silent><localleader>s :call fzf#vim#snippets(fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline', '--exact', '--tiebreak=end', '--preview-window', 'hidden'], 'down': '40%', 'window': { 'height': 0.5, 'width': 0.4 }}), 0)<cr>
+	nnoremap <silent><localleader>w :call fzf#vim#windows(fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline', '--exact', '--tiebreak=end', '--preview-window', 'hidden'], 'down': '40%', 'window': { 'height': 0.5, 'width': 0.4 }}), 0)<cr>
+	nnoremap <silent>;a :call fzf#vim#maps('', fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline', '--preview-window', 'right:60%:hidden'], 'window': {'height': 0.5,  'width': 0.6 }}), 0)<cr>
+	nnoremap <silent><localleader>, :call  fzf#vim#search_history(fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline', '--preview-window', 'right:60%:hidden'], 'window': {'height': 0.5,  'width': 0.6 }}), 0)<cr>
+	nnoremap <silent><localleader>l :call fzf#vim#locate('', fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline', '--preview-window', 'right:60%'], 'window': {'height': 0.5,  'width': 0.6 }}), 0)<cr>
+
+	" --- No key-mappings ---
+	" command!      -bang -nargs=* BLines                     call fzf#vim#lines(<q-args>, fzf#vim#with_preview(s:fzf_spec), <bang>0)
+	" command!      -bang -nargs=* BTags                     call fzf#vim#buffer_tags(<q-args>, fzf#vim#with_preview(extend({ "placeholder": "{2}:{3}"}, s:fzf_spec)), <bang>0)
+
+endif
+
+
+if dein#tap('fzf-session.vim')
+	" nnoremap <silent>;s :call fzf_session#session()<cr>
+	nnoremap <silent><leader>ss :Sessions<cr>
+endif
+
 " if dein#tap('SidOfc/mkdx')
 " endif
 
@@ -486,4 +556,11 @@ endif
 "   " UltiSnipsAddFiletypes vimwiki.markdown
 " endif
 
+function! s:get_selection(cmdtype)
+	let temp = @s
+	normal! gv"sy
+	let @/ = substitute(escape(@s, '\' . a:cmdtype), '\n', '\\n', 'g')
+	let @s = temp
+endfunction
+	
 " vim: set ts=2 sw=2 tw=80 noet :

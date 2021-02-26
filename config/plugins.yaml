@@ -285,16 +285,24 @@
   on_cmd: FZF
   type__depth: 1
   hook_source: |-
-    let g:fzf_layout = { 'down': '~25%' }
+    let g:fzf_layout = { 'down': '40%' }
 
 - repo: junegunn/fzf.vim
   depends: fzf
   merged: 0
-  on_cmd: [ Files, GitFiles, Buffers, Lines, Locate, Colors, Ag, Rg, Tags, GLog, History, Maps, BCommits, Commits, Windows, Helptags, Marks, Commands, Snippets, BTags, Tags, Locate, Colors, BLines, GFiles ]
+  on_cmd: [ Files, GitFiles, Buffers, Lines, Locate, Colors, Ag, Rg, Tags, GLog, History, HistoryS, HistoryC, Maps, BCommits, Commits, Windows, Helptags, Marks, Commands, Snippets, BTags, Tags, Locate, Colors, BLines, GFiles ]
   on_func: [ fzf#vim#with_preview, fzf#run, vista#finder#fzf#Run, fzf#vim#complete, fzf#wrap ]
   hook_source: source $VIM_PATH/config/plugins/fzf.vim
   hook_add: |
+    let g:fzf_height = '40%'
     let g:fzf_commits_log_options = '--graph --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr (%cs), %an"'
+    let g:fzf_colors = {
+      \ 'fg': ['fg', 'Normal'],
+      \ 'bg': ['bg', 'Pmenu']
+      \ }
+    let g:fzf_history_dir = $DATA_PATH . '/fzf'
+
+#  bg: Visual, Pmenu, VertSplit
 
 - repo: Ron89/thesaurus_query.vim
   on_cmd:
@@ -498,8 +506,15 @@
 
 - repo: prabirshrestha/asyncomplete.vim
   on_source: asyncomplete-lsp.vim
-  hook_add: let g:asyncomplete_auto_completeopt = 0
+  hook_add: |
+    let g:asyncomplete_smart_completion = 1
+    let g:asyncomplete_min_chars = 2
   hook_source: source $VIM_PATH/config/plugins/asyncomplete.vim
+
+# let g:asyncomplete_min_chars = 2
+# let g:asyncomplete_smart_completion = 1
+# let g:asyncomplete_auto_completeopt = 0
+# let g:asyncomplete_auto_popup = 0
 
 - repo: prabirshrestha/asyncomplete-lsp.vim
   on_source: vim-lsp

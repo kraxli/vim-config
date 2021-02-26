@@ -50,15 +50,25 @@
 # if: exists(expand(execute('pwd') . '/.git', 1))
 # Git mergetool, Git difftool
 
+- repo: tpope/vim-vinegar
+  on_cmd: [Ex, Explore, Vexplore, V]
+  on_ft: netrw
+
 - repo: junegunn/gv.vim
   depends: vim-fugitive
   on_cmd: GV
 
-- repo:  liuchengxu/vim-which-key
-  on_cmd: [WhichKey, WhichKey!]
-
-- repo:  junegunn/vim-peekaboo
+- repo: junegunn/vim-peekaboo
   on_map: [\", \@, CTRL-R]
+
+- {repo: fszymanski/fzf-quickfix, on: Quickfix}
+
+- repo: dominickng/fzf-session.vim
+  on_cmd: [Session, SLoad, SDelete, SQuit, SList, Sessions]
+  hook_add: let g:fzf_session_path = $DATA_PATH . '/session'
+
+# - repo: liuchengxu/vim-which-key
+#   on_cmd: [WhichKey, WhichKey!]
 
 - repo: vim-scripts/VisIncr
   on_cmd: [I, II, IMOD, IREP, IMDY, IYMD, IDMY, ID, IM, IA, IX, IIX, IB, IIB,
@@ -251,13 +261,14 @@
   depends: vimwiki
   hook_add: |
     let g:zettel_default_mappings=0
-    au FileType vimwiki,markdown nnoremap <leader>zn :ZettelNew<space>
     au FileType vimwiki,markdown,vimwiki.markdown imap ]s <esc><Plug>ZettelSearchMap
     au FileType vimwiki,markdow,vimwiki.markdown imap ]a <esc><Plug>ZettelAnchorInsert
     au FileType vimwiki,markdow,vimwiki.markdown imap <c-r> <esc><Plug>ZettelAnchorInsert
     au FileType vimwiki,markdow,vimwiki.markdown nmap T <Plug>ZettelYankNameMap
     au FileType vimwiki,markdow,vimwiki.markdown xmap z <Plug>ZettelNewSelectedMap
     au FileType vimwiki,markdow,vimwiki.markdown nmap gZ <Plug>ZettelReplaceFileWithLink
+    au FileType vimwiki,markdow,vimwiki.markdown nmap <leader>zo :ZettelOpen<cr>
+    au FileType vimwiki,markdown nnoremap <leader>zn :ZettelNew<space>
     let g:vimwiki_markdown_link_ext = 1
     function! s:insert_id()
         let ext = vimwiki#vars#get_wikilocal('ext')
@@ -268,15 +279,11 @@
     let g:zettel_format = "Zet%file_no-%Y%m%d-%title"
     let g:zettel_date_format = "%Y-%m-%d"
 
-# hook_post_source:
-#   au BufReadPost,BufWritePost *.wiki,*.md VimwikiRebuildTags<cr>
-
-# " inoremap [[ [[<esc>:ZettelSearch<CR>
-# au FileType vimwiki,markdown imap #r <esc><Plug>ZettelSearchMap
-# " xnoremap z :call zettel#vimwiki#zettel_new_selected()<CR>
-
-# - repo: alok/notational-fzf-vim
 # - repo: gera2ld/markmap or dundalek/markmap
+#     hook_source: |
+#       augroup markmap_group
+#         au! FileType markdown command! MarkMap :!markmap %:p
+#       augroup END
 # - repo: michal-h21/vimwiki-sync
 
 # - repo:  vim-pandoc/vim-markdownfootnotes
@@ -288,9 +295,6 @@
 #     nmap <buffer> <c-f>r <Plug>ReturnFromFootnote
 
 # to sort footnotes: https://github.com/derdennis/sort-markdown-footnotes (but I would need to remove the "fn" from the footnotes) -> or just use pandoc for everything
-
-# - repo: vim-pandoc/vim-pandoc
-#   on_ft: [ markdown, vimwiki, vimwiki.markdown, pandoc ]
 
 - repo: kraxli/vim-snips
   depends: ultisnips
@@ -359,7 +363,7 @@
 
 - repo: puremourning/vimspector
   build: sh ./install_gadget.py --enable-python
-  on_ft: [python, cpp]
+  on_ft: [python, cpp, lua, vim]
   hook_add: |
     let g:vimspector_install_gadgets = [ 'debugpy', 'vscode-cpptools', 'CodeLLDB' ]
     let g:vimspector_enable_mappings = ''

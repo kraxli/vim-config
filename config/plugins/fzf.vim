@@ -1,14 +1,30 @@
-let g:fzf_colors =
-\ { 'fg':      ['fg', 'Normal'],
-  \ 'bg':      ['bg', 'Normal'],
-  \ 'hl':      ['fg', 'Comment'],
-  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
-  \ 'hl+':     ['fg', 'Statement'],
-  \ 'info':    ['fg', 'PreProc'],
-  \ 'border':  ['fg', 'Ignore'],
-  \ 'prompt':  ['fg', 'Conditional'],
-  \ 'pointer': ['fg', 'Exception'],
-  \ 'marker':  ['fg', 'Keyword'],
-  \ 'spinner': ['fg', 'Label'],
-  \ 'header':  ['fg', 'Comment'] }
+
+let s:fzf_spec = {'options': ['--layout=reverse', '--info=inline', '--exact', '--tiebreak=end'], 'down': '40%'}
+
+command! -bang -nargs=? -complete=dir Ag call fzf#vim#ag(<q-args>, s:fzf_spec, <bang>0)
+command!      -bang -nargs=? -complete=dir Files       call fzf#vim#files(<q-args>, fzf#vim#with_preview(s:fzf_spec), <bang>0)
+command!      -bang -nargs=? GitFiles                  call fzf#vim#gitfiles(<q-args>, fzf#vim#with_preview(<q-args> == "?" ? extend({ "placeholder": "" }, s:fzf_spec) : s:fzf_spec), <bang>0)
+command!      -bang -nargs=? GFiles                    call fzf#vim#gitfiles(<q-args>, fzf#vim#with_preview(<q-args> == "?" ? extend({ "placeholder": "" }, s:fzf_spec) : s:fzf_spec), <bang>0)
+command! -bar -bang -nargs=? -complete=buffer Buffers  call fzf#vim#buffers(<q-args>, fzf#vim#with_preview(extend({ "placeholder": "{1}"}, s:fzf_spec)), <bang>0)
+command!      -bang -nargs=* Lines                     call fzf#vim#lines(<q-args>, fzf#vim#with_preview(s:fzf_spec), <bang>0)
+command!      -bang -nargs=* BLines                    call fzf#vim#buffer_lines(<q-args>, fzf#vim#with_preview(s:fzf_spec), <bang>0)
+command! -bar -bang Colors                             call fzf#vim#colors(fzf#vim#with_preview(s:fzf_spec), <bang>0)
+command!      -bang -nargs=+ -complete=dir Locate      call fzf#vim#locate(<q-args>, fzf#vim#with_preview(s:fzf_spec), <bang>0)
+command!      -bang -nargs=* Ag                        call fzf#vim#ag(<q-args>, fzf#vim#with_preview(s:fzf_spec), <bang>0)
+command!      -bang -nargs=* Rg                        call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case -- ".shellescape(<q-args>), 1, fzf#vim#with_preview(s:fzf_spec), <bang>0)
+command!      -bang -nargs=* Tags                      call fzf#vim#tags(<q-args>, fzf#vim#with_preview(extend({ "placeholder": "--tag {2}:{-1}:{3}"}, s:fzf_spec)), <bang>0)
+command!      -bang -nargs=* BTags                     call fzf#vim#buffer_tags(<q-args>, fzf#vim#with_preview(extend({ "placeholder": "{2}:{3}"}, s:fzf_spec)), <bang>0)
+command! -bar -bang Snippets                           call fzf#vim#snippets(fzf#vim#with_preview(s:fzf_spec), <bang>0)
+command! -bar -bang Commands                           call fzf#vim#commands(fzf#vim#with_preview(s:fzf_spec), <bang>0)
+command! -bar -bang Marks                              call fzf#vim#marks(fzf#vim#with_preview(s:fzf_spec), <bang>0)
+command! -bar -bang Helptags                           call fzf#vim#helptags(fzf#vim#with_preview(s:fzf_spec), <bang>0)
+command! -bar -bang Windows                            call fzf#vim#windows(fzf#vim#with_preview(s:fzf_spec), <bang>0)
+command! -bar -bang Commits                            call fzf#vim#commits(fzf#vim#with_preview(extend({ "placeholder": "" }, s:fzf_spec)), <bang>0)
+command! -bar -bang BCommits                           call fzf#vim#buffer_commits(fzf#vim#with_preview(extend({ "placeholder": "" }, s:fzf_spec)), <bang>0)
+command! -bar -bang Maps                               call fzf#vim#maps("n", fzf#vim#with_preview(s:fzf_spec), <bang>0)
+command! -bar -bang Filetypes                          call fzf#vim#filetypes(fzf#vim#with_preview(s:fzf_spec), <bang>0)
+command!      -bang -nargs=* History                   call fzf#vim#history(fzf#vim#with_preview(s:fzf_spec), <bang>0)
+command!      -bang -nargs=* HistoryS                  call fzf#vim#search_history(fzf#vim#with_preview(s:fzf_spec), <bang>0)
+command!      -bang -nargs=* HistoryC                  call fzf#vim#command_history(fzf#vim#with_preview(s:fzf_spec), <bang>0)
+command! -bar -bang GLog Commits<bang>
+
