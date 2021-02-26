@@ -483,7 +483,6 @@ if dein#tap('fzf.vim')
 	" nnoremap <silent><localleader>v :<C-u>Denite neoyank -buffer-name=register<CR>
 	" xnoremap <silent><localleader>v :<C-u>Denite neoyank -buffer-name=register -default-action=replace<CR>
 	" nnoremap <silent><localleader>l :<C-u>Denite location_list -buffer-name=list -no-start-filter<CR>
-	" nnoremap <silent><localleader>q :<C-u>Denite quickfix -buffer-name=list -no-start-filter<CR>
 	" nnoremap <silent><localleader>j :<C-u>Denite jump change file/point -no-start-filter<CR>
 	" nnoremap <silent><localleader>n :<C-u>Denite dein<CR>
 	" nnoremap <silent><localleader>u :<C-u>Denite junkfile:new junkfile -buffer-name=list<CR>
@@ -542,6 +541,9 @@ if dein#tap('fzf.vim')
 
 endif
 
+if dein#tap('fzf-quickfix')
+	nnoremap <silent><localleader>q :Quickfix<cr>
+endif
 
 if dein#tap('fzf-session.vim')
 	" nnoremap <silent>;s :call fzf_session#session()<cr>
