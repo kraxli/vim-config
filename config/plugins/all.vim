@@ -543,8 +543,8 @@ endif
 
 if dein#tap('fzf-quickfix')
 	" nnoremap <silent><localleader>q :Quickfix<cr>
-  nnoremap <silent><localleader>q :call fzf_quickfix#run('', '0', {'options': ['--layout=reverse', '--info=inline', '--preview-window', 'right:60%'], 'window': {'height': 0.5,  'width': 0.6 }}, 0)<cr>
-  nnoremap <silent><localleader>l :call fzf_quickfix#run('', '1', {'options': ['--layout=reverse', '--info=inline', '--preview-window', 'right:60%'], 'window': {'height': 0.5,  'width': 0.6 }}, 0)<cr>
+  nnoremap <silent><localleader>q :call fzf_quickfix#run('', '0', {'options': ['--layout=reverse', '--info=inline', '--preview-window', 'right:60%:hidden'], 'window': {'height': 0.5,  'width': 0.6 }}, 0)<cr>
+  nnoremap <silent><localleader>l :call fzf_quickfix#run('', '1', {'options': ['--layout=reverse', '--info=inline', '--preview-window', 'right:60%:hidden'], 'window': {'height': 0.5,  'width': 0.6 }}, 0)<cr>
 endif
 
 if dein#tap('fzf-session.vim')
