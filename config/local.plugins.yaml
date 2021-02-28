@@ -61,7 +61,7 @@
 - repo: junegunn/vim-peekaboo
   on_map: [\", \@, CTRL-R]
 
-- {repo: fszymanski/fzf-quickfix, on: Quickfix}
+- {repo: kraxli/fzf-quickfix, on: Quickfix}
 
 - repo: dominickng/fzf-session.vim
   on_cmd: [Session, SLoad, SDelete, SQuit, SList, Sessions]

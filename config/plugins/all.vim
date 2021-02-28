@@ -533,7 +533,7 @@ if dein#tap('fzf.vim')
 	nnoremap <silent><localleader>w :call fzf#vim#windows(fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline', '--exact', '--tiebreak=end', '--preview-window', 'hidden'], 'down': '40%', 'window': { 'height': 0.5, 'width': 0.4 }}), 0)<cr>
 	nnoremap <silent>;a :call fzf#vim#maps('', fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline', '--preview-window', 'right:60%:hidden'], 'window': {'height': 0.5,  'width': 0.6 }}), 0)<cr>
 	nnoremap <silent><localleader>, :call  fzf#vim#search_history(fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline', '--preview-window', 'right:60%:hidden'], 'window': {'height': 0.5,  'width': 0.6 }}), 0)<cr>
-	nnoremap <silent><localleader>l :call fzf#vim#locate('', fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline', '--preview-window', 'right:60%'], 'window': {'height': 0.5,  'width': 0.6 }}), 0)<cr>
+	nnoremap <silent><localleader>d :call fzf#vim#locate('', fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline', '--preview-window', 'right:60%'], 'window': {'height': 0.5,  'width': 0.6 }}), 0)<cr>
 
 	" --- No key-mappings ---
 	" command!      -bang -nargs=* BLines                     call fzf#vim#lines(<q-args>, fzf#vim#with_preview(s:fzf_spec), <bang>0)
@@ -542,7 +542,9 @@ if dein#tap('fzf.vim')
 endif
 
 if dein#tap('fzf-quickfix')
-	nnoremap <silent><localleader>q :Quickfix<cr>
+	" nnoremap <silent><localleader>q :Quickfix<cr>
+  nnoremap <silent><localleader>q :call fzf_quickfix#run('', '0', {'options': ['--layout=reverse', '--info=inline', '--preview-window', 'right:60%'], 'window': {'height': 0.5,  'width': 0.6 }}, 0)<cr>
+  nnoremap <silent><localleader>l :call fzf_quickfix#run('', '1', {'options': ['--layout=reverse', '--info=inline', '--preview-window', 'right:60%'], 'window': {'height': 0.5,  'width': 0.6 }}, 0)<cr>
 endif
 
 if dein#tap('fzf-session.vim')
