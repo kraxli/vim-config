@@ -267,8 +267,8 @@
     au FileType vimwiki,markdow,vimwiki.markdown nmap T <Plug>ZettelYankNameMap
     au FileType vimwiki,markdow,vimwiki.markdown xmap z <Plug>ZettelNewSelectedMap
     au FileType vimwiki,markdow,vimwiki.markdown nmap gZ <Plug>ZettelReplaceFileWithLink
-    au FileType vimwiki,markdow,vimwiki.markdown nmap <leader>zo :ZettelOpen<cr>
-    au FileType vimwiki,markdown nnoremap <leader>zn :ZettelNew<space>
+    nmap <leader>zo :ZettelOpen<cr>
+    nnoremap <leader>zn :ZettelNew<space>
     let g:vimwiki_markdown_link_ext = 1
     function! s:insert_id()
         let ext = vimwiki#vars#get_wikilocal('ext')
