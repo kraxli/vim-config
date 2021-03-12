@@ -23,7 +23,6 @@ if !exists('g:python_host_prog')
 endif
 
 if !exists('g:python3_host_prog')
-	" let g:loaded_python_provider = 1 " To disable Python 2 support:
 	if has('unix')
 		let g:python3_host_prog = '/usr/bin/python3.8'
 	else
@@ -31,6 +30,13 @@ if !exists('g:python3_host_prog')
 		" let g:python3_host_prog = '/~/.pyenv/versions/python364/bin/python'
 	endif
 endif
+
+" === Python ===
+" To disable Python 2 support:
+let g:loaded_python_provider = 0
+
+" python output format for asyncrun
+let $PYTHONUNBUFFERED=1
 
 " === Rafi ===:
 execute 'source' fnamemodify(expand('<sfile>'), ':h').'/config/vimrc'
