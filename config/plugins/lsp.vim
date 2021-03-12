@@ -23,6 +23,7 @@ function! s:on_lsp_buffer_enabled() abort
 	endif
 
 	nmap <silent><buffer> gr     <Plug>(lsp-references)
+	nmap <silent><buffer> gu     <Plug>(lsp-references)
 	nmap <silent><buffer> gi     <Plug>(lsp-peek-implementation)
 	nmap <silent><buffer> gy     <Plug>(lsp-peek-type-definition)
 	nmap <buffer><leader>rn      <Plug>(lsp-rename)
