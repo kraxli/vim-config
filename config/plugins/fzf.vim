@@ -21,7 +21,7 @@ command! -bar -bang Helptags                           call fzf#vim#helptags(fzf
 command! -bar -bang Windows                            call fzf#vim#windows(fzf#vim#with_preview(s:fzf_spec), <bang>0)
 command! -bar -bang Commits                            call fzf#vim#commits(fzf#vim#with_preview(extend({ "placeholder": "" }, s:fzf_spec)), <bang>0)
 command! -bar -bang BCommits                           call fzf#vim#buffer_commits(fzf#vim#with_preview(extend({ "placeholder": "" }, s:fzf_spec)), <bang>0)
-command! -bar -bang Maps                               call fzf#vim#maps("n", fzf#vim#with_preview(s:fzf_spec), <bang>0)
+command! -bar -bang Maps                               call fzf#vim#maps("n", fzf#vim#with_preview({'options': ['--layout=reverse', '--info=inline', '--preview-window', 'right:0%:hidden']}), <bang>0)
 command! -bar -bang Filetypes                          call fzf#vim#filetypes(fzf#vim#with_preview(s:fzf_spec), <bang>0)
 command!      -bang -nargs=* History                   call fzf#vim#history(fzf#vim#with_preview(s:fzf_spec), <bang>0)
 command!      -bang -nargs=* HistoryS                  call fzf#vim#search_history(fzf#vim#with_preview(s:fzf_spec), <bang>0)
