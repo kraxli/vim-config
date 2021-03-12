@@ -186,6 +186,10 @@ sv
 
 Snippets: a snippet fully written out needs to be triggered by `<c-l>` (expand trigger) or selected by `<c-tab>` from the pop-up/selction menu and triggered by `<CR>`. A partially written snippet can be selected from the suggestion of the pop-up by `<c-n/p>` or `<c-j/k>` and completed (expanded) by `<CR>`.
 
+;a for Defx instead of <localleader>a
+
+;c LSP command list
+
 ## Reminers
 - Copy / get absolute or relative path of current file, relative: `<leader>y`, absolute: `<leader>Y`
 - `netrw`:  Toggle the directory banner by pressing I.
