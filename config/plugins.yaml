@@ -475,7 +475,7 @@
     vmap <c-space> <Plug>VimwikiToggleListItem<cr>
     nmap '' <Plug>VimwikiNextLink<cr>
     nmap '' <Plug>VimwikiPrevLink<cr>
-    imap <expr><silent><buffer> <CR> pumvisible() ? "\<C-R>=complete#smart_carriage_return()<CR>" :  "\<C-]><Esc>:VimwikiReturn 1 5<CR>"
+    autocmd! FileType vimwiki,makdown,vimwiki.markdown imap <expr><silent><buffer> <CR> pumvisible() ? "\<C-R>=complete#smart_carriage_return()<CR>" :  "\<C-]><Esc>:VimwikiReturn 1 5<CR>"
     let s:vimwiki_list_zettel = {
         \ 'path': exists('g:dir_zettelk') && g:dir_zettelk != '' ? g:dir_zettelk : '~/Dropbox/PKD/zettelk/',
         \ 'ext':'.md',
