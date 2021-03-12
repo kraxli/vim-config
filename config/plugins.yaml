@@ -469,9 +469,13 @@
     let g:vimwiki_key_mappings =
     \   { 'table_mappings': 0,
     \   }
-    autocmd! FileType vimwiki,makdown nnoremap '' <Plug>VimwikiNextLink<cr>
-    autocmd! FileType vimwiki,makdown nnoremap '' <Plug>VimwikiPrevLink<cr>
-    autocmd! FileType vimwiki,makdown inoremap <expr><silent><buffer> <CR> pumvisible() ? "\<C-R>=complete#smart_carriage_return()<CR>" :  "\<C-]><Esc>:VimwikiReturn 1 5<CR>"
+    nmap <c-t> <Plug>VimwikiToggleListItem<cr>
+    nmap <c-space> <Plug>VimwikiToggleListItem<cr>
+    vmap <c-t> <Plug>VimwikiToggleListItem<cr>
+    vmap <c-space> <Plug>VimwikiToggleListItem<cr>
+    nmap '' <Plug>VimwikiNextLink<cr>
+    nmap '' <Plug>VimwikiPrevLink<cr>
+    imap <expr><silent><buffer> <CR> pumvisible() ? "\<C-R>=complete#smart_carriage_return()<CR>" :  "\<C-]><Esc>:VimwikiReturn 1 5<CR>"
     let s:vimwiki_list_zettel = {
         \ 'path': exists('g:dir_zettelk') && g:dir_zettelk != '' ? g:dir_zettelk : '~/Dropbox/PKD/zettelk/',
         \ 'ext':'.md',
@@ -508,7 +512,7 @@
   on_source: asyncomplete-lsp.vim
   hook_add: |
     let g:asyncomplete_smart_completion = 1
-    let g:asyncomplete_min_chars = 2
+    au FileType markdown,vimwiki,text,latex let g:asyncomplete_auto_popup = 0
   hook_source: source $VIM_PATH/config/plugins/asyncomplete.vim
 
 # let g:asyncomplete_min_chars = 2
@@ -551,6 +555,7 @@
       call lsp#enable()
     endif
   hook_add: |-
+    let g:lsp_log_file = ''
     let g:lsp_settings_root_markers = ['.git', '.git/', '.svn', '.hg', '.bzr']
     let g:lsp_signs_error = {'text': '✗'}
     let g:lsp_signs_warning = {'text': '⚠'}
@@ -560,8 +565,16 @@
       \   'yaml-language-server': {
       \     'allowlist': ['yaml', 'yaml.ansible'],
       \   },
+      \ "efm-langserver": { "disabled": v:false },
     \   }
     let g:lsp_settings_filetype_python = ['pyls-all', 'pyright-langserver']
+    if executable('sourcekit-lsp')
+      au User lsp_setup call lsp#register_server({
+          \ 'name': 'sourcekit-lsp',
+          \ 'cmd': {server_info->['sourcekit-lsp']},
+          \ 'whitelist': ['swift'],
+          \ })
+    endif
 
 # you need to install stubs: https://github.com/typeddjango/awesome-python-typing#stub-packages
 
