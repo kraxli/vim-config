@@ -194,4 +194,13 @@ Snippets: a snippet fully written out needs to be triggered by `<c-l>` (expand t
 - Copy / get absolute or relative path of current file, relative: `<leader>y`, absolute: `<leader>Y`
 - `netrw`:  Toggle the directory banner by pressing I.
 - `netrw`: `:Explore` for full netrw-window, `:Vexplore` for vertical side-split netrw-window
+- sandwich (surround): The inputs `t` and `T` support to edit HTML style tags. `saiwt` ask user to input a name of element
 
+- `SHIFT + L` (low) to jump the cursor to the bottom of the current screen without moving the screen
+- `SHIFT + M` (middle) to jump the cursor to the center of the current screen without moving the screen
+- `SHIFT + H` (high) to jump the cursor to the top of the current screen without moving the screen
+- `CTRL +  U` (up) to move the cursor and screen half a page up
+- `CTRL +  D` (down) to move the cursor and screen half a page down
+
+- `gt` to move right tab
+- `gT` to move left tab

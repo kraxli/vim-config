@@ -175,6 +175,9 @@ if dein#tap('vim-sandwich')
 	xmap is <Plug>(textobj-sandwich-query-i)
 	omap as <Plug>(textobj-sandwich-query-a)
 	xmap as <Plug>(textobj-sandwich-query-a)
+
+	" The inputs `t` and `T` support to edit HTML style tags. `saiwt` ask
+	" user to input a name of element
 endif
 
 if dein#tap('vim-operator-replace')
