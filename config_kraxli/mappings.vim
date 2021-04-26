@@ -1,10 +1,13 @@
 
+" --- elementary maps ---
+
 imap jj <esc>
+
 " nnoremap > >>^
 " nnoremap < <<$
 
-noremap [D [sz=
-noremap ]D ]sz=
+
+" --- spelling and dictionary suggestions ---
 noremap [z [sz=
 noremap ]z ]sz=
 
@@ -40,7 +43,7 @@ vnoremap ~ y:call setreg('', utils#TwiddleCase(@"), getregtype(''))<CR>gv""Pgv
 
 " {{{ --- windows / splits ---
 
-		nmap bd :bd<cr>
+		" nmap bd :bd<cr> " -> slows down move word backward
 
 		" resize window / split
 		" nnoremap <c-w>< <c-w>5<
@@ -58,9 +61,10 @@ vnoremap ~ y:call setreg('', utils#TwiddleCase(@"), getregtype(''))<CR>gv""Pgv
 		" move split windows right / left
 		noremap <s-m-Right> <esc><c-w>r
 		noremap <silent> <s-m-Left> <esc><c-w>r
-		nmap <silent> <m-Down> :hide<cr>
-		nmap <silent> <m-Up> :only<cr> " <c-w>o
-		nmap <silent> <m-Right> :vsp\|bp<cr>
+		nnoremap <silent> [Window]a  :<C-u>hide<CR>  " (stow, put, tuck) away
+		nnoremap <silent> [Window]o  :<C-u>only<CR>
+		" nmap <silent> <m-Down> :hide<cr>
+		" nmap <silent> <m-Up> :only<cr> " <c-w>o
 
 		" move between split windows
 		map <silent> <c-Up> :wincmd k<CR>
@@ -101,5 +105,38 @@ vnoremap ~ y:call setreg('', utils#TwiddleCase(@"), getregtype(''))<CR>gv""Pgv
 map <silent> <leader>fz :FZF expand('%:p:h')<cr>
 map <silent> <leader>ag :Ag expand('%:p:h')<cr>
 map <silent> <leader>aw :Ag g:dir_pkd<cr>
+
+" === \\Shortcut to use blackhole register by default ===
+" see https://levelup.gitconnected.com/7-surprising-vim-tricks-that-will-save-you-hours-b158d23fe9b7
+
+" --- Deleting without register overwrite: Copy, delete, paste work flow ---
+"
+" Shortcut to use blackhole register by default:
+" nnoremap d "_d
+" vnoremap d "_d
+" nnoremap D "_D
+" vnoremap D "_D
+" nnoremap c "_c
+" vnoremap c "_c
+" nnoremap C "_C
+" vnoremap C "_C
+" nnoremap x "_x
+" vnoremap x "_x
+" nnoremap X "_X
+" vnoremap X "_X
+
+nnoremap <leader><leader>d "_d
+vnoremap <leader><leader>d "_d
+nnoremap <leader><leader>D "_D
+vnoremap <leader><leader>D "_D
+nnoremap <leader><leader>c "_c
+vnoremap <leader><leader>c "_c
+nnoremap <leader><leader>C "_C
+vnoremap <leader><leader>C "_C
+nnoremap <leader><leader>x "_x
+vnoremap <leader><leader>x "_x
+nnoremap <leader><leader>X "_X
+vnoremap <leader><leader>X "_X
+
 
 " vim:set foldmethod=marker

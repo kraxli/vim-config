@@ -16,6 +16,9 @@
 # --------------------------------------------------
 # Base plugins
 # --------------------------------------------------
+
+# inkarkat/vim-UnconditionalPaste
+
 - repo: pbrisbin/vim-mkdir
 
 - repo: Yggdroot/indentLine
@@ -67,9 +70,6 @@
   on_cmd: [Session, SLoad, SDelete, SQuit, SList, Sessions]
   hook_add: let g:fzf_session_path = $DATA_PATH . '/session'
 
-# - repo: liuchengxu/vim-which-key
-#   on_cmd: [WhichKey, WhichKey!]
-
 - repo: vim-scripts/VisIncr
   on_cmd: [I, II, IMOD, IREP, IMDY, IYMD, IDMY, ID, IM, IA, IX, IIX, IB, IIB,
            \  IO, IIO, IR, IIR, IPOW, IIPOW, RI, RII, RIMOD, RIREP, RIMDY,
@@ -105,7 +105,7 @@
     nmap  <Leader>fi :Fi<cr>
     nmap  <Leader>fd :Fd<cr>
     nmap  <Leader>fe :Fe<cr>
-    nmap  <silent> ze :Fe<cr>
+    nmap  <silent>ze :Fe<cr>
 
 
 # -- ColorSchemes --
@@ -258,9 +258,8 @@
   on_ft: [ markdown, vimwiki ]
   hook_add: |
     let g:mkdd_task_done_symbols = ''
-    let g:mkdd_mapping_switch_status = ''
-    let g:mkdd_mapping_switch_status = ''
-    let g:mkdd_mapping_switch_status_down = ''
+    let g:mkdd_mapping_switch_status = 0
+    let g:mkdd_mapping_switch_status_down = 0
     let g:mkdd_wiki_index_key = '<leader>W'
     let g:mkdd_blog_index_key = '<leader>B'
     au BufReadPre,BufEnter,BufRead,BufNewFile *.wiki,*.md set foldmethod=expr

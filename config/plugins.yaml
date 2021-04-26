@@ -470,8 +470,8 @@
     \   { 'table_mappings': 0,
     \   }
     nmap <c-t> <Plug>VimwikiToggleListItem<cr>
-    nmap <c-space> <Plug>VimwikiToggleListItem<cr>
     vmap <c-t> <Plug>VimwikiToggleListItem<cr>
+    nmap <c-space> <Plug>VimwikiToggleListItem<cr>
     vmap <c-space> <Plug>VimwikiToggleListItem<cr>
     nmap '' <Plug>VimwikiNextLink<cr>
     nmap '' <Plug>VimwikiPrevLink<cr>

@@ -38,7 +38,7 @@ command! SetFt2Mkd set filetype=markdown
 "  utilities  "
 """""""""""""""
 command! KeyMaps call utils#KeyMaps()
-command! -nargs=1 -complete=file Vdiff :vert diffsplit <q-args>
+command! -nargs=1 -complete=file -bar Diff :vert diffsplit <q-args>
 command! SwapClean execute('!rm -rf ' . $DATA_PATH . '/swap/*')
 
 
