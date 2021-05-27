@@ -11,6 +11,7 @@ require'compe'.setup({
     nvim_lsp = true,
     nvim_lua = true,
     vsnip = true,
+    ultisnips = true,
     -- tmux = true,
     -- tmux = { all_panes = true }
   },
