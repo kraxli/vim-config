@@ -195,10 +195,12 @@ cnoreabbrev Bd bd
 cnoreabbrev bD bd
 
 " Switch history search pairs, matching my bash shell
-cnoremap <expr> <C-p>  pumvisible() ? "\<C-p>" : "\<Up>"
-cnoremap <expr> <C-n>  pumvisible() ? "\<C-n>" : "\<Down>"
-cnoremap <Up>   <C-p>
-cnoremap <Down> <C-n>
+" cnoremap <expr> <C-p>  pumvisible() ? "\<C-p>" : "\<Up>"
+" cnoremap <expr> <C-n>  pumvisible() ? "\<C-n>" : "\<Down>"
+" cnoremap <Up>   <C-p>
+" cnoremap <Down> <C-n>
+cnoremap <expr> <Up>  pumvisible() ? "\<C-p>" : "\<Up>"
+cnoremap <expr> <Down>  pumvisible() ? "\<C-n>" : "\<Down>"
 
 " }}}
 " File operations {{{
@@ -325,8 +327,8 @@ nnoremap <C-x> <C-w>x
 nnoremap  [Window]   <Nop>
 nmap      s [Window]
 
-nnoremap <silent> [Window]v  :<C-u>split<CR>
-nnoremap <silent> [Window]g  :<C-u>vsplit<CR>
+nnoremap <silent> [Window]h  :<C-u>split<CR>
+nnoremap <silent> [Window]v  :<C-u>vsplit<CR>
 nnoremap <silent> [Window]t  :tabnew<CR>
 nnoremap <silent> [Window]o  :<C-u>only<CR>
 nnoremap <silent> [Window]b  :b#<CR>
@@ -340,7 +342,7 @@ nnoremap <silent> [Window]sv :split<CR>:wincmd p<CR>:e#<CR>
 nnoremap <silent> [Window]sg :vsplit<CR>:wincmd p<CR>:e#<CR>
 
 " Background dark/light toggle and contrasts
-nmap <silent> [Window]h :<C-u>call <SID>toggle_background()<CR>
+nmap <silent> [Window]g :<C-u>call <SID>toggle_background()<CR>
 nmap <silent> [Window]- :<c-u>call <SID>toggle_contrast(-v:count1)<cr>
 nmap <silent> [Window]= :<c-u>call <SID>toggle_contrast(+v:count1)<cr>
 
