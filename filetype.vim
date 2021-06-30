@@ -2,35 +2,42 @@
 " ===
 
 if exists('did_load_filetypes')
-	finish
+  finish
 endif
 
 augroup filetypedetect "{{{
 
-	autocmd BufNewFile,BufRead */.config/git/users/* setfiletype gitconfig
+  autocmd BufNewFile,BufRead */.config/git/users/* setfiletype gitconfig
 
-	autocmd BufNewFile,BufRead */playbooks/*.{yml,yaml} setfiletype yaml.ansible
-	autocmd BufNewFile,BufRead */inventory/*            setfiletype ansible_hosts
-	" autocmd BufNewFile,BufRead */templates/*.{yaml,tpl} setfiletype yaml.gotexttmpl
+  autocmd BufNewFile,BufRead */playbooks/*.{yml,yaml} setfiletype yaml.ansible
+  autocmd BufNewFile,BufRead */inventory/*            setfiletype ansible_hosts
+  " autocmd BufNewFile,BufRead */templates/*.{yaml,tpl} setfiletype yaml.gotexttmpl
 
-	autocmd BufNewFile,BufRead go.mod               setfiletype gomod
-	autocmd BufNewFile,BufRead go.sum               setfiletype go
-	autocmd BufNewFile,BufRead *.hcl                setfiletype terraform
-	autocmd BufNewFile,BufRead yarn.lock            setfiletype yaml
-	autocmd BufNewFile,BufRead */.kube/config       setfiletype yaml
-	autocmd BufNewFile,BufRead *.postman_collection setfiletype json
-	autocmd BufNewFile,BufRead .tern-{project,port} setfiletype json
-	autocmd BufNewFile,BufRead *.js.map             setfiletype json
-	autocmd BufNewFile,BufRead .jsbeautifyrc        setfiletype json
-	autocmd BufNewFile,BufRead .eslintrc            setfiletype json
-	autocmd BufNewFile,BufRead .jscsrc              setfiletype json
-	autocmd BufNewFile,BufRead .babelrc             setfiletype json
-	autocmd BufNewFile,BufRead .watchmanconfig      setfiletype json
-	autocmd BufNewFile,BufRead .buckconfig          setfiletype toml
-	autocmd BufNewFile,BufRead .flowconfig          setfiletype ini
-	autocmd BufNewFile,BufRead Jenkinsfile*         setfiletype groovy
-	autocmd BufNewFile,BufRead Tmuxfile,tmux/config setfiletype tmux
-	autocmd BufNewFile,BufRead Brewfile             setfiletype ruby
+  autocmd BufNewFile,BufRead go.mod               setfiletype gomod
+  autocmd BufNewFile,BufRead go.sum               setfiletype go
+  autocmd BufNewFile,BufRead *.hcl                setfiletype terraform
+  autocmd BufNewFile,BufRead yarn.lock            setfiletype yaml
+  autocmd BufNewFile,BufRead */.kube/config       setfiletype yaml
+  autocmd BufNewFile,BufRead *.postman_collection setfiletype json
+  autocmd BufNewFile,BufRead .tern-{project,port} setfiletype json
+  autocmd BufNewFile,BufRead *.js.map             setfiletype json
+  autocmd BufNewFile,BufRead .jsbeautifyrc        setfiletype json
+  autocmd BufNewFile,BufRead .eslintrc            setfiletype json
+  autocmd BufNewFile,BufRead .jscsrc              setfiletype json
+  autocmd BufNewFile,BufRead .babelrc             setfiletype json
+  autocmd BufNewFile,BufRead .watchmanconfig      setfiletype json
+  autocmd BufNewFile,BufRead .buckconfig          setfiletype toml
+  autocmd BufNewFile,BufRead .flowconfig          setfiletype ini
+  autocmd BufNewFile,BufRead Jenkinsfile*         setfiletype groovy
+  autocmd BufNewFile,BufRead Tmuxfile,tmux/config setfiletype tmux
+  autocmd BufNewFile,BufRead Brewfile             setfiletype ruby
+
+
+  " Kraxli:
+  autocmd BufNewFile,BufRead,BufEnter *.julia,*.jl  setfiletype julia
+  autocmd BufNewFile,BufRead,BufEnter *.diet,*.dt  setfiletype pug " diet, jade
+  " autocmd! BufRead,BufWinEnter,BufNewFile,WinNew,BufNew *.vimwiki,*.wiki,*.md setfiletype=vimwiki
+  au! BufNew,BufEnter,BufFilePre,BufCreate,BufEnter,BufNewFile,BufRead,BufWinEnter,BufFilePre *.md,*.markdown,*.wiki,*.vimwiki  set filetype=vimwiki.markdown " vimwiki.markdown set filetype=vimwiki
 
 augroup END
 " }}}

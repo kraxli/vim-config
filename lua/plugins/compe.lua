@@ -7,7 +7,7 @@ require'compe'.setup({
   source = {
     path = true,
     buffer = true,
-    spell = true,
+    -- spell = true,
     nvim_lsp = true,
     nvim_lua = true,
     vsnip = true,
@@ -68,6 +68,14 @@ vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+vim.api.nvim_set_keymap("i", "<down>", 'pumvisible() ? v:lua.tab_complete() : "<down>"', {expr = true})
+vim.api.nvim_set_keymap("s", "<down>", 'pumvisible() ? v:lua.tab_complete() : "<down>"', {expr = true})
+vim.api.nvim_set_keymap("i", "<up>", 'pumvisible() ? v:lua.s_tab_complete() : "<up>"', {expr = true})
+vim.api.nvim_set_keymap("s", "<up>", 'pumvisible() ? v:lua.s_tab_complete() : "<up>"', {expr = true})
+vim.api.nvim_set_keymap("i", "<C-j>", 'pumvisible() ? v:lua.tab_complete() : "<down>"', {expr = true})
+vim.api.nvim_set_keymap("s", "<C-j>", 'pumvisible() ? v:lua.tab_complete() : "<down>"', {expr = true})
+vim.api.nvim_set_keymap("i", "<C-k>", 'pumvisible() ? v:lua.s_tab_complete() : "<up>"', {expr = true})
+vim.api.nvim_set_keymap("s", "<C-k>", 'pumvisible() ? v:lua.s_tab_complete() : "<up>"', {expr = true})
 
 vim.api.nvim_set_keymap("i", "<CR>", "v:lua.confirm_completion()", {expr = true})
 

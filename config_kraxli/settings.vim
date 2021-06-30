@@ -23,7 +23,7 @@ set undofile
 " set noreadonly
 
 set conceallevel=2
-set concealcursor=nc
+set concealcursor=c  " nc
 " set concealcursor-=nciv " display all conceal text
 
 if executable('ag')

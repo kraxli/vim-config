@@ -101,10 +101,25 @@ augroup user_plugin_filetype " {{{
 	autocmd FileType python
 		\ setlocal expandtab smarttab nosmartindent
 		\ | setlocal tabstop=4 softtabstop=4 shiftwidth=4 textwidth=80
+		"\ | setlocal foldmethod=expr foldexpr=nvim_treesitter#foldexpr()
 
-	autocmd FileType markdown
-		\ setlocal expandtab spell conceallevel=0
-		\ | setlocal autoindent formatoptions=tcroqn2 comments=n:>
+	autocmd FileType markdown,vimwiki,text,vimwiki.markdown,markdown.vimwiki
+		\ setlocal expandtab conceallevel=0
+		\ | setl spell spelllang=en,de
+		\ | setlocal tabstop=2 softtabstop=2 shiftwidth=2
+		\ | setl formatlistpat=^\\s*\\d\\+\\.\\s\\+\\\\|^\\s*[+-\\*]\\s\\+
+		\ | setl autoindent formatoptions=tcroqn2 comments=n:>
+		\ | setl wrap linebreak nolist
+		\ | setl breakindent
+		\ | setl textwidth=0
+		\ | setl wrapmargin=0 " only used when textwidth=0
+		\ | setlocal  smarttab
+		\ | setlocal nolisp
+		\ | setlocal foldlevel=1 foldenable foldmethod=expr
+		\ | setlocal foldmethod=expr | setlocal foldenable
+		\ | setl foldexpr=markdown#MkdFoldSimple(v:lnum)
+
+		" \ | setlocal foldexpr=fold#FoldLevelOfLine(v:lnum)
 
 	" https://webpack.github.io/docs/webpack-dev-server.html#working-with-editors-ides-supporting-safe-write
 	autocmd FileType css,javascript,javascriptreact setlocal backupcopy=yes

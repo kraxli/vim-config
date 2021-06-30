@@ -3,6 +3,8 @@
 
 imap jj <esc>
 
+nnoremap > >>
+nnoremap < <<
 " nnoremap > >>^
 " nnoremap < <<$
 
@@ -43,7 +45,7 @@ vnoremap ~ y:call setreg('', utils#TwiddleCase(@"), getregtype(''))<CR>gv""Pgv
 
 " {{{ --- windows / splits ---
 
-		" nmap bd :bd<cr> " -> slows down move word backward
+		" nmap db :bd<cr> " -> map bd slows down move word backward
 
 		" resize window / split
 		" nnoremap <c-w>< <c-w>5<

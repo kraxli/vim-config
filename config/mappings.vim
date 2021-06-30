@@ -320,6 +320,10 @@ if get(g:, 'enable_universal_quit_mapping', 1)
 		\ | endif
 endif
 
+autocmd FileType diff
+	\ |   nmap <silent> q :<C-u>bd<CR>
+
+
 nnoremap <C-q> <C-w>
 nnoremap <C-x> <C-w>x
 
