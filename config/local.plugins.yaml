@@ -27,7 +27,8 @@
   on_ft: [markdown, text, vimwiki]
 
 
-- repo:  vimwiki/vimwiki
+- repo:  kraxli/vimwiki
+  rev: nvim-compe
   on_ft: [ vimwiki, markdown ]
   on_map: { n: <Plug> }
   on_cmd: [ VimwikiIndex, VimwikiUISelect ]
