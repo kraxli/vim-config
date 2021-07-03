@@ -1,11 +1,18 @@
 
 " colorscheme PaperColor "  codedark  PaperColor badwolf
 
-" keep folds on save (https://stackoverflow.com/questions/37552913/vim-how-to-keep-folds-on-save)
-augroup remember_folds
+let s:syntax_file = 'syntax/general.vim'
+let s:syntax_file_path = resolve($VIM_PATH . '/' . s:syntax_file)
+
+augroup folds
   autocmd!
+  " remember folding
+  " keep folds on save (https://stackoverflow.com/questions/37552913/vim-how-to-keep-folds-on-save)
   autocmd BufWinLeave *.* mkview
   autocmd BufWinEnter *.* silent! loadview
+
+  autocmd FileType,WinEnter,BufWinEnter,BufReadPost *  execute 'source' fnameescape(s:syntax_file_path)
+
 augroup END
 
 " sort is affecting only: directories on the top, files below

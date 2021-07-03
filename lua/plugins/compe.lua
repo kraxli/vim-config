@@ -3,15 +3,15 @@
 -- rafi settings
 
 require'compe'.setup({
-  enabled = true,
   source = {
     path = true,
-    buffer = true,
+    buffer = {kind = '⌯', true},  -- ﬘,
     -- spell = true,
     nvim_lsp = true,
     nvim_lua = true,
-    vsnip = true,
+    vsnip = {kind = '*'},  -- ﬌
     ultisnips = true,
+    orgmode = true,
     -- tmux = true,
     -- tmux = { all_panes = true }
   },
@@ -30,13 +30,19 @@ local check_back_space = function()
   end
 end
 
+local npairs = require('nvim-autopairs')
+
 _G.confirm_completion = function()
   if vim.fn.pumvisible() == 0 then
-    return t '<Plug>delimitMateCR'
+    return npairs.autopairs_cr()
+    -- return t '<Plug>delimitMateCR'
   elseif vim.fn.complete_info()['selected'] ~= -1 then
-    return vim.fn['compe#confirm']({ keys = t '<Plug>delimitMateCR', mode = '' })
+      return vim.fn['compe#confirm'](npairs.esc('<cr>'))
+  -- elseif vim.fn.complete_info()['selected'] ~= -1 then
+  --   return vim.fn['compe#confirm']({ keys = t '<Plug>delimitMateCR', mode = '' })
   else
-    return t '<C-e><Plug>delimitMateCR'
+    return npairs.esc('<cr>')
+    -- return t '<C-e><Plug>delimitMateCR'
   end
 end
 
@@ -64,10 +70,12 @@ _G.s_tab_complete = function()
   end
 end
 
-vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
-vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+<<<<<<< HEAD
+local remap = vim.api.nvim_set_keymap
+remap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
+remap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
+remap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+remap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("i", "<down>", 'pumvisible() ? v:lua.tab_complete() : "<down>"', {expr = true})
 vim.api.nvim_set_keymap("s", "<down>", 'pumvisible() ? v:lua.tab_complete() : "<down>"', {expr = true})
 vim.api.nvim_set_keymap("i", "<up>", 'pumvisible() ? v:lua.s_tab_complete() : "<up>"', {expr = true})
@@ -77,11 +85,11 @@ vim.api.nvim_set_keymap("s", "<C-j>", 'pumvisible() ? v:lua.tab_complete() : "<d
 vim.api.nvim_set_keymap("i", "<C-k>", 'pumvisible() ? v:lua.s_tab_complete() : "<up>"', {expr = true})
 vim.api.nvim_set_keymap("s", "<C-k>", 'pumvisible() ? v:lua.s_tab_complete() : "<up>"', {expr = true})
 
-vim.api.nvim_set_keymap("i", "<CR>", "v:lua.confirm_completion()", {expr = true})
+remap("i", "<CR>", "v:lua.confirm_completion()", {expr = true, noremap=true})
 
 local args = {expr = true, noremap = true, silent = true}
-vim.api.nvim_set_keymap("i", "<C-e>", "compe#close('<C-e>')", args)
-vim.api.nvim_set_keymap("i", "<C-u>", "compe#scroll({'delta': 4})", args)
-vim.api.nvim_set_keymap("i", "<C-d>", "compe#scroll({'delta': -4})", args)
+remap("i", "<C-e>", "compe#close('<C-e>')", args)
+remap("i", "<C-u>", "compe#scroll({'delta': 4})", args)
+remap("i", "<C-d>", "compe#scroll({'delta': -4})", args)
 
 -- vim: set ts=2 sw=2 tw=80 et :
