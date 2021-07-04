@@ -70,7 +70,6 @@ _G.s_tab_complete = function()
   end
 end
 
-<<<<<<< HEAD
 local remap = vim.api.nvim_set_keymap
 remap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
 remap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
