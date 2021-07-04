@@ -372,6 +372,7 @@ augroup user_plugin_filetype " {{{
 	autocmd FileType python
 		\ setlocal expandtab smarttab nosmartindent
 		\ | setlocal tabstop=4 softtabstop=4 shiftwidth=4 textwidth=80
+		"\ | setlocal foldmethod=expr foldexpr=nvim_treesitter#foldexpr()
 
 	autocmd FileType markdown
 		\ setlocal expandtab spell autoindent formatoptions=tcroqn2 comments=n:>
