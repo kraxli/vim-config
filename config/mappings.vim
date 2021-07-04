@@ -142,8 +142,8 @@ xnoremap <Tab> >gv|
 xnoremap <S-Tab> <gv
 
 " Indent and jump to first non-blank character linewise
-nmap >>  >>_
-nmap <<  <<_
+nmap >  >>_
+nmap <  <<_
 
 " Drag current line/s vertically and auto-indent
 nnoremap <Leader>k :m-2<CR>==
@@ -366,8 +366,8 @@ nnoremap <silent> [Window]x  :<C-u>call <SID>window_empty_buffer()<CR>
 nnoremap <silent> [Window]z  :<C-u>call <SID>zoom()<CR>
 
 " Split current buffer, go to previous window and previous buffer
-nnoremap <silent> [Window]sv :split<CR>:wincmd p<CR>:e#<CR>
-nnoremap <silent> [Window]sg :vsplit<CR>:wincmd p<CR>:e#<CR>
+nnoremap <silent> [Window]sh :split<CR>:wincmd p<CR>:e#<CR>
+nnoremap <silent> [Window]sv :vsplit<CR>:wincmd p<CR>:e#<CR>
 
 " Background dark/light toggle and contrasts
 nmap <silent> [Window]g :<C-u>call <SID>toggle_background()<CR>

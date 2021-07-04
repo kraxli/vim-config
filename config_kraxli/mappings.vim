@@ -3,8 +3,8 @@
 
 imap jj <esc>
 
-nnoremap > >>
-nnoremap < <<
+" nnoremap > >>
+" nnoremap < <<
 " nnoremap > >>^
 " nnoremap < <<$
 
