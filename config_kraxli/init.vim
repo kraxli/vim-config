@@ -35,6 +35,7 @@ call s:source_file('config_kraxli/commands.vim')
 call s:source_file('config_kraxli/git.vim')
 call s:source_file('config_kraxli/filetypesettings.vim')
 call s:source_file('config_kraxli/general.vim')
+call s:source_file('config_kraxli/terminal.vim')
 
 " load local config / setting files
 if exists('g:local_source_dir') && isdirectory(g:local_source_dir)

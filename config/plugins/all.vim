@@ -400,16 +400,23 @@ endif
 """"""""""""
 
 if dein#tap('iron.nvim')
-	nmap <silent> <Leader>rr :<C-u>IronRepl<CR><Esc>
+	nmap <silent> <Leader>rr :<C-u>IronRepl<CR><Esc><C-W>R
 	nmap <silent> <Leader>rq <Plug>(iron-exit)
-	nmap <silent> <Leader>rl <Plug>(iron-send-line)
-	vmap <silent> <Leader>rl <Plug>(iron-visual-send)
 	nmap <silent> <Leader>rs <Plug>(iron-send-line)
 	vmap <silent> <Leader>rs <Plug>(iron-visual-send)
+	nmap <silent> <F5> <Plug>(iron-send-line)		" <F9>
+	vmap <silent> <F5> <Plug>(iron-visual-send)	" <F9>
 	nmap <silent> <Leader>rp <Plug>(iron-repeat-cmd)
 	nmap <silent> <Leader>rc <Plug>(iron-clear)
 	nmap <silent> <Leader>r<CR>  <Plug>(iron-cr)
 	nmap <silent> <Leader>r<Esc> <Plug>(iron-interrupt)
+
+	" function! ReplOrientation(...)
+	" 	IronRepl
+	" 	normal <C-W>r
+	" endfunction
+	"
+	" command! IronReplRight call ReplOrientation()
 endif
 
 
