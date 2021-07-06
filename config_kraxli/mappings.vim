@@ -1,4 +1,8 @@
 
+" --- run code ---
+
+map <F5> :call coding#compile()<cr>
+
 " --- elementary maps ---
 
 imap jj <esc>

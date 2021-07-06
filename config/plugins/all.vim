@@ -400,12 +400,12 @@ endif
 """"""""""""
 
 if dein#tap('iron.nvim')
-	nmap <silent> <Leader>rr :<C-u>IronRepl<CR><Esc><C-W>R
+	nmap <silent> <Leader>rr :<C-u>IronRepl<CR><Esc><C-W>R	" exe "vertical resize " . (winwidth(0) * 2/3)
 	nmap <silent> <Leader>rq <Plug>(iron-exit)
 	nmap <silent> <Leader>rs <Plug>(iron-send-line)
 	vmap <silent> <Leader>rs <Plug>(iron-visual-send)
-	nmap <silent> <F5> <Plug>(iron-send-line)		" <F9>
-	vmap <silent> <F5> <Plug>(iron-visual-send)	" <F9>
+	" nmap <silent> <F5> <Plug>(iron-send-line)		" <F9>
+	" vmap <silent> <F5> <Plug>(iron-visual-send)	" <F9>
 	nmap <silent> <Leader>rp <Plug>(iron-repeat-cmd)
 	nmap <silent> <Leader>rc <Plug>(iron-clear)
 	nmap <silent> <Leader>r<CR>  <Plug>(iron-cr)
@@ -426,5 +426,11 @@ if dein#tap('vista.vim')
 endif
 
 
+if dein#tap('sniprun')
+	nmap <leader>w <Plug>SnipRun  " w for watch
+	vmap <leader>w <Plug>SnipRun
+	nmap <F9> <Plug>SnipRun
+	vmap <F9> <Plug>SnipRun
+endif
 
 " vim: set ts=2 sw=2 tw=80 noet :
