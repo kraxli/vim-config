@@ -3,7 +3,7 @@
 - {repo: vimwiki/vimwiki, if: 0}
 
 ## -------------------------------------------------------
-## Programming Langues Support
+## Coding / Programming Langues Support
 ## -------------------------------------------------------
 
 - {repo: tmhedberg/SimpylFold, on_ft: [python]}
@@ -18,6 +18,36 @@
   hook_add: let g:iron_map_defaults = 0 | let g:iron_map_extended = 0
   hook_source: luafile $VIM_PATH/config/plugins/iron.lua
 
+
+# - {repo: rafi/vim-venom, on_ft: [python]}
+
+##  ----- debuggin -----
+##  alternative to nvim-dap: puremourning/vimspector
+
+- repo: nvim-telescope/telescope-dap.nvim
+  depends: [telescope.nvim, nvim-dap]
+  if: has('nvim-0.5')
+  # hook_post_source: lua require('plugins.dap')
+
+
+- repo: mfussenegger/nvim-dap
+  if: has('nvim-0.5')
+  depends: [auto-session, telescope.nvim]
+  # hook_post_source: lua require('plugins.dap')
+
+
+- repo: mfussenegger/nvim-dap-python
+  if: has('nvim-0.5')
+
+
+- repo: rcarriga/nvim-dap-ui
+  if: has('nvim-0.5')
+  # depends: [nvim-dap, nvim-dap-python]
+  # hook_post_source: lua require('plugins.dap-ui')
+
+
+- repo: jalvesaq/Nvim-R
+  on_ft: R
 
 ## -------------------------------------------------------
 ## Vimwiki & Zettel & Markdown
@@ -196,17 +226,17 @@
 ## Miscellaneous
 ## -------------------------------------------------------
 
-# - repo: liuchengxu/vista.vim
-#   on_cmd: Vista
-#   hook_add: |-
-#     let g:vista#renderer#enable_icon = 1
-#     let g:vista_echo_cursor_strategy = 'scroll'
-#     let g:vista_vimwiki_executive = 'markdown'
-#     let g:vista_executive_for = {
-#       \ 'vimwiki': 'markdown',
-#       \ 'pandoc': 'markdown',
-#       \ 'markdown': 'toc',
-#       \ }
+- repo: liuchengxu/vista.vim
+  on_cmd: Vista
+  hook_add: |-
+    let g:vista#renderer#enable_icon = 1
+    let g:vista_echo_cursor_strategy = 'scroll'
+    let g:vista_vimwiki_executive = 'markdown'
+    let g:vista_executive_for = {
+      \ 'vimwiki': 'markdown',
+      \ 'pandoc': 'markdown',
+      \ 'markdown': 'toc',
+      \ }
 
 
 - repo: junegunn/fzf

@@ -352,6 +352,11 @@ augroup END
 augroup user_plugin_filetype " {{{
 	autocmd!
 
+	" dap support
+	autocm FileType * source $VIM_PATH/lua/plugins/dap.lua
+	autocm FileType * source $VIM_PATH/lua/plugins/dap-ui.lua
+	" autocm FileType * source $VIM_PATH/lua/plugins/telescope.lua
+
 	autocmd FileType apache setlocal path+=./;/
 
 	autocmd FileType helm setlocal commentstring=#\ %s
