@@ -195,5 +195,6 @@ telescope.setup{
 
 telescope.load_extension('zoxide')
 telescope.load_extension('session-lens')
+telescope.load_extension('dap')
 
 -- vim: set ts=2 sw=2 tw=80 noet :

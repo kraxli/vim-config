@@ -403,7 +403,7 @@
 
 - repo: nvim-telescope/telescope.nvim
   if: has("nvim-0.5")
-  depends: [ todo-comments.nvim, session-lens ]
+  depends: [ todo-comments.nvim, session-lens, telescope-dap.nvim ]
   on_cmd: Telescope
   hook_post_source: lua require('plugins.telescope')
 

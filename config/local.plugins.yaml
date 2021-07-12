@@ -25,25 +25,27 @@
 ##  alternative to nvim-dap: puremourning/vimspector
 
 - repo: nvim-telescope/telescope-dap.nvim
-  depends: [telescope.nvim, nvim-dap]
   if: has('nvim-0.5')
-  # hook_post_source: lua require('plugins.dap')
+  lazy: true
 
 
 - repo: mfussenegger/nvim-dap
   if: has('nvim-0.5')
-  depends: [auto-session, telescope.nvim]
-  # hook_post_source: lua require('plugins.dap')
+  depends: [ auto-session, telescope.nvim, nvim-dap-python, nvim-dap-ui ]
+  hook_post_source: lua require('plugins.dap')
 
 
 - repo: mfussenegger/nvim-dap-python
   if: has('nvim-0.5')
+  lazy: true
+  hook_post_source: lua require('plugins.dap-python')
 
 
 - repo: rcarriga/nvim-dap-ui
   if: has('nvim-0.5')
+  lazy: true
+  hook_post_source: lua require('plugins.dap-ui')
   # depends: [nvim-dap, nvim-dap-python]
-  # hook_post_source: lua require('plugins.dap-ui')
 
 
 - repo: jalvesaq/Nvim-R
