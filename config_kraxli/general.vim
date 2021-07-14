@@ -37,3 +37,12 @@ augroup ProjectDrawer
   " autocmd VimEnter * :Vexplore
 augroup END
 
+augroup user_plugin_filetype_settings " {{{
+	autocmd!
+
+	autocmd FileType markdown let b:sleuth_automatic = 0
+	autocmd FileType diff nnoremap q :<C-u>bd<CR>
+
+augroup END
+
+
