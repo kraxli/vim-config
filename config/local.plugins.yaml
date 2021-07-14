@@ -22,7 +22,7 @@
 # - {repo: rafi/vim-venom, on_ft: [python]}
 
 ##  ----- debuggin -----
-##  alternative to nvim-dap: puremourning/vimspector
+## see: https://alpha2phi.medium.com/neovim-dap-enhanced-ebc730ff498b
 
 - repo: nvim-telescope/telescope-dap.nvim
   if: has('nvim-0.5')
@@ -47,9 +47,16 @@
   hook_post_source: lua require('plugins.dap-ui')
   # depends: [nvim-dap, nvim-dap-python]
 
+# TODO
+# see: https://alpha2phi.medium.com/neovim-dap-enhanced-ebc730ff498b
+# -repo: rcarriga/vim-ultest
+# -repo: Pocco81/DAPInstall.nvim
+
+# TODO
+# - repo: theHamsta/nvim-dap-virtual-text
+#   hook_post_source: lua vim.g.dap_virtual_text = true
 
 - repo: jalvesaq/Nvim-R
-  on_ft: R
 
 ## -------------------------------------------------------
 ## Vimwiki & Zettel & Markdown
@@ -223,6 +230,12 @@
   if: has('python3')
   merged: 0
 
+
+- repo: kraxli/vim-snips
+  depends: ultisnips
+  on_event: FileType
+  if: has('python3')
+  merged: 0
 
 ## -------------------------------------------------------
 ## Miscellaneous
@@ -562,12 +575,6 @@
 # #     nmap <buffer> <c-f>r <Plug>ReturnFromFootnote
 #
 # # to sort footnotes: https://github.com/derdennis/sort-markdown-footnotes (but I would need to remove the "fn" from the footnotes) -> or just use pandoc for everything
-#
-# - repo: kraxli/vim-snips
-#   depends: ultisnips
-#   on_event: FileType
-#   if: has('python3')
-#   merged: 0
 #
 #
 # - repo: lervag/vimtex

@@ -16,3 +16,27 @@ if dein#tap('vim-quickhl')
 	nmap <s-m>t <Plug>(quickhl-manual-reset)
 	xmap <s-m>t <Plug>(quickhl-manual-reset)
 endif
+
+
+if dein#tap('gina.vim')
+	command! -nargs=* Git :Gina <args>
+endif
+
+
+if dein#tap('Nvim-R')
+	   let R_assign_map = '__'
+
+" 	function! s:customNvimRMappings()
+" 		nmap <buffer> <Leader>sr <Plug>RStart
+" 		imap <buffer> <Leader>sr <Plug>RStart
+" 		vmap <buffer> <Leader>sr <Plug>RStart
+" 		" ....
+" 	endfunction
+"
+" 	augroup myNvimR
+" 		au!
+" 		autocmd filetype r call s:customNvimRMappings()
+" 	augroup end
+
+endif
+
