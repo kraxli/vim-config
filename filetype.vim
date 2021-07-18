@@ -37,7 +37,8 @@ augroup filetypedetect "{{{
   autocmd BufNewFile,BufRead,BufEnter *.julia,*.jl  setfiletype julia
   autocmd BufNewFile,BufRead,BufEnter *.diet,*.dt  setfiletype pug " diet, jade
   " autocmd! BufRead,BufWinEnter,BufNewFile,WinNew,BufNew *.vimwiki,*.wiki,*.md setfiletype=vimwiki
-  au! BufNew,BufEnter,BufFilePre,BufCreate,BufEnter,BufNewFile,BufRead,BufWinEnter,BufFilePre *.md,*.markdown,*.wiki,*.vimwiki  set filetype=vimwiki.markdown " vimwiki.markdown set filetype=vimwiki
+  au! BufNew,BufEnter,BufFilePre,BufCreate,BufEnter,BufNewFile,BufRead,BufWinEnter,BufFilePre *.md,*.markdown,*.wiki,*.vimwiki  set filetype=vimwiki
+	" vimwiki.markdown set filetype=vimwiki
 
 augroup END
 " }}}
